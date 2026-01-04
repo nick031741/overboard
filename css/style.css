@@ -1159,3 +1159,17 @@ html {
   filter: drop-shadow(0 30px 60px rgba(34,158,217,0.25));
   animation: float 6s ease-in-out infinite;
 }
+
+/* ===== FIX 1: Hero button text on mobile ===== */
+@media (max-width: 480px) {
+
+  .hero-buttons .btn {
+    white-space: nowrap;
+    width: auto;
+    max-width: 100%;
+    padding: 12px 18px;
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+}
