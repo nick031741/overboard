@@ -35,10 +35,11 @@ body {
 .header-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 15px 20px;
   display: flex;
   align-items: center;
-  gap: 32px;
+  justify-content: space-between; /* Это заставит элементы разойтись по краям */
+  gap: 15px;
 }
 
 .logo {
@@ -46,6 +47,9 @@ body {
   align-items: center;
   gap: 10px;
   font-weight: 600;
+  text-decoration: none;
+  color: #ffffff;
+  flex-shrink: 0; /* Чтобы логотип не сжимался */
 }
 
 .logo img {
@@ -1226,5 +1230,99 @@ html {
     max-width: 100%;
     height: auto;
   }
+
+  /* Исправление для кнопок в хедере на маленьких экранах */
+@media (max-width: 480px) {
+  /* Скрываем текст логотипа, оставляем только иконку на iPhone */
+  .logo .logo-text,
+  .logo span:not(.icon) {
+    display: none !important;
+  }
+
+  .header-btn {
+    margin-left: 0;
+    padding: 8px 14px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  /* Исправляем Hero в английской версии, если там пустые места */
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .hero-left h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Фикс для секции Cases в английской версии */
+.case-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .case-item {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .case-visual {
+    justify-content: center;
+  }
+}
+
+/* Переключатель языков */
+.lang-switch {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-left: 20px; /* Отступ от меню */
+}
+
+.lang-switch a {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  opacity: 0.4;
+  transition: 0.2s;
+}
+
+.lang-switch a:hover {
+  opacity: 1;
+  color: #229ed9;
+}
+
+.lang-switch a.active {
+  opacity: 1;
+  color: #229ed9;
+  pointer-events: none; /* Чтобы нельзя было кликнуть на текущий язык */
+  border-bottom: 2px solid #229ed9;
+}
+
+/* Адаптив для iPhone */
+@media (max-width: 480px) {
+  .lang-switch {
+    margin-left: auto; /* Прижимает переключатель вплотную к кнопке заказа */
+    margin-right: 10px;
+  }
+}
 
 }
