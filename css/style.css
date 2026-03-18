@@ -30,6 +30,9 @@ body {
   width: 100%;
   z-index: 100;
   background: rgba(23, 33, 43, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .header-inner {
@@ -95,6 +98,8 @@ body {
 .hero {
   padding-top: 160px;
   padding-bottom: 180px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 
@@ -463,6 +468,13 @@ body {
   justify-content: center;
 }
 
+.process-image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 24px;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.4));
+}
+
 .process-image-placeholder {
   width: 360px;
   height: 360px;
@@ -552,8 +564,8 @@ body {
   position: relative;
   padding-left: 18px;
   margin-bottom: 12px;
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 .case-list li::before {
@@ -566,11 +578,36 @@ body {
 .case-result {
   padding-top: 16px;
   border-top: 1px solid rgba(255,255,255,0.12);
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .case-result strong {
   color: #ffffff;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.case-result ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.case-result ul li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 8px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.8);
+}
+
+.case-result ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #229ed9;
+  font-weight: 600;
 }
 
 /* MOBILE */
@@ -585,6 +622,24 @@ body {
     font-size: 30px;
     margin-bottom: 48px;
   }
+
+  .case-visual {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* ===== REVEAL ANIMATION ===== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ===== CASE PHONES SIMPLE VIEW ===== */
