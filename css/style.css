@@ -1241,24 +1241,56 @@ html {
     gap: 8px; /* Минимальный зазор между ними */
   }
 
-  /* 3. Делаем переключатель компактнее */
+/* Контейнер-капсула */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05); /* Едва заметный фон */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Тонкая рамка */
+  border-radius: 12px;
+  padding: 4px;
+  margin-left: 20px;
+  backdrop-filter: blur(10px); /* Эффект стекла */
+}
+
+/* Сами ссылки */
+.lang-link {
+  text-decoration: none !important;
+  color: #ffffff !important;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.5;
+  line-height: 1;
+}
+
+/* Ховер на неактивный язык */
+.lang-link:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* КРАСИВЫЙ АКТИВНЫЙ ЯЗЫК */
+.lang-link.active {
+  opacity: 1;
+  background: #229ed9; /* Твой фирменный синий */
+  color: #ffffff !important;
+  box-shadow: 0 4px 15px rgba(34, 158, 217, 0.3); /* Мягкое свечение */
+  pointer-events: none;
+}
+
+/* Мобильная адаптация, чтобы не ломать шапку */
+@media (max-width: 480px) {
   .lang-switch {
-    margin: 0; /* Убираем лишние отступы */
-    gap: 6px;
-    background: transparent; /* Убираем фон, чтобы не громоздить */
-    border: none;
-  }
-
-  .lang-link {
-    font-size: 12px; /* Уменьшаем шрифт */
     padding: 2px;
+    border-radius: 10px;
   }
-
-  /* 4. Кнопка заказа тоже должна стать чуть меньше */
-  .header-btn {
-    padding: 8px 12px !important;
-    font-size: 12px !important;
-    margin-left: 0 !important;
+  .lang-link {
+    font-size: 11px;
+    padding: 5px 8px;
   }
+}
 }
 }
