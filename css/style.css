@@ -49,6 +49,8 @@ body {
   align-items: center;
   gap: 10px;
   font-weight: 600;
+  text-decoration: none;
+  color: #ffffff;
 }
 
 .logo img {
@@ -902,6 +904,20 @@ body {
   }
 }
 
+/* ===== TABLET 480–900px ===== */
+@media (max-width: 900px) {
+  .services,
+  .process,
+  .cases,
+  .faq {
+    padding-bottom: 100px;
+  }
+
+  .case-item + .case-item {
+    margin-top: 100px;
+  }
+}
+
 /* ---------- FOOTER ---------- */
 
 .footer {
@@ -1153,5 +1169,111 @@ html {
     font-size: 12px !important;
     margin-left: 0 !important;
     white-space: nowrap;
+  }
+
+  /* Hero */
+  .hero-left h1 {
+    font-size: 32px;
+  }
+
+  .hero-left p,
+  .hero-extra {
+    font-size: 14px !important;
+  }
+
+  .hero-trust {
+    gap: 12px;
+    font-size: 13px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-badge {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+
+  .btn {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  /* Services */
+  .services {
+    padding-bottom: 80px;
+  }
+
+  .services-title {
+    font-size: 30px;
+    margin-bottom: 40px;
+  }
+
+  /* Process */
+  .process {
+    padding-bottom: 80px;
+  }
+
+  .process-title {
+    font-size: 30px;
+    margin-bottom: 40px;
+  }
+
+  .process-image {
+    max-width: 100%;
+  }
+
+  /* Cases */
+  .cases {
+    padding-bottom: 80px;
+  }
+
+  .case-item + .case-item {
+    margin-top: 80px;
+  }
+
+  .case-visual img.case-phone {
+    width: 160px !important;
+    max-width: 160px !important;
+  }
+
+  .case-visual {
+    gap: 16px;
+  }
+
+  .case-title {
+    font-size: 20px;
+  }
+
+  .case-list li {
+    font-size: 14px;
+  }
+
+  .case-result {
+    font-size: 14px;
+  }
+
+  .case-result ul li {
+    font-size: 14px;
+  }
+
+  /* Reviews */
+  .section-title {
+    font-size: 28px;
+    margin-bottom: 36px;
+  }
+
+  /* FAQ */
+  .faq {
+    padding-bottom: 80px;
+  }
+
+  .faq-question {
+    font-size: 15px;
+    padding: 18px 20px;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 60px 20px 40px;
   }
 }
