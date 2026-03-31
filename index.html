@@ -6,13 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Разработка Telegram-ботов под ключ для бизнеса: заявки, запись клиентов, оплаты, интеграции, Telegram Mini Apps и поддержка. Работаю без конструкторов.">
 
-  <!-- Canonical & hreflang -->
   <link rel="canonical" href="https://overboardstudio.pages.dev/">
   <link rel="alternate" hreflang="ru" href="https://overboardstudio.pages.dev/">
   <link rel="alternate" hreflang="en" href="https://overboardstudio.pages.dev/en/">
   <link rel="alternate" hreflang="x-default" href="https://overboardstudio.pages.dev/">
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Telegram-боты для бизнеса — Overboard Studio">
   <meta property="og:description" content="Разработка Telegram-ботов под ключ: заявки, записи, оплаты и автоматизация для бизнеса.">
   <meta property="og:image" content="https://overboardstudio.pages.dev/img/logo.png">
@@ -24,13 +22,11 @@
   <meta property="og:locale" content="ru_RU">
   <meta property="og:locale:alternate" content="en_US">
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Telegram-боты для бизнеса — Overboard Studio">
   <meta name="twitter:description" content="Разработка Telegram-ботов под ключ: заявки, записи, оплаты и автоматизация для бизнеса.">
   <meta name="twitter:image" content="https://overboardstudio.pages.dev/img/logo.png">
 
-  <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -48,9 +44,7 @@
       "url": "https://t.me/nicktg17",
       "email": "nickpremium1@proton.me"
     },
-    "sameAs": [
-      "https://t.me/nicktg17"
-    ],
+    "sameAs": ["https://t.me/nicktg17"],
     "offers": {
       "@type": "Offer",
       "description": "Разработка Telegram-ботов под ключ",
@@ -72,8 +66,173 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <style>
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal {
+      background: #1e2d3d;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 40px 36px;
+      width: 100%;
+      max-width: 460px;
+      position: relative;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: #fff; }
+    .modal h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 8px;
+    }
+    .modal p.modal-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      margin: 0 0 28px;
+    }
+    .modal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .modal-form label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 4px;
+      display: block;
+    }
+    .modal-form input {
+      width: 100%;
+      box-sizing: border-box;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: #fff;
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .modal-form input::placeholder { color: rgba(255,255,255,0.3); }
+    .modal-form input:focus { border-color: #2AABEE; }
+    .modal-submit {
+      margin-top: 6px;
+      background: #2AABEE;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      width: 100%;
+    }
+    .modal-submit:hover { background: #1e9bd8; transform: translateY(-1px); }
+
+    /* ===== SUCCESS POPUP ===== */
+    .success-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 1100;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .success-overlay.active { display: flex; }
+    .success-box {
+      background: #1e2d3d;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 40px 36px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+    .success-icon { font-size: 48px; margin-bottom: 16px; }
+    .success-box h3 { color: #fff; font-size: 20px; margin: 0 0 10px; }
+    .success-box p { color: rgba(255,255,255,0.55); font-size: 14px; margin: 0 0 24px; }
+    .success-box button {
+      background: #2AABEE;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 32px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .success-box button:hover { background: #1e9bd8; }
+  </style>
 </head>
 <body>
+
+<!-- ===== MODAL FORM ===== -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">×</button>
+    <h2>Оставить заявку</h2>
+    <p class="modal-sub">Заполните форму — я свяжусь с вами в ближайшее время</p>
+    <div class="modal-form">
+      <div>
+        <label>Ваше имя</label>
+        <input type="text" id="fieldName" placeholder="Иван Иванов">
+      </div>
+      <div>
+        <label>Телефон</label>
+        <input type="tel" id="fieldPhone" placeholder="+7 999 000 00 00">
+      </div>
+      <div>
+        <label>Telegram</label>
+        <input type="text" id="fieldTg" placeholder="@username">
+      </div>
+      <button class="modal-submit" id="modalSubmit">Отправить заявку</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SUCCESS POPUP ===== -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-box">
+    <div class="success-icon">🚧</div>
+    <h3>Пока в разработке</h3>
+    <p>Форма скоро заработает! Пока что напишите мне напрямую в Telegram — отвечу быстро.</p>
+    <button onclick="closeSuccess()">Понятно</button>
+  </div>
+</div>
 
 <header class="header">
   <div class="header-inner">
@@ -95,7 +254,7 @@
       <a href="#contacts">Контакты</a>
     </nav>
 
-    <a href="https://t.me/nicktg17" target="_blank" rel="noopener" class="header-btn">Оставить заявку</a>
+    <a href="#" class="header-btn open-modal">Оставить заявку</a>
   </div>
 </header>
 
@@ -120,12 +279,8 @@
       </p>
 
       <div class="hero-buttons">
-        <a href="https://t.me/nicktg17" target="_blank" rel="noopener" class="btn primary">
-          Заказать бота
-        </a>
-        <a href="#cases" class="btn secondary">
-          Наши работы
-        </a>
+        <a href="#" class="btn primary open-modal">Заказать бота</a>
+        <a href="#cases" class="btn secondary">Наши работы</a>
       </div>
 
       <div class="hero-trust">
@@ -247,8 +402,8 @@
         <img src="img/process.png" alt="Процесс разработки Телеграм бота" class="process-image">
       </div>
 
-    </div><!-- /process-content -->
-  </div><!-- /process-inner -->
+    </div>
+  </div>
 </section>
 
 <div class="section-divider"></div>
@@ -259,7 +414,6 @@
 
     <h2 class="cases-title">Наши кейсы</h2>
 
-    <!-- КЕЙС 1 -->
     <div class="case-item">
       <div class="case-visual">
         <img src="img/cases/restaurant-bot-1.png" alt="Telegram бот — бронирование" class="case-phone main">
@@ -286,7 +440,6 @@
       </div>
     </div>
 
-    <!-- КЕЙС 2 -->
     <div class="case-item">
       <div class="case-visual">
         <img src="img/cases/fitness-bot-1.png" alt="Telegram бот для фитнес клуба — интерфейс" class="case-phone main">
@@ -312,7 +465,6 @@
       </div>
     </div>
 
-    <!-- КЕЙС 3 -->
     <div class="case-item">
       <div class="case-visual">
         <img src="img/cases/events-bot-1.png" alt="Telegram бот для онлайн мероприятий — регистрация" class="case-phone main">
@@ -337,7 +489,6 @@
       </div>
     </div>
 
-    <!-- КЕЙС 4 -->
     <div class="case-item">
       <div class="case-visual">
         <img src="img/cases/ai-school-bot-1.png" alt="Telegram ИИ бот для онлайн школы — диалог" class="case-phone main">
@@ -368,9 +519,7 @@
 
 <script>
   document.querySelectorAll('.case-phone').forEach(img => {
-    img.addEventListener('click', () => {
-      img.classList.toggle('is-zoomed');
-    });
+    img.addEventListener('click', () => img.classList.toggle('is-zoomed'));
   });
 </script>
 
@@ -450,10 +599,7 @@
   new Swiper('.reviews-slider', {
     slidesPerView: 2,
     spaceBetween: 40,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
+    pagination: { el: '.swiper-pagination', clickable: true },
     breakpoints: {
       0: { slidesPerView: 1 },
       900: { slidesPerView: 2 }
@@ -471,60 +617,42 @@
     <div class="faq-list">
 
       <div class="faq-item">
-        <button class="faq-question">
-          Сколько стоит разработка Telegram-бота?
-          <span class="faq-icon">+</span>
-        </button>
+        <button class="faq-question">Сколько стоит разработка Telegram-бота? <span class="faq-icon">+</span></button>
         <div class="faq-answer">
           <p>Стоимость зависит от сложности проекта и задач. Простые боты начинаются от базового бюджета, более сложные решения с интеграциями и ИИ рассчитываются индивидуально после обсуждения требований.</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">
-          Какие сроки разработки?
-          <span class="faq-icon">+</span>
-        </button>
+        <button class="faq-question">Какие сроки разработки? <span class="faq-icon">+</span></button>
         <div class="faq-answer">
           <p>В среднем разработка занимает около недели. Точные сроки зависят от сложности проекта и количества функций. При необходимости могу подстроиться под ваши дедлайны.</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">
-          Вы помогаете с техническим заданием?
-          <span class="faq-icon">+</span>
-        </button>
+        <button class="faq-question">Вы помогаете с техническим заданием? <span class="faq-icon">+</span></button>
         <div class="faq-answer">
           <p>Да. Если у вас нет готового ТЗ, мы вместе обсуждаем задачу, я помогаю сформулировать требования и предлагаю оптимальное решение под ваш бизнес.</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">
-          На чём вы разрабатываете ботов?
-          <span class="faq-icon">+</span>
-        </button>
+        <button class="faq-question">На чём вы разрабатываете ботов? <span class="faq-icon">+</span></button>
         <div class="faq-answer">
           <p>Я разрабатываю ботов самостоятельно на Python (aiogram 3), использую SQL для хранения данных, а также HTML, CSS и JavaScript. Конструкторы не использую — проекты полностью кастомные.</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">
-          Будет ли поддержка после запуска?
-          <span class="faq-icon">+</span>
-        </button>
+        <button class="faq-question">Будет ли поддержка после запуска? <span class="faq-icon">+</span></button>
         <div class="faq-answer">
           <p>Да. После запуска я предоставляю поддержку, помогаю с настройкой, исправлением ошибок и консультациями по дальнейшему развитию проекта.</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">
-          Можно ли дорабатывать проект в будущем?
-          <span class="faq-icon">+</span>
-        </button>
+        <button class="faq-question">Можно ли дорабатывать проект в будущем? <span class="faq-icon">+</span></button>
         <div class="faq-answer">
           <p>Конечно. Проект можно масштабировать, добавлять новые функции, интеграции и улучшения по мере роста вашего бизнеса.</p>
         </div>
@@ -573,6 +701,47 @@
 <a href="https://wa.me/84357565416" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">
   <img src="img/whatsapp-logo.png" alt="WhatsApp">
 </a>
+
+<script>
+  // Open modal
+  document.querySelectorAll('.open-modal').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // Close modal
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('modalOverlay').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeModal();
+  });
+
+  // Submit → show "in development" popup
+  document.getElementById('modalSubmit').addEventListener('click', () => {
+    closeModal();
+    document.getElementById('successOverlay').classList.add('active');
+  });
+
+  // Close success
+  function closeSuccess() {
+    document.getElementById('successOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('successOverlay').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeSuccess();
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeModal(); closeSuccess(); }
+  });
+</script>
 
 </body>
 </html>

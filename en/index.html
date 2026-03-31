@@ -2,64 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Telegram Bot Development Services for Your Business — Overboard Studio</title>
+  <title>Telegram Bots for Your Business — Overboard Studio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Custom Telegram bot development for businesses: automation, CRM integrations, payments and Telegram Mini Apps. Launch in 5–10 days. 24/7 support.">
-
-  <!-- Canonical & hreflang -->
-  <link rel="canonical" href="https://overboardstudio.pages.dev/en/">
-  <link rel="alternate" hreflang="ru" href="https://overboardstudio.pages.dev/">
-  <link rel="alternate" hreflang="en" href="https://overboardstudio.pages.dev/en/">
-  <link rel="alternate" hreflang="x-default" href="https://overboardstudio.pages.dev/">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Telegram Bot Development Services — Overboard Studio">
+  <meta name="description" content="Custom Telegram bot development for businesses: automation, CRM integrations, payments and Telegram Mini Apps.">
+  <meta property="og:title" content="Telegram Bot Development for Business — Overboard Studio">
   <meta property="og:description" content="Custom Telegram bot development for businesses: automation, CRM integrations, payments and Telegram Mini Apps.">
   <meta property="og:image" content="https://overboardstudio.pages.dev/img/logo.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://overboardstudio.pages.dev/en/">
   <meta property="og:site_name" content="Overboard Studio">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:locale:alternate" content="ru_RU">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Telegram Bot Development Services — Overboard Studio">
-  <meta name="twitter:description" content="Custom Telegram bot development for businesses: automation, CRM integrations, payments and Telegram Mini Apps.">
-  <meta name="twitter:image" content="https://overboardstudio.pages.dev/img/logo.png">
-
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Overboard Studio",
-    "url": "https://overboardstudio.pages.dev/en/",
-    "logo": "https://overboardstudio.pages.dev/img/logo.png",
-    "image": "https://overboardstudio.pages.dev/img/logo.png",
-    "description": "Custom Telegram bot development and high-converting landing pages for businesses. Automation, integrations, and ongoing support.",
-    "areaServed": "Worldwide",
-    "serviceType": "Telegram Bot Development",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "customer support",
-      "url": "https://t.me/nicktg17",
-      "email": "nickpremium1@proton.me"
-    },
-    "sameAs": [
-      "https://t.me/nicktg17"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "description": "Custom Telegram bot development for businesses",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock"
-    }
-  }
-  </script>
-
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#17212b">
 
@@ -70,32 +21,200 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="alternate" hreflang="ru" href="https://overboardstudio.pages.dev/" />
+  <link rel="alternate" hreflang="en" href="https://overboardstudio.pages.dev/en/" />
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <style>
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal {
+      background: #1e2d3d;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 40px 36px;
+      width: 100%;
+      max-width: 460px;
+      position: relative;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: #fff; }
+    .modal h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 8px;
+    }
+    .modal p.modal-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      margin: 0 0 28px;
+    }
+    .modal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .modal-form label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 4px;
+      display: block;
+    }
+    .modal-form input {
+      width: 100%;
+      box-sizing: border-box;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: #fff;
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .modal-form input::placeholder { color: rgba(255,255,255,0.3); }
+    .modal-form input:focus { border-color: #2AABEE; }
+    .modal-submit {
+      margin-top: 6px;
+      background: #2AABEE;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      width: 100%;
+    }
+    .modal-submit:hover { background: #1e9bd8; transform: translateY(-1px); }
+
+    /* ===== SUCCESS POPUP ===== */
+    .success-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 1100;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .success-overlay.active { display: flex; }
+    .success-box {
+      background: #1e2d3d;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 40px 36px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+    .success-icon { font-size: 48px; margin-bottom: 16px; }
+    .success-box h3 { color: #fff; font-size: 20px; margin: 0 0 10px; }
+    .success-box p { color: rgba(255,255,255,0.55); font-size: 14px; margin: 0 0 24px; }
+    .success-box button {
+      background: #2AABEE;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 32px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .success-box button:hover { background: #1e9bd8; }
+  </style>
 </head>
 <body>
 
+<!-- ===== MODAL FORM ===== -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">×</button>
+    <h2>Start a project</h2>
+    <p class="modal-sub">Fill in the form and I'll get back to you shortly</p>
+    <div class="modal-form">
+      <div>
+        <label>Your name</label>
+        <input type="text" id="fieldName" placeholder="John Smith">
+      </div>
+      <div>
+        <label>Phone</label>
+        <input type="tel" id="fieldPhone" placeholder="+1 234 567 8900">
+      </div>
+      <div>
+        <label>Telegram</label>
+        <input type="text" id="fieldTg" placeholder="@username">
+      </div>
+      <button class="modal-submit" id="modalSubmit">Send request</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SUCCESS POPUP ===== -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-box">
+    <div class="success-icon">🚧</div>
+    <h3>Coming soon</h3>
+    <p>This form is still in development. In the meantime, feel free to message me directly on Telegram — I respond quickly.</p>
+    <button onclick="closeSuccess()">Got it</button>
+  </div>
+</div>
+
+<!-- HEADER -->
 <header class="header">
   <div class="header-inner">
-    <a href="#hero" class="logo" style="text-decoration: none; color: #ffffff;">
+    <a href="#hero" class="logo">
       <img src="../img/logo.png" alt="Overboard Studio">
-      <span class="logo-text">Overboard Studio</span>
+      <span>Overboard Studio</span>
     </a>
 
     <div class="lang-switch">
-      <a href="../index.html" class="lang-link">RU</a>
-      <a href="index.html" class="lang-link active">EN</a>
+      <a href="/">RU</a>
+      <a href="/en/">EN</a>
     </div>
 
     <nav class="nav">
       <a href="#services">Services</a>
       <a href="#process">Process</a>
-      <a href="#cases">Case Studies</a>
-      <a href="#reviews">Reviews</a>
+      <a href="#cases">Cases</a>
+      <a href="#reviews">Feedback</a>
       <a href="#contacts">Contacts</a>
     </nav>
 
-    <a href="https://t.me/nicktg17" target="_blank" rel="noopener" class="header-btn">Get a Quote</a>
+    <a href="#" class="header-btn open-modal">Start a project</a>
   </div>
 </header>
 
@@ -105,43 +224,34 @@
 
     <div class="hero-left">
       <div class="hero-badge">
-        <img src="../img/telegram.png" alt="Telegram bot development services icon">
-        Telegram Bot Development Services
+        <img src="../img/telegram.png" alt="Telegram bot development">
+        Telegram Bots Development
       </div>
 
       <h1>
-        Custom Telegram Bot<br>
-        <span>Development for Businesses</span>
+        Custom Telegram Bots<br>
+        <span>for Business Automation</span>
       </h1>
 
       <p>
-        I build custom Telegram bots and landing pages
-        that help businesses automate sales, generate leads, and support customers 24/7.
-      </p>
-
-      <p class="hero-extra" style="opacity: 0.8; font-size: 0.95rem; margin: -10px 0 25px 0;">
-        Helping businesses worldwide automate sales and customer communication.
+        I create Telegram bots and landing pages
+        that help businesses automate leads, sales, and customer support.
       </p>
 
       <div class="hero-buttons">
-        <a href="https://t.me/nicktg17" target="_blank" rel="noopener" class="btn primary">
-          Get a free consultation
-        </a>
-        <a href="#cases" class="btn secondary">
-          Case Studies
-        </a>
+        <a href="#" class="btn primary open-modal">Start a project</a>
+        <a href="#cases" class="btn secondary">Our cases</a>
       </div>
 
       <div class="hero-trust">
-        <span>🌍 Clients worldwide</span>
         <span>✅ Launch in 5–10 days</span>
-        <span>✅ Guaranteed results</span>
+        <span>✅ Results guarantee</span>
         <span>✅ 24/7 support</span>
       </div>
     </div>
 
     <div class="hero-right">
-      <img src="../img/hero-telegram-bot.png" alt="Custom AI Telegram bot interface preview" class="hero-image">
+      <img src="../img/hero-telegram-bot.png" alt="Telegram bot development for business" class="hero-image">
     </div>
 
   </div>
@@ -169,7 +279,7 @@
 
       <div class="service-card">
         <h3><span class="service-icon">🌐</span> Landing Pages</h3>
-        <p class="service-subtitle">High-converting websites designed to drive business growth</p>
+        <p class="service-subtitle">Websites that showcase your business and drive conversions</p>
         <ul>
           <li>Custom landing pages built from scratch</li>
           <li>Responsive design for all devices</li>
@@ -190,7 +300,7 @@
 
       <div class="service-card">
         <h3><span class="service-icon">🔗</span> Taplink Pages</h3>
-        <p class="service-subtitle">Conversion-focused pages for social media traffic</p>
+        <p class="service-subtitle">Drive traffic from Telegram and social media</p>
         <ul>
           <li>Pages designed for lead generation</li>
           <li>Clear navigation across services and offers</li>
@@ -218,7 +328,7 @@
           <div class="step-number">01</div>
           <div class="step-text">
             <h3>Discovery & Planning</h3>
-            <p>I start with a discussion to understand your goals, business needs, and the problem the bot should solve. Together we define the functionality and create a clear development plan.</p>
+            <p>We start with a discussion to understand your goals, business needs, and the problem the bot should solve. Together we define the functionality and create a clear development plan.</p>
           </div>
         </div>
 
@@ -242,18 +352,18 @@
           <div class="step-number">04</div>
           <div class="step-text">
             <h3>Launch & Support</h3>
-            <p>Once everything is ready, I launch the project and provide clear instructions for using it. I remain available for improvements, updates, and ongoing support as your business grows.</p>
+            <p>Once everything is ready, we launch the project and provide clear instructions for using it. I remain available for improvements, updates, and ongoing support as your business grows.</p>
           </div>
         </div>
 
       </div>
 
       <div class="process-visual">
-        <img src="../img/process.png" alt="Telegram bot development process infographic" class="process-image">
+        <img src="../img/process.png" alt="Telegram bot development process" class="process-image">
       </div>
 
-    </div><!-- /process-content -->
-  </div><!-- /process-inner -->
+    </div>
+  </div>
 </section>
 
 <div class="section-divider"></div>
@@ -262,17 +372,16 @@
 <section class="cases" id="cases">
   <div class="cases-inner">
 
-    <h2 class="cases-title">Case Studies</h2>
+    <h2 class="cases-title">Our Projects</h2>
 
-    <!-- CASE 1 -->
     <div class="case-item">
       <div class="case-visual">
-        <img src="../img/cases/restaurant-bot-1.png" alt="Telegram bot interface for restaurant table booking" class="case-phone main">
-        <img src="../img/cases/restaurant-bot-2.png" alt="Digital menu and promotions interface inside Telegram" class="case-phone secondary">
+        <img src="../img/cases/restaurant-bot-1.png" alt="Telegram bot - Booking" class="case-phone main">
+        <img src="../img/cases/restaurant-bot-2.png" alt="Telegram bot - menu and promotions" class="case-phone secondary">
       </div>
       <div class="case-content">
-        <h3 class="case-title">1️⃣ Telegram Bot for a Restaurant</h3>
-        <p>The bot helps restaurants handle table reservations, display the latest menu, and communicate with guests automatically — 24/7 without manual work.</p>
+        <h3 class="case-title">1️⃣ Telegram bot for a restaurant or coffee shop</h3>
+        <p>The bot helps restaurants handle table reservations, display the latest menu, and communicate with guests — without phone calls, managers, or endless messages.</p>
         <ul class="case-list">
           <li><strong>📅 Online table reservations</strong> — Guests choose the date, time, and number of people. The reservation is instantly recorded and the administrator receives a notification.</li>
           <li><strong>📋 Up-to-date menu</strong> — The bot sends the menu with a single tap, making it easy for guests to browse without extra links.</li>
@@ -283,7 +392,7 @@
           <strong>📊 Results:</strong>
           <ul>
             <li>Reduced workload for staff</li>
-            <li>24/7 automated reservations and order processing</li>
+            <li>24/7 reservations and order processing</li>
             <li>Fewer missed booking requests</li>
             <li>A convenient communication channel with guests on Telegram</li>
           </ul>
@@ -291,14 +400,13 @@
       </div>
     </div>
 
-    <!-- CASE 2 -->
     <div class="case-item">
       <div class="case-visual">
-        <img src="../img/cases/fitness-bot-1.png" alt="Fitness club Telegram bot member dashboard" class="case-phone main">
-        <img src="../img/cases/fitness-bot-2.png" alt="Gym class schedule interface inside Telegram bot" class="case-phone secondary">
+        <img src="../img/cases/fitness-bot-1.png" alt="Telegram bot for a gym - visual" class="case-phone main">
+        <img src="../img/cases/fitness-bot-2.png" alt="Telegram bot for a gym - visual and schedule" class="case-phone secondary">
       </div>
       <div class="case-content">
-        <h3 class="case-title">2️⃣ Telegram Bot for a Fitness Center</h3>
+        <h3 class="case-title">2️⃣ Telegram bot for a fitness center</h3>
         <p>The bot helps fitness clubs introduce their services to new clients, display the latest class schedule, and answer common questions automatically — without the need for administrators.</p>
         <ul class="case-list">
           <li><strong>ℹ️ Club information</strong> — The bot introduces new users to the fitness club, explaining the available zones, equipment, and what makes the club unique.</li>
@@ -317,19 +425,18 @@
       </div>
     </div>
 
-    <!-- CASE 3 -->
     <div class="case-item">
       <div class="case-visual">
-        <img src="../img/cases/events-bot-1.png" alt="Event registration process in Telegram bot" class="case-phone main">
-        <img src="../img/cases/events-bot-2.png" alt="Event reminders and links inside Telegram bot" class="case-phone secondary">
+        <img src="../img/cases/events-bot-1.png" alt="Telegram bot for events - registration" class="case-phone main">
+        <img src="../img/cases/events-bot-2.png" alt="Telegram bot for events - interface" class="case-phone secondary">
       </div>
       <div class="case-content">
-        <h3 class="case-title">3️⃣ Telegram Bot for Events</h3>
-        <p class="case-lead">The bot helps event organizers automate participant registration, send reminders, and provide access links — without manual work.</p>
+        <h3 class="case-title">3️⃣ Telegram bot for events</h3>
+        <p class="case-lead">The bot helps event organizers automate participant registration, send reminders, and provide access links — without manual work or third-party tools.</p>
         <ul class="case-list">
-          <li><strong>📝 Participant registration</strong> — The bot collects user data step by step, such as name, age, or any required details. Simple and intuitive.</li>
-          <li><strong>⏰ Automated reminders and access links</strong> — Users receive a "Join" button at the right time, minimizing no-shows.</li>
-          <li><strong>🎓 Perfect for online courses and events</strong> — A flexible solution for online schools, webinars, and HR events.</li>
+          <li><strong>📝 Participant registration</strong> — The bot collects user data step by step, such as name, age, or any required details. Simple and intuitive — no external forms or links needed.</li>
+          <li><strong>⏰ Automated reminders and access links</strong> — Users receive a "Join" button at the right time, minimizing no-shows and missed events.</li>
+          <li><strong>🎓 Perfect for online courses and events</strong> — A flexible solution for online schools, training programs, webinars, HR events, and live sessions.</li>
         </ul>
         <div class="case-result">
           <strong>📊 Results:</strong>
@@ -342,20 +449,19 @@
       </div>
     </div>
 
-    <!-- CASE 4 -->
     <div class="case-item">
       <div class="case-visual">
-        <img src="../img/cases/ai-school-bot-1.png" alt="AI sales consultant bot for online school in Telegram" class="case-phone main">
-        <img src="../img/cases/ai-school-bot-2.png" alt="AI bot handling customer objections and questions" class="case-phone secondary">
+        <img src="../img/cases/ai-school-bot-1.png" alt="AI Telegram bot for an online school - dialog" class="case-phone main">
+        <img src="../img/cases/ai-school-bot-2.png" alt="AI Telegram bot for an online school - handling objections" class="case-phone secondary">
       </div>
       <div class="case-content">
-        <h3 class="case-title">4️⃣ AI Telegram Bot for an Online School</h3>
-        <p>The bot helps online schools engage with potential students, provide product consultations, and guide users toward conversion using AI — without the need for sales managers.</p>
+        <h3 class="case-title">4️⃣ AI Telegram bot for an online school</h3>
+        <p>The bot helps online schools engage with potential students, provide product consultations, and guide users toward conversion — without the need for sales managers.</p>
         <ul class="case-list">
-          <li><strong>💬 Natural conversations</strong> — The AI understands context and user intent, responds like a real consultant, and adapts to the flow of the conversation.</li>
+          <li><strong>💬 Natural, human-like conversations</strong> — The AI understands context and user intent, responds like a real consultant, and adapts to the flow of the conversation.</li>
           <li><strong>ℹ️ Product information on demand</strong> — Automatically provides up-to-date pricing, key benefits, and bonuses.</li>
           <li><strong>🧩 Handles objections effectively</strong> — Identifies user concerns and responds with personalized arguments that highlight the value of the offer.</li>
-          <li><strong>🎯 Drives users to conversion</strong> — Naturally guides the conversation toward booking a trial lesson.</li>
+          <li><strong>🎯 Drives users to conversion</strong> — Naturally guides the conversation toward booking a free trial lesson or consultation.</li>
         </ul>
         <div class="case-result">
           <strong>📊 Results:</strong>
@@ -373,9 +479,7 @@
 
 <script>
   document.querySelectorAll('.case-phone').forEach(img => {
-    img.addEventListener('click', () => {
-      img.classList.toggle('is-zoomed');
-    });
+    img.addEventListener('click', () => img.classList.toggle('is-zoomed'));
   });
 </script>
 
@@ -390,12 +494,12 @@
       <div class="swiper-wrapper">
 
         <div class="swiper-slide review-card">
-          <p>I ordered a Telegram bot for table reservations. Guests can book on their own, and managers are no longer distracted. Everything runs smoothly.</p>
+          <p>We ordered a Telegram bot for table reservations. Guests can book on their own, and managers are no longer distracted. Everything runs smoothly.</p>
           <div class="review-author">
             <div class="review-avatar">A</div>
             <div class="review-author-info">
               <strong>Alex</strong>
-              <span>Restaurant Owner</span>
+              <span>Restaurant / Coffee shop</span>
             </div>
           </div>
         </div>
@@ -423,6 +527,17 @@
         </div>
 
         <div class="swiper-slide review-card">
+          <p>We use the bot for webinar registrations and reminders. Attendance rates increased, and people no longer miss events.</p>
+          <div class="review-author">
+            <div class="review-avatar">O</div>
+            <div class="review-author-info">
+              <strong>Olga</strong>
+              <span>Online events</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide review-card">
           <p>The AI bot consults students and helps them choose the right course. It handles objections well and effectively drives users to booking.</p>
           <div class="review-author">
             <div class="review-avatar">I</div>
@@ -444,10 +559,7 @@
   new Swiper('.reviews-slider', {
     slidesPerView: 2,
     spaceBetween: 40,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
+    pagination: { el: '.swiper-pagination', clickable: true },
     breakpoints: {
       0: { slidesPerView: 1 },
       900: { slidesPerView: 2 }
@@ -465,52 +577,44 @@
     <div class="faq-list">
 
       <div class="faq-item">
-        <button class="faq-question">
-          Do you work worldwide?
-          <span class="faq-icon">+</span>
-        </button>
+        <button class="faq-question">How much does a Telegram bot cost? <span class="faq-icon">+</span></button>
         <div class="faq-answer">
-          <p>Yes, I work with clients worldwide. All communication is handled online via Telegram or Email, and I can adapt to different time zones for your convenience.</p>
+          <p>The cost depends on the complexity of the project and required features. Simple bots start from a basic budget, while more advanced solutions with integrations and AI are estimated individually after discussing your needs.</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">
-          How much does a Telegram bot cost?
-          <span class="faq-icon">+</span>
-        </button>
+        <button class="faq-question">How long does development take? <span class="faq-icon">+</span></button>
         <div class="faq-answer">
-          <p>The cost depends on the complexity of the project and required features. Simple bots start from a basic budget, while advanced AI solutions are estimated individually after discussing your needs.</p>
+          <p>Most projects are completed within about a week. The exact timeline depends on the complexity and number of features. If needed, I can adapt to your deadlines.</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">
-          How long does development take?
-          <span class="faq-icon">+</span>
-        </button>
+        <button class="faq-question">Do you help with the project requirements? <span class="faq-icon">+</span></button>
         <div class="faq-answer">
-          <p>Most projects are completed within about a week. The exact timeline depends on the complexity and number of features.</p>
+          <p>Yes. If you don't have a clear specification, we'll define it together. I help structure your idea, clarify requirements, and suggest the best solution for your business.</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">
-          Do you help with the project requirements?
-          <span class="faq-icon">+</span>
-        </button>
+        <button class="faq-question">What technologies do you use? <span class="faq-icon">+</span></button>
         <div class="faq-answer">
-          <p>Yes. If you don't have a clear specification, we'll define it together. I help structure your idea and suggest the best solution for your business.</p>
+          <p>I build bots from scratch using Python (Aiogram 3), SQL, and web technologies like HTML, CSS, and JavaScript. I don't use builders — every solution is fully custom.</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">
-          What technologies do you use?
-          <span class="faq-icon">+</span>
-        </button>
+        <button class="faq-question">Do you provide support after launch? <span class="faq-icon">+</span></button>
         <div class="faq-answer">
-          <p>I build custom solutions from scratch using Python (Aiogram 3), SQL, and modern web technologies. I don't use builders — every bot is fully custom and flexible.</p>
+          <p>Yes. After launch, I provide support, help with setup, fix issues, and assist with further improvements and scaling.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Can the project be improved later? <span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Absolutely. The project can be scaled over time — new features, integrations, and improvements can be added as your business grows.</p>
         </div>
       </div>
 
@@ -526,18 +630,18 @@
 
     <div class="footer-brand">
       <div class="footer-logo">
-        <img src="../img/logo.png" alt="Overboard Studio logo - Telegram bot developer" class="footer-logo-img">
+        <img src="../img/logo.png" alt="Overboard Studio logo" class="footer-logo-img">
         <span class="logo-text">Overboard Studio</span>
       </div>
       <p class="footer-description">
-        Custom Telegram bot development and high-converting landing pages for businesses. Automation, integrations, and ongoing support.
+        Custom Telegram bot and landing page development for businesses. Automation, integrations, and support.
       </p>
     </div>
 
     <div class="footer-nav">
       <strong>Navigation</strong>
       <a href="#services">Services</a>
-      <a href="#cases">Case Studies</a>
+      <a href="#cases">Our Projects</a>
       <a href="#reviews">Customer Feedback</a>
       <a href="#faq">FAQ</a>
     </div>
@@ -546,7 +650,7 @@
       <strong>Contacts</strong>
       <a href="https://t.me/nicktg17" target="_blank" rel="noopener">Telegram</a>
       <a href="mailto:nickpremium1@proton.me">nickpremium1@proton.me</a>
-      <a href="../privacyen.html" target="_blank" class="footer-policy">Privacy Policy</a>
+      <a href="privacy.html" target="_blank" class="footer-policy">Privacy Policy</a>
       <span class="footer-copy">© 2026 Overboard Studio</span>
     </div>
 
@@ -554,9 +658,50 @@
 </footer>
 
 <!-- WhatsApp Button -->
-<a href="https://wa.me/84357565416" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contact on WhatsApp">
-  <img src="../img/whatsapp-logo.png" alt="WhatsApp contact icon">
+<a href="https://wa.me/84357565416" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Text on WhatsApp">
+  <img src="../img/whatsapp-logo.png" alt="WhatsApp">
 </a>
+
+<script>
+  // Open modal
+  document.querySelectorAll('.open-modal').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // Close modal
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('modalOverlay').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeModal();
+  });
+
+  // Submit → show "coming soon" popup
+  document.getElementById('modalSubmit').addEventListener('click', () => {
+    closeModal();
+    document.getElementById('successOverlay').classList.add('active');
+  });
+
+  // Close success
+  function closeSuccess() {
+    document.getElementById('successOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('successOverlay').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeSuccess();
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeModal(); closeSuccess(); }
+  });
+</script>
 
 </body>
 </html>
