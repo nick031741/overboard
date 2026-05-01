@@ -16,26 +16,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ===== CONSENT CHECKBOX =====
-  const consentCheckbox = document.getElementById('consentCheckbox');
-  const submitBtn = document.getElementById('modalSubmit');
-
-  if (consentCheckbox && submitBtn) {
-    submitBtn.disabled = true;
-    submitBtn.style.opacity = '0.5';
-    submitBtn.style.cursor = 'not-allowed';
-
-    consentCheckbox.addEventListener('change', () => {
-      if (consentCheckbox.checked) {
-        submitBtn.disabled = false;
-        submitBtn.style.opacity = '1';
-        submitBtn.style.cursor = 'pointer';
-      } else {
-        submitBtn.disabled = true;
-        submitBtn.style.opacity = '0.5';
-        submitBtn.style.cursor = 'not-allowed';
-      }
-    });
-  }
-
 });

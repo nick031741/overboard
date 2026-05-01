@@ -87,7 +87,8 @@
       margin-bottom: 4px;
       display: block;
     }
-    .modal-form input {
+    .modal-form input[type="text"],
+    .modal-form input[type="tel"] {
       width: 100%;
       box-sizing: border-box;
       background: rgba(255,255,255,0.06);
@@ -116,7 +117,7 @@
       transition: background 0.2s, transform 0.15s;
       width: 100%;
     }
-    .modal-submit:hover { background: #1e9bd8; transform: translateY(-1px); }
+    .modal-submit:hover:not(:disabled) { background: #1e9bd8; transform: translateY(-1px); }
 
     /* ===== SUCCESS POPUP ===== */
     .success-overlay {
@@ -179,7 +180,18 @@
         <label>Telegram</label>
         <input type="text" id="fieldTg" placeholder="@username">
       </div>
-      <button class="modal-submit" id="modalSubmit">Send request</button>
+      <div style="display:flex; align-items:flex-start; gap:8px; font-size:13px; color:rgba(255,255,255,0.6); margin-top:6px; padding:0 2px;">
+        <input type="checkbox" id="consentCheckbox" style="margin-top:3px; flex-shrink:0; cursor:pointer;">
+        <span style="line-height:1.5;">
+          I consent to the processing of my personal data and accept the
+          <a href="/en/privacy.html" target="_blank" style="color:#2AABEE;">Privacy Policy</a>
+          and
+          <a href="/en/consent.html" target="_blank" style="color:#2AABEE;">Consent</a>
+        </span>
+      </div>
+      <button class="modal-submit" id="modalSubmit" disabled style="opacity:0.5; cursor:not-allowed;">
+        Send request
+      </button>
     </div>
   </div>
 </div>
@@ -664,7 +676,7 @@
 </a>
 
 <script>
-  // Open modal
+  // ===== MODAL =====
   document.querySelectorAll('.open-modal').forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();
@@ -673,7 +685,6 @@
     });
   });
 
-  // Close modal
   function closeModal() {
     document.getElementById('modalOverlay').classList.remove('active');
     document.body.style.overflow = '';
@@ -683,13 +694,21 @@
     if (e.target === e.currentTarget) closeModal();
   });
 
-  // Submit → show "coming soon" popup
+  // ===== CHECKBOX → ENABLE SUBMIT =====
+  document.getElementById('consentCheckbox').addEventListener('change', function () {
+    const btn = document.getElementById('modalSubmit');
+    btn.disabled = !this.checked;
+    btn.style.opacity = this.checked ? '1' : '0.5';
+    btn.style.cursor = this.checked ? 'pointer' : 'not-allowed';
+  });
+
+  // ===== SUBMIT =====
   document.getElementById('modalSubmit').addEventListener('click', () => {
     closeModal();
     document.getElementById('successOverlay').classList.add('active');
   });
 
-  // Close success
+  // ===== SUCCESS =====
   function closeSuccess() {
     document.getElementById('successOverlay').classList.remove('active');
     document.body.style.overflow = '';
@@ -698,7 +717,7 @@
     if (e.target === e.currentTarget) closeSuccess();
   });
 
-  // Close on Escape
+  // ===== ESCAPE =====
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') { closeModal(); closeSuccess(); }
   });
