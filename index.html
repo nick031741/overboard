@@ -219,7 +219,19 @@
         <label>Telegram</label>
         <input type="text" id="fieldTg" placeholder="@username">
       </div>
-      <button class="modal-submit" id="modalSubmit">Отправить заявку</button>
+      <div style="display:flex; align-items:flex-start; gap:8px; font-size:13px; color:rgba(255,255,255,0.6); margin-top:6px;">
+  <input type="checkbox" id="consentCheckbox" style="margin-top:3px;">
+  <span>
+    Я даю согласие на обработку персональных данных и принимаю
+    <a href="/privacy.html" target="_blank" style="color:#2AABEE;">политику конфиденциальности</a>
+    и
+    <a href="/consent.html" target="_blank" style="color:#2AABEE;">согласие</a>
+  </span>
+</div>
+
+<button class="modal-submit" id="modalSubmit" disabled style="opacity:0.5; cursor:not-allowed;">
+  Отправить заявку
+</button>
     </div>
   </div>
 </div>
