@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://overboardstudio.pages.dev/sitemap.xml
+Sitemap: https://overboardstudio.com/sitemap.xml
