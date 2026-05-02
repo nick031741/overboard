@@ -713,6 +713,45 @@
   <img src="img/whatsapp-logo.png" alt="WhatsApp">
 </a>
 
+<!-- ===== COOKIE BANNER ===== -->
+<div id="cookieBanner" style="
+  display: none;
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 640px;
+  background: #1e2d3d;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 20px 24px;
+  z-index: 9999;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+">
+  <p style="margin:0; font-size:14px; color:rgba(255,255,255,0.7); line-height:1.5; flex:1; min-width:200px;">
+    Мы используем файлы cookie для корректной работы сайта. Продолжая использовать сайт, вы соглашаетесь с нашей
+    <a href="/privacy.html" target="_blank" style="color:#2AABEE;">политикой конфиденциальности</a>.
+  </p>
+  <button id="cookieAccept" style="
+    background: #2AABEE;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+  ">Принять</button>
+</div>
+
 <script>
   // ===== MODAL =====
   document.querySelectorAll('.open-modal').forEach(btn => {
@@ -758,6 +797,16 @@
   // ===== ESCAPE =====
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') { closeModal(); closeSuccess(); }
+  });
+
+  // ===== COOKIE BANNER =====
+  const cookieBanner = document.getElementById('cookieBanner');
+  if (!localStorage.getItem('cookieAccepted')) {
+    cookieBanner.style.display = 'flex';
+  }
+  document.getElementById('cookieAccept').addEventListener('click', () => {
+    localStorage.setItem('cookieAccepted', '1');
+    cookieBanner.style.display = 'none';
   });
 </script>
 
