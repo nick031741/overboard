@@ -760,7 +760,10 @@
     try {
       const res = await fetch('https://bot.overboardstudio.com/lead', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Secret-Key': 'xBRVPCtu8TVAqRkcJnM7s'
+        },
         body: JSON.stringify({ name, phone, telegram })
       });
 
