@@ -1,1 +1,3072 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom — Живые эмоции с доставкой</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>/* =====================
+   ПЕРЕМЕННЫЕ
+===================== */
+:root {
+    --green-dark:   #1C3A2F;
+    --green-mid:    #2D5C47;
+    --cream:        #F5F0E8;
+    --beige:        #E8D5B0;
+    --gold:         #C9A96E;
+    --gold-light:   #E8D0A0;
+    --text-dark:    #1A1A1A;
+    --text-mid:     #4A4A4A;
+    --text-muted:   #888878;
+    --white:        #FFFFFF;
+    --transition:   all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    --transition-fast: all 0.25s ease;
+}
+
+/* =====================
+   ОБНУЛЕНИЕ
+===================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+/* =====================
+   ТОП-БАР
+===================== */
+.topbar {
+    background: var(--green-dark);
+    border-bottom: 1px solid rgba(201,169,110,0.15);
+    padding: 8px 0;
+    width: 100%;
+}
+
+.topbar-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar-left, .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.topbar-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: rgba(245,240,232,0.6);
+}
+
+.topbar-link { text-decoration: none; transition: var(--transition-fast); }
+.topbar-link:hover { color: var(--cream); }
+
+.topbar-phone {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gold-light);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+.topbar-phone:hover { color: var(--gold); }
+
+.topbar-callback {
+    background: transparent;
+    border: 1px solid rgba(201,169,110,0.4);
+    color: var(--gold-light);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    padding: 5px 14px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+.topbar-callback:hover { background: rgba(201,169,110,0.1); border-color: var(--gold); }
+
+/* =====================
+   ШАПКА
+===================== */
+.header {
+    background: var(--green-dark);
+    border-bottom: 1px solid rgba(201,169,110,0.12);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    transition: var(--transition);
+}
+
+.header.scrolled {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+}
+
+.header-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--cream);
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.nav { display: flex; gap: 32px; }
+
+.nav-link {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(245, 240, 232, 0.7);
+    text-decoration: none;
+    transition: var(--transition-fast);
+    letter-spacing: 0.3px;
+}
+
+.nav-link:hover { color: var(--cream); }
+
+.cart-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold);
+    color: var(--green-dark);
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.cart-btn:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+}
+
+.cart-count {
+    background: var(--green-dark);
+    color: var(--cream);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+/* =====================
+   ТОП-БАР
+===================== */
+.topbar {
+    background: var(--green-dark);
+    border-bottom: 1px solid rgba(201,169,110,0.15);
+    padding: 8px 0;
+}
+
+.topbar-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar-left, .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.topbar-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: rgba(245,240,232,0.6);
+}
+
+.topbar-link { text-decoration: none; transition: var(--transition-fast); }
+.topbar-link:hover { color: var(--cream); }
+
+.topbar-phone {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gold-light);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+.topbar-phone:hover { color: var(--gold); }
+
+.topbar-callback {
+    background: transparent;
+    border: 1px solid rgba(201,169,110,0.4);
+    color: var(--gold-light);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    padding: 5px 14px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+.topbar-callback:hover { background: rgba(201,169,110,0.1); border-color: var(--gold); }
+
+/* =====================
+   ШАПКА
+===================== */
+.header {
+    background: var(--green-dark);
+    border-bottom: 1px solid rgba(201,169,110,0.12);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: var(--transition);
+}
+
+.header.scrolled {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+}
+
+.header-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--cream);
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.nav { display: flex; gap: 32px; }
+
+.nav-link {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(245,240,232,0.7);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+.nav-link:hover { color: var(--cream); }
+
+.cart-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold);
+    color: var(--green-dark);
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.cart-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+.cart-count {
+    background: var(--green-dark);
+    color: var(--cream);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+/* =====================
+   HERO
+===================== */
+.hero {
+    background: var(--cream);
+    padding: 60px 0 0;
+    overflow: hidden;
+}
+
+.hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    min-height: calc(100vh - 112px);
+}
+
+/* Левая сторона */
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding-bottom: 60px;
+}
+
+.hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(28,58,47,0.08);
+    border: 1px solid rgba(28,58,47,0.2);
+    border-radius: 50px;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: var(--green-dark);
+    width: fit-content;
+    animation: fadeUp 0.6s ease both;
+}
+
+.hero-label-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4CAF50;
+    box-shadow: 0 0 8px rgba(76,175,80,0.5);
+    animation: pulse 2s ease infinite;
+    flex-shrink: 0;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.3); }
+}
+
+.hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 5.5vw, 80px);
+    font-weight: 600;
+    color: var(--green-dark);
+    line-height: 1.1;
+    animation: fadeUp 0.6s ease 0.1s both;
+}
+
+.hero-title-italic {
+    font-style: italic;
+    color: var(--gold);
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-desc {
+    font-size: 16px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    font-weight: 300;
+    animation: fadeUp 0.6s ease 0.2s both;
+}
+
+/* Поводы */
+.hero-occasions {
+    animation: fadeUp 0.6s ease 0.3s both;
+}
+
+.occasions-label {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.occasions-list {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.occasion-btn {
+    padding: 8px 18px;
+    border-radius: 50px;
+    border: 1.5px solid var(--beige);
+    background: transparent;
+    color: var(--text-mid);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+.occasion-btn:hover { border-color: var(--gold); color: var(--green-dark); }
+.occasion-btn.active { background: var(--gold); border-color: var(--gold); color: var(--green-dark); font-weight: 500; }
+
+/* Кнопки */
+.hero-btns {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    animation: fadeUp 0.6s ease 0.4s both;
+}
+
+.btn-primary {
+    background: var(--green-dark);
+    color: var(--cream);
+    padding: 16px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition);
+    white-space: nowrap;
+    display: inline-block;
+}
+.btn-primary:hover { background: var(--green-mid); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(28,58,47,0.25); }
+
+.btn-ghost {
+    color: var(--green-dark);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: var(--transition-fast);
+    white-space: nowrap;
+    opacity: 0.7;
+}
+.btn-ghost:hover { opacity: 1; }
+
+/* Статистика */
+.hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border-top: 1px solid var(--beige);
+    padding-top: 24px;
+    animation: fadeUp 0.6s ease 0.5s both;
+}
+
+.hero-stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.hero-stat strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--green-dark);
+    line-height: 1;
+}
+
+.hero-stat span {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.3px;
+}
+
+.hero-stat-divider {
+    width: 1px;
+    height: 32px;
+    background: var(--beige);
+    flex-shrink: 0;
+    margin: 0 20px;
+}
+
+/* Правая сторона */
+.hero-right {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+}
+
+.hero-img-wrap {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 112px);
+    max-height: 700px;
+    border-radius: 32px 32px 0 0;
+    background: var(--beige);
+}
+
+.hero-img-wrap > .hero-img {
+    border-radius: 32px 32px 0 0;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.hero-img-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--text-muted);
+}
+
+.hero-img-placeholder span { font-size: 64px; }
+.hero-img-placeholder p { font-size: 14px; text-align: center; line-height: 1.6; }
+.hero-img-placeholder small { font-size: 12px; opacity: 0.6; }
+
+/* Когда фото загрузилось — скрываем плейсхолдер */
+.hero-img:not([src='']) ~ .hero-img-placeholder,
+.hero-img[src] ~ .hero-img-placeholder { display: none; }
+
+/* Плавающие карточки */
+.hero-float-card {
+    position: absolute;
+    bottom: 80px;
+    left: -24px;
+    background: white;
+    border-radius: 16px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    animation: fadeUp 0.6s ease 0.8s both;
+    z-index: 2;
+}
+
+.hero-float-emoji { font-size: 32px; }
+
+.hero-float-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.hero-float-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.hero-float-price {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--green-dark);
+}
+
+.hero-float-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--green-dark);
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-fast);
+    flex-shrink: 0;
+}
+.hero-float-btn:hover { background: var(--gold-light); }
+
+.hero-float-delivery {
+    position: absolute;
+    top: 40px;
+    right: 16px;
+    background: var(--green-dark);
+    border-radius: 14px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--cream);
+    animation: fadeUp 0.6s ease 1s both;
+    z-index: 2;
+}
+
+.delivery-title {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--cream);
+}
+
+.delivery-sub {
+    display: block;
+    font-size: 11px;
+    color: var(--gold-light);
+}
+
+/* =====================
+   БЕГУЩАЯ СТРОКА
+===================== */
+.ticker {
+    background: var(--gold);
+    overflow: hidden;
+    padding: 14px 0;
+}
+
+.ticker-track {
+    display: flex;
+    gap: 40px;
+    white-space: nowrap;
+    animation: ticker 25s linear infinite;
+}
+
+.ticker-track span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--green-dark);
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+}
+
+@keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* ПРОМО-БАННЕР */
+.hero-promo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: linear-gradient(135deg, rgba(201,169,110,0.15) 0%, rgba(201,169,110,0.08) 100%);
+    border: 1.5px solid rgba(201,169,110,0.4);
+    border-radius: 16px;
+    padding: 16px 20px;
+    animation: fadeUp 0.6s ease 0.5s both;
+}
+
+.hero-promo-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.hero-promo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.hero-promo-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--green-dark);
+}
+
+.hero-promo-code {
+    font-size: 13px;
+    color: var(--text-mid);
+}
+
+.hero-promo-code strong {
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 1px;
+    background: rgba(201,169,110,0.15);
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-left: 4px;
+}
+
+/* ПОИСКОВАЯ СТРОКА */
+.hero-search {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--white);
+    border: 1.5px solid var(--beige);
+    border-radius: 50px;
+    padding: 8px 8px 8px 20px;
+    transition: var(--transition-fast);
+    animation: fadeUp 0.6s ease 0.3s both;
+}
+
+.hero-search:focus-within {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 4px rgba(201,169,110,0.1);
+}
+
+.hero-search svg {
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.hero-search input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    background: transparent;
+    min-width: 0;
+}
+
+.hero-search input::placeholder { color: var(--text-muted); }
+
+.hero-search-btn {
+    background: var(--green-dark);
+    color: var(--cream);
+    border: none;
+    border-radius: 50px;
+    padding: 10px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.hero-search-btn:hover { background: var(--green-mid); }
+
+/* =====================
+   КАТАЛОГ
+===================== */
+.catalog {
+    background: var(--cream);
+    padding: 80px 0;
+}
+
+.catalog-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.catalog-header {
+    margin-bottom: 40px;
+}
+
+.catalog-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 600;
+    color: var(--green-dark);
+    line-height: 1.1;
+}
+
+.catalog-title span {
+    font-style: italic;
+    color: var(--gold);
+}
+
+.catalog-sub {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-top: 6px;
+}
+
+/* Категории */
+.catalog-cats {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.cat-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1.5px solid var(--beige);
+    background: transparent;
+    color: var(--text-mid);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    white-space: nowrap;
+}
+
+.cat-btn:hover { border-color: var(--gold); color: var(--green-dark); }
+.cat-btn.active { background: var(--green-dark); color: var(--cream); border-color: var(--green-dark); }
+
+.cat-arrow { transition: var(--transition-fast); }
+.cat-btn.active .cat-arrow { transform: rotate(180deg); }
+
+/* Подкатегория роз */
+.roses-sub {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    background: rgba(28,58,47,0.05);
+    border: 1px solid rgba(28,58,47,0.1);
+    border-radius: 16px;
+    padding: 14px 20px;
+    margin-bottom: 24px;
+}
+
+.roses-sub.visible { display: flex; }
+
+.roses-sub-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 4px;
+}
+
+.rose-btn {
+    padding: 6px 16px;
+    border-radius: 50px;
+    border: 1.5px solid var(--beige);
+    background: white;
+    color: var(--text-mid);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.rose-btn:hover { border-color: var(--gold); }
+.rose-btn.active { background: var(--gold); border-color: var(--gold); color: var(--green-dark); font-weight: 500; }
+
+/* Layout */
+.catalog-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+/* Фильтр */
+.catalog-filter {
+    background: white;
+    border-radius: 20px;
+    padding: 28px;
+    border: 1px solid var(--beige);
+    position: sticky;
+    top: 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.filter-block { display: flex; flex-direction: column; gap: 14px; }
+
+.filter-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--green-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.price-inputs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.price-input {
+    width: 90px;
+    padding: 8px 12px;
+    border: 1.5px solid var(--beige);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    background: var(--cream);
+    outline: none;
+    transition: var(--transition-fast);
+}
+
+.price-input:focus { border-color: var(--gold); }
+.price-dash { color: var(--text-muted); font-size: 14px; }
+
+.price-slider-wrap { padding: 4px 0; }
+
+.price-range {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--beige);
+    outline: none;
+    cursor: pointer;
+}
+
+.price-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--green-dark);
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.price-presets {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.price-preset {
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1.5px solid var(--beige);
+    background: transparent;
+    color: var(--text-mid);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-align: left;
+}
+
+.price-preset:hover { border-color: var(--gold); color: var(--green-dark); }
+.price-preset.active { background: var(--gold); border-color: var(--gold); color: var(--green-dark); font-weight: 500; }
+
+.sort-options { display: flex; flex-direction: column; gap: 10px; }
+
+.sort-opt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text-mid);
+    cursor: pointer;
+}
+
+.sort-opt input[type="radio"] {
+    accent-color: var(--green-dark);
+    width: 16px;
+    height: 16px;
+}
+
+/* Сетка */
+.catalog-grid-wrap { display: flex; flex-direction: column; gap: 16px; }
+
+.catalog-results-bar {
+    font-size: 13px;
+    color: var(--text-muted);
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--beige);
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Карточка товара */
+.product-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--beige);
+    transition: var(--transition);
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(28,58,47,0.1);
+    border-color: var(--gold);
+}
+
+.product-img {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 56px;
+}
+
+.product-body { padding: 16px; }
+
+.product-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+}
+
+.badge-hit  { background: #EAF3DE; color: #2D5C1E; }
+.badge-new  { background: #FFF3E0; color: #7C4A00; }
+.badge-vip  { background: #F0E8FF; color: #5B21B6; }
+.badge-mar8 { background: #FFF0E8; color: #B04500; }
+.badge-feb14 { background: #FFEAEA; color: #B00020; }
+
+.product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--green-dark);
+    margin-bottom: 4px;
+}
+
+.product-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    line-height: 1.5;
+}
+
+.product-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--green-dark);
+}
+
+.add-to-cart {
+    background: var(--green-dark);
+    color: var(--cream);
+    border: none;
+    border-radius: 50px;
+    padding: 8px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    white-space: nowrap;
+}
+
+.add-to-cart:hover { background: var(--green-mid); }
+
+/* Пусто */
+.catalog-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 60px 20px;
+    color: var(--text-muted);
+    grid-column: 1 / -1;
+}
+
+.catalog-empty span { font-size: 48px; }
+.catalog-empty p { font-size: 16px; }
+/* =====================
+   FAQ
+===================== */
+.faq {
+    background: var(--green-dark);
+    padding: 100px 0;
+    position: relative;
+}
+
+.faq-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.faq-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(201,169,110,0.4);
+    border-radius: 50px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+}
+
+.faq-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 4vw, 48px);
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 12px;
+}
+
+.faq-title span {
+    font-style: italic;
+    color: var(--gold);
+}
+
+.faq-sub {
+    font-size: 15px;
+    color: rgba(245,240,232,0.6);
+    max-width: 480px;
+    margin-bottom: 48px;
+}
+
+.faq-list {
+    border-top: 1px solid rgba(245,240,232,0.15);
+}
+
+.faq-item {
+    border-bottom: 1px solid rgba(245,240,232,0.15);
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 22px 0;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--cream);
+    transition: var(--transition-fast);
+}
+
+.faq-question:hover { color: var(--gold-light); }
+
+.faq-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,169,110,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--gold-light);
+    transition: var(--transition-fast);
+}
+
+.faq-item.active .faq-icon {
+    background: var(--gold);
+    color: var(--green-dark);
+    border-color: var(--gold);
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+}
+
+.faq-answer-inner {
+    padding: 0 0 24px;
+    max-width: 720px;
+}
+
+.faq-answer p {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: rgba(245,240,232,0.7);
+}
+
+/* =====================
+   MODAL
+===================== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(28,58,47,0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+.modal {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 44px 40px 40px;
+    width: 100%;
+    max-width: 440px;
+    position: relative;
+    transform: translateY(18px) scale(0.98);
+    transition: transform 0.35s cubic-bezier(0.23,1,0.32,1);
+}
+.modal-overlay.active .modal {
+    transform: translateY(0) scale(1);
+}
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition-fast);
+}
+.modal-close:hover { background: rgba(28,58,47,0.08); color: var(--green-dark); }
+.modal-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+}
+.modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--green-dark);
+    line-height: 1.2;
+    margin-bottom: 6px;
+}
+.modal-sub {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+    line-height: 1.5;
+}
+.modal-form { display: flex; flex-direction: column; gap: 14px; }
+.modal-field { display: flex; flex-direction: column; gap: 5px; }
+.modal-field label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--green-dark);
+    letter-spacing: 0.3px;
+}
+.modal-field input,
+.modal-field textarea {
+    background: var(--white);
+    border: 1.5px solid rgba(28,58,47,0.15);
+    border-radius: 10px;
+    padding: 11px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    transition: border-color 0.2s ease;
+    outline: none;
+    width: 100%;
+}
+.modal-field input::placeholder,
+.modal-field textarea::placeholder { color: #bbb; }
+.modal-field input:focus,
+.modal-field textarea:focus { border-color: var(--green-mid); }
+.modal-field textarea { resize: vertical; min-height: 90px; }
+.modal-submit {
+    margin-top: 6px;
+    background: var(--green-dark);
+    color: var(--cream);
+    border: none;
+    border-radius: 50px;
+    padding: 15px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+}
+.modal-submit:hover { background: var(--green-mid); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(28,58,47,0.25); }
+
+/* Success state */
+.modal-success {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 0 8px;
+    gap: 14px;
+}
+.modal-success-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(28,58,47,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+}
+.modal-success-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--green-dark);
+}
+.modal-success-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    max-width: 300px;
+}
+.modal-success-close {
+    margin-top: 6px;
+    background: none;
+    border: 1.5px solid rgba(28,58,47,0.2);
+    border-radius: 50px;
+    padding: 10px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--green-dark);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+.modal-success-close:hover { background: rgba(28,58,47,0.06); }
+
+.modal.show-success .modal-form-wrap { display: none; }
+.modal.show-success .modal-success { display: flex; }
+
+
+/* =====================
+   FOOTER
+===================== */
+.footer {
+    background: #111c17;
+    padding: 72px 0 0;
+    color: var(--cream);
+}
+.footer-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+.footer-top {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    gap: 48px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(245,240,232,0.1);
+}
+.footer-brand {
+    -webkit-flex: 0 0 280px;
+    flex: 0 0 280px;
+}
+.footer-top > div:not(.footer-brand) {
+    -webkit-flex: 1 1 150px;
+    flex: 1 1 150px;
+    min-width: 140px;
+}
+.footer-brand-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--cream);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+}
+.footer-brand-desc {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: rgba(245,240,232,0.55);
+    margin-bottom: 24px;
+    max-width: 260px;
+}
+.footer-socials {
+    display: flex;
+    gap: 10px;
+}
+.footer-social-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(245,240,232,0.2);
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(245,240,232,0.6);
+    text-decoration: none;
+    font-size: 14px;
+    transition: var(--transition-fast);
+}
+.footer-social-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(201,169,110,0.08);
+}
+.footer-col-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+.footer-link {
+    font-size: 14px;
+    color: rgba(245,240,232,0.65);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+.footer-link:hover { color: var(--cream); }
+
+.footer-contacts { display: flex; flex-direction: column; gap: 16px; }
+.footer-contact-item { display: flex; flex-direction: column; gap: 3px; }
+.footer-contact-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.35);
+}
+.footer-contact-value {
+    font-size: 14px;
+    color: rgba(245,240,232,0.8);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+a.footer-contact-value:hover { color: var(--gold); }
+
+.footer-badge {
+    margin-top: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(201,169,110,0.1);
+    border: 1px solid rgba(201,169,110,0.25);
+    border-radius: 50px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: var(--gold-light);
+}
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.footer-copy {
+    font-size: 12.5px;
+    color: rgba(245,240,232,0.3);
+}
+.footer-legal {
+    display: flex;
+    gap: 20px;
+}
+.footer-legal a {
+    font-size: 12.5px;
+    color: rgba(245,240,232,0.3);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+.footer-legal a:hover { color: rgba(245,240,232,0.65); }
+
+
+/* =====================
+   CART MODAL
+===================== */
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    display: flex;
+    justify-content: flex-end;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.cart-overlay.active { opacity: 1; visibility: visible; }
+
+.cart-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(28,58,47,0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.cart-panel {
+    position: relative;
+    width: 420px;
+    max-width: 100vw;
+    height: 100%;
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.38s cubic-bezier(0.23,1,0.32,1);
+    overflow: hidden;
+}
+.cart-overlay.active .cart-panel { transform: translateX(0); }
+
+/* Шапка панели */
+.cart-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 24px 20px;
+    border-bottom: 1px solid rgba(28,58,47,0.1);
+    flex-shrink: 0;
+}
+.cart-panel-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--green-dark);
+}
+.cart-panel-count {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-left: 8px;
+}
+.cart-panel-close {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--text-muted);
+    transition: var(--transition-fast);
+}
+.cart-panel-close:hover { background: rgba(28,58,47,0.07); color: var(--green-dark); }
+
+/* Скролл-область: товары + форма */
+.cart-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 24px;
+}
+.cart-scroll::-webkit-scrollbar { width: 4px; }
+.cart-scroll::-webkit-scrollbar-thumb { background: rgba(28,58,47,0.15); border-radius: 2px; }
+
+/* Пустая корзина */
+.cart-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 60px 0;
+    color: var(--text-muted);
+    font-size: 14px;
+    text-align: center;
+}
+.cart-empty-icon { font-size: 48px; margin-bottom: 4px; }
+
+/* Список позиций */
+.cart-items { padding: 16px 0 0; }
+
+.cart-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(28,58,47,0.08);
+}
+.cart-item:last-child { border-bottom: none; }
+
+.cart-item-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+.cart-item-info { flex: 1; min-width: 0; }
+.cart-item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--green-dark);
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cart-item-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+.cart-item-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.cart-item-qty {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(28,58,47,0.06);
+    border-radius: 50px;
+    padding: 4px 8px;
+}
+.cart-qty-btn {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: none;
+    background: var(--green-dark);
+    color: var(--cream);
+    font-size: 15px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-fast);
+}
+.cart-qty-btn:hover { background: var(--green-mid); }
+.cart-qty-num {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--green-dark);
+    min-width: 18px;
+    text-align: center;
+}
+.cart-item-price {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--green-dark);
+    margin-left: auto;
+}
+.cart-item-remove {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: rgba(28,58,47,0.3);
+    font-size: 16px;
+    padding: 2px;
+    line-height: 1;
+    transition: var(--transition-fast);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.cart-item-remove:hover { color: #e57373; }
+
+/* Итог */
+.cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0 20px;
+    border-top: 1px solid rgba(28,58,47,0.12);
+    margin-top: 4px;
+}
+.cart-total-label { font-size: 13px; color: var(--text-muted); }
+.cart-total-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--green-dark);
+}
+
+/* Форма заказа */
+.cart-form-wrap { padding: 0 0 28px; }
+.cart-form-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+}
+.cart-form { display: flex; flex-direction: column; gap: 12px; }
+.cart-field { display: flex; flex-direction: column; gap: 5px; }
+.cart-field label {
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--green-dark);
+    letter-spacing: 0.3px;
+}
+.cart-field input {
+    background: var(--white);
+    border: 1.5px solid rgba(28,58,47,0.15);
+    border-radius: 10px;
+    padding: 11px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    outline: none;
+    width: 100%;
+    transition: border-color 0.2s;
+}
+.cart-field input::placeholder { color: #bbb; }
+.cart-field input:focus { border-color: var(--green-mid); }
+
+/* Кнопка */
+.cart-panel-footer {
+    padding: 16px 24px 28px;
+    flex-shrink: 0;
+    background: var(--cream);
+    border-top: 1px solid rgba(28,58,47,0.08);
+}
+.cart-checkout-btn {
+    width: 100%;
+    background: var(--green-dark);
+    color: var(--cream);
+    border: none;
+    border-radius: 50px;
+    padding: 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.cart-checkout-btn:hover { background: var(--green-mid); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(28,58,47,0.25); }
+.cart-checkout-btn:disabled { opacity: 0.45; pointer-events: none; cursor: default; }
+
+/* Success */
+.cart-success {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 48px 24px;
+    gap: 12px;
+}
+.cart-success-icon { font-size: 52px; margin-bottom: 4px; }
+.cart-success-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--green-dark);
+}
+.cart-success-text { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+.cart-panel.show-success .cart-panel-header,
+.cart-panel.show-success .cart-scroll,
+.cart-panel.show-success .cart-panel-footer { display: none; }
+.cart-panel.show-success .cart-success { display: flex; }
+
+/* Анимация добавления в корзину */
+.add-to-cart.added {
+    background: #4CAF50;
+    pointer-events: none;
+}
+
+</style>
+</head>
+<body>
+
+    <!-- ТОП-БАР -->
+    <div class="topbar">
+        <div class="topbar-inner">
+            <div class="topbar-left">
+                <span class="topbar-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    Работаем 24/7
+                </span>
+                <span class="topbar-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Доставка по Москве и МО
+                </span>
+            </div>
+            <div class="topbar-right">
+                <a href="mailto:info@bloom.ru" class="topbar-item topbar-link">info@bloom.ru</a>
+                <a href="tel:+74950000000" class="topbar-phone">+7 (495) 000-00-00</a>
+                <button class="topbar-callback">Перезвоните мне</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- КОРЗИНА: боковая панель -->
+    <div class="cart-overlay" id="cartOverlay">
+        <div class="cart-backdrop" id="cartBackdrop"></div>
+        <div class="cart-panel" id="cartPanel">
+
+            <!-- Шапка -->
+            <div class="cart-panel-header">
+                <div>
+                    <span class="cart-panel-title">Корзина</span>
+                    <span class="cart-panel-count" id="cartPanelCount"></span>
+                </div>
+                <button class="cart-panel-close" id="cartPanelClose" aria-label="Закрыть">✕</button>
+            </div>
+
+            <!-- Скролл: товары + форма -->
+            <div class="cart-scroll" id="cartScroll">
+
+                <!-- Пустая корзина -->
+                <div class="cart-empty" id="cartEmpty">
+                    <div class="cart-empty-icon">🛍️</div>
+                    <p>Корзина пуста</p>
+                    <p style="font-size:12.5px;color:rgba(136,136,120,0.7)">Добавьте букет из каталога</p>
+                </div>
+
+                <!-- Позиции -->
+                <div class="cart-items" id="cartItems"></div>
+
+                <!-- Итог + форма -->
+                <div id="cartCheckoutWrap" style="display:none">
+                    <div class="cart-total-row">
+                        <span class="cart-total-label">Итого</span>
+                        <span class="cart-total-price" id="cartTotalPrice">0 ₽</span>
+                    </div>
+
+                    <div class="cart-form-wrap">
+                        <p class="cart-form-title">Оформление заказа</p>
+                        <div class="cart-form" id="cartForm">
+                            <div class="cart-field">
+                                <label for="cartName">Ваше имя</label>
+                                <input type="text" id="cartName" placeholder="Александра" autocomplete="given-name">
+                            </div>
+                            <div class="cart-field">
+                                <label for="cartPhone">Номер телефона <span style="color:var(--gold)">*</span></label>
+                                <input type="tel" id="cartPhone" placeholder="+7 (___) ___-__-__" autocomplete="tel">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Кнопка -->
+            <div class="cart-panel-footer" id="cartPanelFooter" style="display:none">
+                <button class="cart-checkout-btn" id="cartCheckoutBtn">
+                    Перейти к оформлению
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+
+            <!-- Успех -->
+            <div class="cart-success" id="cartSuccess">
+                <div class="cart-success-icon">🌸</div>
+                <p class="cart-success-title">Заказ принят!</p>
+                <p class="cart-success-text">Свяжемся с вами в течение 10 минут для подтверждения и уточнения деталей доставки.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ШАПКА -->
+
+    <!-- МОДАЛКА: ПЕРЕЗВОНИТЕ МНЕ -->
+    <div class="modal-overlay" id="callbackModal" role="dialog" aria-modal="true" aria-label="Форма обратного звонка">
+        <div class="modal" id="callbackModalBox">
+            <button class="modal-close" id="callbackModalClose" aria-label="Закрыть">✕</button>
+
+            <!-- Форма -->
+            <div class="modal-form-wrap">
+                <p class="modal-eyebrow">Обратный звонок</p>
+                <h2 class="modal-title">Перезвоним вам</h2>
+                <p class="modal-sub">Оставьте контакты — ответим в течение 10 минут и поможем выбрать букет.</p>
+                <div class="modal-form" id="callbackForm">
+                    <div class="modal-field">
+                        <label for="cbName">Ваше имя</label>
+                        <input type="text" id="cbName" name="name" placeholder="Александра" autocomplete="given-name">
+                    </div>
+                    <div class="modal-field">
+                        <label for="cbPhone">Номер телефона <span style="color:var(--gold)">*</span></label>
+                        <input type="tel" id="cbPhone" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+                    </div>
+                    <div class="modal-field">
+                        <label for="cbComment">Комментарий</label>
+                        <textarea id="cbComment" name="comment" placeholder="Например, нужен букет к 18:00 на день рождения..."></textarea>
+                    </div>
+                    <button type="button" class="modal-submit" id="callbackSubmit">Отправить заявку</button>
+                </div>
+            </div>
+
+            <!-- Успех -->
+            <div class="modal-success" id="callbackSuccess">
+                <div class="modal-success-icon">🌸</div>
+                <p class="modal-success-title">Заявка принята!</p>
+                <p class="modal-success-text">Перезвоним в течение 10 минут. Пока можно посмотреть каталог и выбрать букет заранее.</p>
+                <button class="modal-success-close" id="callbackSuccessClose">Хорошо, спасибо</button>
+            </div>
+        </div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#" class="logo">Bloom</a>
+            <nav class="nav">
+                <a href="#" class="nav-link">Каталог</a>
+                <a href="#" class="nav-link">Доставка</a>
+                <a href="#" class="nav-link">О нас</a>
+                <a href="#" class="nav-link">Контакты</a>
+            </nav>
+            <div class="header-actions">
+                <button class="cart-btn" id="cartBtn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                    <span>Корзина</span>
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+
+            <!-- ЛЕВАЯ СТОРОНА -->
+            <div class="hero-left">
+                <div class="hero-label">
+                    <span class="hero-label-dot"></span>
+                    Доставка за 2 часа по Москве
+                </div>
+
+                <h1 class="hero-title">
+                    Свежие цветы<br>
+                    <span class="hero-title-italic">с доставкой</span>
+                </h1>
+
+                <p class="hero-desc">
+                    Авторские букеты из живых цветов.<br>
+                    Собираем за 60 минут, доставляем с любовью.
+                </p>
+
+                <!-- Поисковая строка -->
+                <div class="hero-search">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" placeholder="Найти букет, например «розы» или «пионы»...">
+                    <button class="hero-search-btn">Найти</button>
+                </div>
+
+                <div class="hero-btns">
+                    <a href="#catalog" class="btn-primary">Смотреть каталог</a>
+                </div>
+
+                <!-- Промо-баннер -->
+                <div class="hero-promo">
+                    <div class="hero-promo-icon">🎁</div>
+                    <div class="hero-promo-text">
+                        <span class="hero-promo-title">Скидка на первый заказ — 500 ₽</span>
+                        <span class="hero-promo-code">Промокод: <strong>BLOOM</strong></span>
+                    </div>
+                </div>
+
+                <!-- Статистика -->
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <strong>2 000+</strong>
+                        <span>клиентов</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <strong>150+</strong>
+                        <span>видов цветов</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <strong>4.9</strong>
+                        <span>на Google</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <strong>24/7</strong>
+                        <span>без выходных</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ПРАВАЯ СТОРОНА — фото -->
+            <div class="hero-right">
+                <div class="hero-img-wrap">
+                    <img src="assets/images/hero.jpg" alt="Букет цветов" class="hero-img">
+                    <div class="hero-img-placeholder">
+                        <span>🌸</span>
+                        <p>Добавьте фото букета<br><small>assets/images/hero-flowers.jpg</small></p>
+                    </div>
+                    <!-- Карточка доставки -->
+                    <div class="hero-float-delivery">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                        <div>
+                            <span class="delivery-title">Бесплатная доставка</span>
+                            <span class="delivery-sub">от 3 000 ₽</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- БЕГУЩАЯ СТРОКА -->
+    <div class="ticker">
+        <div class="ticker-track">
+            <span>Розы ·</span>
+            <span>Пионы ·</span>
+            <span>Тюльпаны ·</span>
+            <span>Орхидеи ·</span>
+            <span>Гортензии ·</span>
+            <span>Сухоцветы ·</span>
+            <span>Авторские букеты ·</span>
+            <span>Свадебные композиции ·</span>
+            <span>Розы ·</span>
+            <span>Пионы ·</span>
+            <span>Тюльпаны ·</span>
+            <span>Орхидеи ·</span>
+            <span>Гортензии ·</span>
+            <span>Сухоцветы ·</span>
+            <span>Авторские букеты ·</span>
+            <span>Свадебные композиции ·</span>
+        </div>
+    </div>
+
+    <!-- КАТАЛОГ -->
+    <section id="catalog" class="catalog">
+        <div class="catalog-inner">
+
+            <!-- ЗАГОЛОВОК -->
+            <div class="catalog-header">
+                <h2 class="catalog-title">Каталог <span>букетов</span></h2>
+                <p class="catalog-sub">Свежие цветы каждый день</p>
+            </div>
+
+            <!-- КАТЕГОРИИ -->
+            <div class="catalog-cats">
+                <button class="cat-btn active" data-cat="all">Все</button>
+                <button class="cat-btn" data-cat="bouquets">Букеты</button>
+                <button class="cat-btn" data-cat="roses">
+                    Розы
+                    <svg class="cat-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <button class="cat-btn" data-cat="pions">Пионы</button>
+                <button class="cat-btn" data-cat="mom">Маме</button>
+                <button class="cat-btn" data-cat="mar8">На 8 марта</button>
+                <button class="cat-btn" data-cat="feb14">На 14 февраля</button>
+                <button class="cat-btn" data-cat="home">Для дома</button>
+            </div>
+
+            <!-- ПОДКАТЕГОРИЯ РОЗ -->
+            <div class="roses-sub" id="rosesSub">
+                <span class="roses-sub-label">Количество роз:</span>
+                <button class="rose-btn active" data-roses="all">Все</button>
+                <button class="rose-btn" data-roses="3">3 розы</button>
+                <button class="rose-btn" data-roses="5">5 роз</button>
+                <button class="rose-btn" data-roses="9">9 роз</button>
+                <button class="rose-btn" data-roses="11">11 роз</button>
+                <button class="rose-btn" data-roses="51">51 роза</button>
+                <button class="rose-btn" data-roses="101">101 роза</button>
+            </div>
+
+            <div class="catalog-layout">
+
+                <!-- ФИЛЬТР -->
+                <aside class="catalog-filter">
+                    <div class="filter-block">
+                        <h4 class="filter-title">Цена, ₽</h4>
+                        <div class="price-inputs">
+                            <input type="number" class="price-input" id="priceMin" value="500" min="500" max="50000">
+                            <span class="price-dash">—</span>
+                            <input type="number" class="price-input" id="priceMax" value="15000" min="500" max="50000">
+                        </div>
+                        <div class="price-slider-wrap">
+                            <input type="range" class="price-range" id="priceRange" min="500" max="30000" value="30000">
+                        </div>
+                        <div class="price-presets">
+                            <button class="price-preset" data-max="3000">До 3 000 ₽</button>
+                            <button class="price-preset" data-max="5000">До 5 000 ₽</button>
+                            <button class="price-preset" data-max="10000">До 10 000 ₽</button>
+                            <button class="price-preset" data-max="30000">Все цены</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-block">
+                        <h4 class="filter-title">Сортировка</h4>
+                        <div class="sort-options">
+                            <label class="sort-opt">
+                                <input type="radio" name="sort" value="popular" checked> По популярности
+                            </label>
+                            <label class="sort-opt">
+                                <input type="radio" name="sort" value="cheap"> Сначала дешевле
+                            </label>
+                            <label class="sort-opt">
+                                <input type="radio" name="sort" value="expensive"> Сначала дороже
+                            </label>
+                            <label class="sort-opt">
+                                <input type="radio" name="sort" value="new"> Новинки
+                            </label>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- СЕТКА ТОВАРОВ -->
+                <div class="catalog-grid-wrap">
+                    <div class="catalog-results-bar">
+                        <span id="resultsCount">Показано: 26 букетов</span>
+                    </div>
+                    <div class="catalog-grid" id="catalogGrid">
+
+                        <!-- БУКЕТЫ -->
+                        <div class="product-card" data-cat="bouquets" data-price="3200">
+                            <div class="product-img" style="background:#EAF3DE"><img src="assets/images/Нежность весны.png" alt="Нежность весны" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+                            <div class="product-body">
+                                <span class="product-badge badge-hit">Хит</span>
+                                <h3 class="product-name">Нежность весны</h3>
+                                <p class="product-desc">Пионы, ранункулюс · 25 цветков</p>
+                                <div class="product-footer">
+                                    <span class="product-price">3 200 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="bouquets" data-price="4800">
+                            <div class="product-img" style="background:#FBEAF0"><img src="assets/images/Розовый закат.png" alt="Розовый закат" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+                            <div class="product-body">
+                                <span class="product-badge badge-new">Новинка</span>
+                                <h3 class="product-name">Розовый закат</h3>
+                                <p class="product-desc">Тюльпаны, фрезия · 35 цветков</p>
+                                <div class="product-footer">
+                                    <span class="product-price">4 800 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="bouquets" data-price="2800">
+                            <div class="product-img" style="background:#F5F0E8"><img src="assets/images/Лесная сказка.png" alt="Лесная сказка" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+                            <div class="product-body">
+                                <h3 class="product-name">Лесная сказка</h3>
+                                <p class="product-desc">Эвкалипт, хлопок, сухоцветы</p>
+                                <div class="product-footer">
+                                    <span class="product-price">2 800 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="bouquets" data-price="5900">
+                            <div class="product-img" style="background:#FAECE7"><img src="assets/images/Солнечный день.png" alt="Солнечный день" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+                            <div class="product-body">
+                                <span class="product-badge badge-hit">Хит</span>
+                                <h3 class="product-name">Солнечный день</h3>
+                                <p class="product-desc">Подсолнухи, герберы · 20 шт</p>
+                                <div class="product-footer">
+                                    <span class="product-price">5 900 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="bouquets" data-price="3500">
+                            <div class="product-img" style="background:#E1F5EE"><img src="assets/images/Летний бриз.png" alt="Летний бриз" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+                            <div class="product-body">
+                                <h3 class="product-name">Летний бриз</h3>
+                                <p class="product-desc">Ромашки, лаванда, вероника</p>
+                                <div class="product-footer">
+                                    <span class="product-price">3 500 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="bouquets" data-price="7200">
+                            <div class="product-img" style="background:#F0EAF5"><img src="assets/images/Фиолетовый туман.png" alt="Фиолетовый туман" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+                            <div class="product-body">
+                                <span class="product-badge badge-new">Новинка</span>
+                                <h3 class="product-name">Фиолетовый туман</h3>
+                                <p class="product-desc">Лизиантус, статица, лаванда</p>
+                                <div class="product-footer">
+                                    <span class="product-price">7 200 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="bouquets" data-price="4200">
+                            <div class="product-img" style="background:#FFF8E7">🌼</div>
+                            <div class="product-body">
+                                <h3 class="product-name">Медовый полдень</h3>
+                                <p class="product-desc">Хризантемы, альстромерия</p>
+                                <div class="product-footer">
+                                    <span class="product-price">4 200 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="pions" data-price="6500">
+                            <div class="product-img" style="background:#FDEEF3">🌸</div>
+                            <div class="product-body">
+                                <span class="product-badge badge-hit">Хит</span>
+                                <h3 class="product-name">Пионовый рай</h3>
+                                <p class="product-desc">Пионы микс · 15 бутонов</p>
+                                <div class="product-footer">
+                                    <span class="product-price">6 500 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="pions" data-price="8900">
+                            <div class="product-img" style="background:#FDE8F0">🌷</div>
+                            <div class="product-body">
+                                <h3 class="product-name">Нежные пионы</h3>
+                                <p class="product-desc">Пионы белые · 21 бутон</p>
+                                <div class="product-footer">
+                                    <span class="product-price">8 900 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- РОЗЫ -->
+                        <div class="product-card" data-cat="roses" data-roses="3" data-price="1200">
+                            <div class="product-img" style="background:#FBEAF0"><img src="assets/images/3 розы.png" alt="3 розы" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+                            <div class="product-body">
+                                <h3 class="product-name">3 розы</h3>
+                                <p class="product-desc">Розы Эквадор · премиум</p>
+                                <div class="product-footer">
+                                    <span class="product-price">1 200 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="roses" data-roses="5" data-price="1800">
+                            <div class="product-img" style="background:#FBEAF0"><img src="assets/images/5 роз.png" alt="5 роз" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+                            <div class="product-body">
+                                <h3 class="product-name">5 роз</h3>
+                                <p class="product-desc">Розы Эквадор · премиум</p>
+                                <div class="product-footer">
+                                    <span class="product-price">1 800 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="roses" data-roses="9" data-price="2900">
+                            <div class="product-img" style="background:#FBEAF0"><img src="assets/images/9 роз.png" alt="9 роз" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+                            <div class="product-body">
+                                <h3 class="product-name">9 роз</h3>
+                                <p class="product-desc">Розы Эквадор · премиум</p>
+                                <div class="product-footer">
+                                    <span class="product-price">2 900 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="roses" data-roses="11" data-price="3500">
+                            <div class="product-img" style="background:#FBEAF0">🌹</div>
+                            <div class="product-body">
+                                <span class="product-badge badge-hit">Хит</span>
+                                <h3 class="product-name">11 роз</h3>
+                                <p class="product-desc">Розы Эквадор · премиум</p>
+                                <div class="product-footer">
+                                    <span class="product-price">3 500 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="roses" data-roses="51" data-price="14900">
+                            <div class="product-img" style="background:#FBEAF0">🌹</div>
+                            <div class="product-body">
+                                <span class="product-badge badge-hit">Хит</span>
+                                <h3 class="product-name">51 роза</h3>
+                                <p class="product-desc">Розы Эквадор · коробка</p>
+                                <div class="product-footer">
+                                    <span class="product-price">14 900 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="roses" data-roses="101" data-price="28900">
+                            <div class="product-img" style="background:#FBEAF0">🌹</div>
+                            <div class="product-body">
+                                <span class="product-badge badge-vip">VIP</span>
+                                <h3 class="product-name">101 роза</h3>
+                                <p class="product-desc">Розы Эквадор · коробка</p>
+                                <div class="product-footer">
+                                    <span class="product-price">28 900 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ДЛЯ ДОМА -->
+                        <div class="product-card" data-cat="home" data-price="2200">
+                            <div class="product-img" style="background:#E8F5E9">🌿</div>
+                            <div class="product-body">
+                                <h3 class="product-name">Зелёный уют</h3>
+                                <p class="product-desc">Эвкалипт, папоротник, монстера</p>
+                                <div class="product-footer">
+                                    <span class="product-price">2 200 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="home" data-price="3600">
+                            <div class="product-img" style="background:#FFF8E7">🌼</div>
+                            <div class="product-body">
+                                <span class="product-badge badge-hit">Хит</span>
+                                <h3 class="product-name">Солнечный подоконник</h3>
+                                <p class="product-desc">Хризантемы, ромашки, зелень</p>
+                                <div class="product-footer">
+                                    <span class="product-price">3 600 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="home" data-price="4800">
+                            <div class="product-img" style="background:#F0F5FF">💐</div>
+                            <div class="product-body">
+                                <span class="product-badge badge-new">Новинка</span>
+                                <h3 class="product-name">Уютный вечер</h3>
+                                <p class="product-desc">Сухоцветы, лаванда, хлопок</p>
+                                <div class="product-footer">
+                                    <span class="product-price">4 800 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- МАМЕ -->
+                        <div class="product-card" data-cat="mom" data-price="4500">
+                            <div class="product-img" style="background:#FFF0F5">💝</div>
+                            <div class="product-body">
+                                <span class="product-badge badge-hit">Хит</span>
+                                <h3 class="product-name">Любимой маме</h3>
+                                <p class="product-desc">Пионы, хризантемы, зелень</p>
+                                <div class="product-footer">
+                                    <span class="product-price">4 500 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="mom" data-price="3800">
+                            <div class="product-img" style="background:#FFF0F5">🌸</div>
+                            <div class="product-body">
+                                <h3 class="product-name">Мамино счастье</h3>
+                                <p class="product-desc">Розы, лилии, гвоздики</p>
+                                <div class="product-footer">
+                                    <span class="product-price">3 800 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="mom" data-price="6200">
+                            <div class="product-img" style="background:#FFF0F5">💐</div>
+                            <div class="product-body">
+                                <span class="product-badge badge-new">Новинка</span>
+                                <h3 class="product-name">Для самой лучшей</h3>
+                                <p class="product-desc">Орхидеи, пионы, эустома</p>
+                                <div class="product-footer">
+                                    <span class="product-price">6 200 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 8 МАРТА -->
+                        <div class="product-card" data-cat="mar8" data-price="3200">
+                            <div class="product-img" style="background:#FFF0E8">🌷</div>
+                            <div class="product-body">
+                                <span class="product-badge badge-mar8">8 марта</span>
+                                <h3 class="product-name">Весенний привет</h3>
+                                <p class="product-desc">Тюльпаны микс · 25 штук</p>
+                                <div class="product-footer">
+                                    <span class="product-price">3 200 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="mar8" data-price="5500">
+                            <div class="product-img" style="background:#FFF0E8">🌸</div>
+                            <div class="product-body">
+                                <span class="product-badge badge-mar8">8 марта</span>
+                                <h3 class="product-name">Март в цвету</h3>
+                                <p class="product-desc">Пионы, мимоза, тюльпаны</p>
+                                <div class="product-footer">
+                                    <span class="product-price">5 500 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="mar8" data-price="7800">
+                            <div class="product-img" style="background:#FFF0E8">💐</div>
+                            <div class="product-body">
+                                <span class="product-badge badge-mar8">8 марта</span>
+                                <h3 class="product-name">Первый день весны</h3>
+                                <p class="product-desc">Розы, тюльпаны, мимоза · 35 шт</p>
+                                <div class="product-footer">
+                                    <span class="product-price">7 800 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 14 ФЕВРАЛЯ -->
+                        <div class="product-card" data-cat="feb14" data-price="4900">
+                            <div class="product-img" style="background:#FFEAEA">❤️</div>
+                            <div class="product-body">
+                                <span class="product-badge badge-feb14">14 февраля</span>
+                                <h3 class="product-name">Признание</h3>
+                                <p class="product-desc">Красные розы · 19 штук</p>
+                                <div class="product-footer">
+                                    <span class="product-price">4 900 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="feb14" data-price="6800">
+                            <div class="product-img" style="background:#FFEAEA">🌹</div>
+                            <div class="product-body">
+                                <span class="product-badge badge-feb14">14 февраля</span>
+                                <h3 class="product-name">Страстный роман</h3>
+                                <p class="product-desc">Розы красные + конфеты</p>
+                                <div class="product-footer">
+                                    <span class="product-price">6 800 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card" data-cat="feb14" data-price="9500">
+                            <div class="product-img" style="background:#FFEAEA">💝</div>
+                            <div class="product-body">
+                                <span class="product-badge badge-feb14">14 февраля</span>
+                                <h3 class="product-name">Всё моё сердце</h3>
+                                <p class="product-desc">Пионы, розы, хлопок · в коробке</p>
+                                <div class="product-footer">
+                                    <span class="product-price">9 500 ₽</span>
+                                    <button class="add-to-cart">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="catalog-empty" id="catalogEmpty" style="display:none">
+                        <span>🌱</span>
+                        <p>Нет букетов в этом диапазоне цен</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ВОПРОСЫ И ОТВЕТЫ -->
+    <section id="faq" class="faq">
+        <div class="faq-inner">
+            <span class="faq-eyebrow">Часто спрашивают</span>
+            <h2 class="faq-title">Вопросы <span>и ответы</span></h2>
+            <p class="faq-sub">Самое важное о доставке, оплате и свежести букетов — если не нашли ответ, напишите нам в чат.</p>
+
+            <div class="faq-list">
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Сколько времени занимает сборка и доставка заказа?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Букет собираем в течение 60 минут после оплаты, доставка по Москве занимает в среднем 2 часа. Если нужно к конкретному часу — выберите интервал на этапе оформления заказа.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>В какие районы вы доставляете цветы?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>По Москве и Московской области, без выходных, 24/7. При оформлении заказа укажите адрес — система сразу покажет точный срок и стоимость доставки для вашего района.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Сколько стоит доставка?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Бесплатно при заказе от 3 000 ₽. Для заказов на меньшую сумму стоимость рассчитывается по адресу и показывается перед оплатой — без скрытых доплат.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Что будет, если получателя не окажется дома?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Курьер позвонит за 30 минут до приезда. Если связаться не получится, с вашего согласия оставим букет у соседей или консьержа, либо перенесём доставку на удобное время.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Можно ли заказать анонимный букет, без указания отправителя?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Да. Укажите «анонимно» в комментарии к заказу — мы не передадим получателю ваши данные и не приложим карточку с именем отправителя.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Сколько простоят цветы свежими?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>При правильном уходе — обрезка стеблей, смена воды каждые 2 дня, прохладное место без сквозняков — букет сохраняет вид 5–7 дней. К каждому заказу прикладываем карточку с рекомендациями по уходу.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Можно ли изменить состав готового букета?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Да, напишите пожелания в комментарии к заказу или свяжитесь с нами по телефону — соберём индивидуальный букет под ваш бюджет и повод.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Какие способы оплаты доступны?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Картой онлайн при оформлении, через СБП или наличными курьеру при получении — выберите удобный вариант на последнем шаге заказа.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Что делать, если букет приехал повреждённым или не похож на фото?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Напишите нам в течение 24 часов после получения и приложите фото — заменим букет или вернём деньги, на ваш выбор.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Можно ли добавить к букету открытку или подарок?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <p>Да, на странице оформления заказа можно добавить открытку с вашим текстом, коробку конфет или мягкую игрушку.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ФУТЕР -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+
+                <!-- Бренд -->
+                <div class="footer-brand">
+                    <a href="#" class="footer-brand-logo">Bloom</a>
+                    <p class="footer-brand-desc">Авторские букеты из свежих цветов с доставкой по Москве и Московской области — 24 часа в сутки, 7 дней в неделю.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social-btn" aria-label="Instagram">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                        </a>
+                        <a href="#" class="footer-social-btn" aria-label="ВКонтакте">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M2 6h4.5l2 4.5L11 6h4.5L12 13l4.5 5H12l-2.5-3.5L7 18H2.5l4.5-5L2 6z"/></svg>
+                        </a>
+                        <a href="#" class="footer-social-btn" aria-label="Telegram">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+                        </a>
+                        <a href="#" class="footer-social-btn" aria-label="WhatsApp">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Каталог -->
+                <div>
+                    <p class="footer-col-title">Каталог</p>
+                    <div class="footer-links">
+                        <a href="#catalog" class="footer-link">Все букеты</a>
+                        <a href="#catalog" class="footer-link">Розы</a>
+                        <a href="#catalog" class="footer-link">Свадебные</a>
+                        <a href="#catalog" class="footer-link">На день рождения</a>
+                        <a href="#catalog" class="footer-link">Корпоративные</a>
+                        <a href="#catalog" class="footer-link">Сезонные</a>
+                    </div>
+                </div>
+
+                <!-- Информация -->
+                <div>
+                    <p class="footer-col-title">Информация</p>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">О нас</a>
+                        <a href="#" class="footer-link">Доставка и оплата</a>
+                        <a href="#faq" class="footer-link">Вопросы и ответы</a>
+                        <a href="#" class="footer-link">Уход за цветами</a>
+                        <a href="#" class="footer-link">Корпоративным клиентам</a>
+                        <a href="#" class="footer-link">Отзывы</a>
+                    </div>
+                </div>
+
+                <!-- Контакты -->
+                <div>
+                    <p class="footer-col-title">Контакты</p>
+                    <div class="footer-contacts">
+                        <div class="footer-contact-item">
+                            <span class="footer-contact-label">Телефон</span>
+                            <a href="tel:+74950000000" class="footer-contact-value">+7 (495) 000-00-00</a>
+                        </div>
+                        <div class="footer-contact-item">
+                            <span class="footer-contact-label">Email</span>
+                            <a href="mailto:info@bloom.ru" class="footer-contact-value">info@bloom.ru</a>
+                        </div>
+                        <div class="footer-contact-item">
+                            <span class="footer-contact-label">Адрес</span>
+                            <span class="footer-contact-value">Москва, ул. Цветочная, 12</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <span class="footer-contact-label">Режим работы</span>
+                            <span class="footer-contact-value">Ежедневно, 24/7</span>
+                        </div>
+                        <div class="footer-badge">
+                            <span style="color:var(--gold)">●</span> Принимаем заказы сейчас
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Подвал -->
+            <div class="footer-bottom">
+                <p class="footer-copy">© 2024 Bloom. Все права защищены.</p>
+                <div class="footer-legal">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Пользовательское соглашение</a>
+                    <a href="#">Оферта</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>document.addEventListener('DOMContentLoaded', () => {
+
+
+    // МОДАЛКА: ПЕРЕЗВОНИТЕ МНЕ
+    const callbackModal    = document.getElementById('callbackModal');
+    const callbackModalBox = document.getElementById('callbackModalBox');
+    const callbackSubmit   = document.getElementById('callbackSubmit');
+    const callbackSuccess  = document.getElementById('callbackSuccess');
+
+    function openCallbackModal() {
+        callbackModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeCallbackModal() {
+        callbackModal.classList.remove('active');
+        document.body.style.overflow = '';
+        setTimeout(() => {
+            callbackModalBox.classList.remove('show-success');
+            document.getElementById('callbackForm').reset();
+        }, 300);
+    }
+
+    document.querySelectorAll('.topbar-callback').forEach(btn => {
+        btn.addEventListener('click', openCallbackModal);
+    });
+    document.getElementById('callbackModalClose').addEventListener('click', closeCallbackModal);
+    document.getElementById('callbackSuccessClose').addEventListener('click', closeCallbackModal);
+    callbackModal.addEventListener('click', e => { if (e.target === callbackModal) closeCallbackModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCallbackModal(); });
+
+    callbackSubmit.addEventListener('click', () => {
+        const phone = document.getElementById('cbPhone').value.trim();
+        if (!phone) {
+            document.getElementById('cbPhone').focus();
+            document.getElementById('cbPhone').style.borderColor = '#e57373';
+            setTimeout(() => document.getElementById('cbPhone').style.borderColor = '', 1500);
+            return;
+        }
+        callbackModalBox.classList.add('show-success');
+    });
+
+
+    // ШАПКА ПРИ СКРОЛЛЕ
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    // ── КОРЗИНА ──────────────────────────────────────────────────────────────
+    const cartOverlay      = document.getElementById('cartOverlay');
+    const cartPanel        = document.getElementById('cartPanel');
+    const cartBackdrop     = document.getElementById('cartBackdrop');
+    const cartItemsEl      = document.getElementById('cartItems');
+    const cartEmptyEl      = document.getElementById('cartEmpty');
+    const cartCheckoutWrap = document.getElementById('cartCheckoutWrap');
+    const cartPanelFooter  = document.getElementById('cartPanelFooter');
+    const cartTotalPriceEl = document.getElementById('cartTotalPrice');
+    const cartPanelCount   = document.getElementById('cartPanelCount');
+    const cartCountBadge   = document.querySelector('.cart-count');
+    const cartCheckoutBtn  = document.getElementById('cartCheckoutBtn');
+
+    let cartData = [];
+
+    function formatPrice(n) { return n.toLocaleString('ru-RU') + '\u00a0\u20bd'; }
+    function getTotal() { return cartData.reduce((s, i) => s + i.price * i.qty, 0); }
+
+    function renderCart() {
+        const totalQty = cartData.reduce((s,i) => s+i.qty, 0);
+        cartCountBadge.textContent = totalQty;
+        cartCountBadge.style.transform = 'scale(1.35)';
+        setTimeout(() => cartCountBadge.style.transform = 'scale(1)', 200);
+        cartPanelCount.textContent = totalQty > 0 ? totalQty + ' шт.' : '';
+
+        if (cartData.length === 0) {
+            cartEmptyEl.style.display = '';
+            cartItemsEl.style.display = 'none';
+            cartCheckoutWrap.style.display = 'none';
+            cartPanelFooter.style.display = 'none';
+        } else {
+            cartEmptyEl.style.display = 'none';
+            cartItemsEl.style.display = '';
+            cartCheckoutWrap.style.display = '';
+            cartPanelFooter.style.display = '';
+
+            cartItemsEl.innerHTML = cartData.map((item, idx) => `
+                <div class="cart-item">
+                    <div class="cart-item-img" style="background:${item.bg}">${item.isImg ? `<img src="${item.emoji}" alt="${item.name}" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">` : item.emoji}</div>
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-desc">${item.desc}</div>
+                        <div class="cart-item-row">
+                            <div class="cart-item-qty">
+                                <button class="cart-qty-btn" data-idx="${idx}" data-dir="-1">−</button>
+                                <span class="cart-qty-num">${item.qty}</span>
+                                <button class="cart-qty-btn" data-idx="${idx}" data-dir="1">+</button>
+                            </div>
+                            <span class="cart-item-price">${formatPrice(item.price * item.qty)}</span>
+                        </div>
+                    </div>
+                    <button class="cart-item-remove" data-idx="${idx}" aria-label="Удалить">✕</button>
+                </div>
+            `).join('');
+
+            cartTotalPriceEl.textContent = formatPrice(getTotal());
+
+            cartItemsEl.querySelectorAll('.cart-qty-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const i = +btn.dataset.idx, dir = +btn.dataset.dir;
+                    cartData[i].qty = Math.max(1, cartData[i].qty + dir);
+                    renderCart();
+                });
+            });
+            cartItemsEl.querySelectorAll('.cart-item-remove').forEach(btn => {
+                btn.addEventListener('click', () => { cartData.splice(+btn.dataset.idx, 1); renderCart(); });
+            });
+        }
+    }
+
+    function openCart()  { cartOverlay.classList.add('active');    document.body.style.overflow = 'hidden'; }
+    function closeCart() {
+        cartOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+        setTimeout(() => {
+            cartPanel.classList.remove('show-success');
+            document.getElementById('cartForm').reset();
+        }, 380);
+    }
+
+    document.getElementById('cartBtn').addEventListener('click', openCart);
+    document.getElementById('cartPanelClose').addEventListener('click', closeCart);
+    cartBackdrop.addEventListener('click', closeCart);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && cartOverlay.classList.contains('active')) closeCart(); });
+
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const card  = btn.closest('.product-card');
+            const name  = card.querySelector('.product-name').textContent;
+            const desc  = card.querySelector('.product-desc').textContent;
+            const imgEl = card.querySelector('.product-img');
+            const imgTag = imgEl.querySelector('img');
+            const emoji  = imgTag ? imgTag.src : imgEl.textContent.trim();
+            const isImg  = !!imgTag;
+            const bg     = imgEl.style.background;
+            const price = +card.dataset.price;
+            const ex    = cartData.find(i => i.name === name);
+            if (ex) { ex.qty++; } else { cartData.push({name,desc,emoji,bg,isImg,price,qty:1}); }
+            renderCart();
+            btn.textContent = '✓ Добавлено';
+            btn.classList.add('added');
+            setTimeout(() => { btn.textContent = 'В корзину'; btn.classList.remove('added'); }, 1400);
+        });
+    });
+
+    cartCheckoutBtn.addEventListener('click', () => {
+        const phone = document.getElementById('cartPhone').value.trim();
+        if (!phone) {
+            const inp = document.getElementById('cartPhone');
+            inp.focus(); inp.style.borderColor = '#e57373';
+            setTimeout(() => inp.style.borderColor = '', 1500);
+            return;
+        }
+        cartPanel.classList.add('show-success');
+        cartData = [];
+        cartCountBadge.textContent = '0';
+    });
+
+    renderCart();
+
+    // КАТАЛОГ: фильтрация
+    let activecat = 'all';
+    let activeRoses = 'all';
+    let maxPrice = 30000;
+    let searchQuery = '';
+
+    const cards = document.querySelectorAll('.product-card');
+    const grid = document.getElementById('catalogGrid');
+    const rosesSub = document.getElementById('rosesSub');
+    const resultsCount = document.getElementById('resultsCount');
+    const catalogEmpty = document.getElementById('catalogEmpty');
+
+    function filterCatalog() {
+        const q = searchQuery.toLowerCase().trim();
+        let visible = 0;
+        cards.forEach(card => {
+            const cat   = card.dataset.cat;
+            const price = parseInt(card.dataset.price);
+            const roses = card.dataset.roses;
+            const name  = (card.querySelector('.product-name')?.textContent || '').toLowerCase();
+            const desc  = (card.querySelector('.product-desc')?.textContent || '').toLowerCase();
+
+            let show = true;
+            if (activecat !== 'all' && cat !== activecat) show = false;
+            if (activecat === 'roses' && activeRoses !== 'all' && roses !== activeRoses) show = false;
+            if (price > maxPrice) show = false;
+            if (q && !name.includes(q) && !desc.includes(q)) show = false;
+
+            card.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+        resultsCount.textContent = `Показано: ${visible} букетов`;
+        catalogEmpty.style.display = visible === 0 ? 'flex' : 'none';
+    }
+
+    // ПОИСК НА ГЛАВНОЙ
+    const heroSearchInput = document.querySelector('.hero-search input');
+    const heroSearchBtn   = document.querySelector('.hero-search-btn');
+
+    function doHeroSearch() {
+        searchQuery = heroSearchInput.value;
+        document.getElementById('catalog').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Небольшая задержка, чтобы скролл завершился до перефильтровки
+        setTimeout(filterCatalog, 400);
+    }
+
+    heroSearchBtn.addEventListener('click', doHeroSearch);
+    heroSearchInput.addEventListener('keydown', e => {
+        if (e.key === 'Enter') doHeroSearch();
+    });
+
+    function sortCatalog(order) {
+        const allCards = [...grid.querySelectorAll('.product-card')];
+        allCards.sort((a, b) => {
+            const pa = parseInt(a.dataset.price);
+            const pb = parseInt(b.dataset.price);
+            if (order === 'cheap') return pa - pb;
+            if (order === 'expensive') return pb - pa;
+            return 0;
+        });
+        allCards.forEach(card => grid.appendChild(card));
+    }
+
+    // Категории
+    document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activecat = btn.dataset.cat;
+            rosesSub.classList.toggle('visible', activecat === 'roses');
+            filterCatalog();
+        });
+    });
+
+    // Подкатегория роз
+    document.querySelectorAll('.rose-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.rose-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeRoses = btn.dataset.roses;
+            filterCatalog();
+        });
+    });
+
+    // Фильтр по цене
+    const priceMin = document.getElementById('priceMin');
+    const priceMax = document.getElementById('priceMax');
+    const priceRange = document.getElementById('priceRange');
+
+    priceRange.addEventListener('input', () => {
+        maxPrice = parseInt(priceRange.value);
+        priceMax.value = maxPrice;
+        filterCatalog();
+    });
+
+    priceMax.addEventListener('change', () => {
+        maxPrice = parseInt(priceMax.value) || 30000;
+        priceRange.value = Math.min(maxPrice, 30000);
+        filterCatalog();
+    });
+
+    document.querySelectorAll('.price-preset').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.price-preset').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            maxPrice = parseInt(btn.dataset.max);
+            priceMax.value = maxPrice;
+            priceRange.value = Math.min(maxPrice, 30000);
+            filterCatalog();
+        });
+    });
+
+    // Сортировка
+    document.querySelectorAll('input[name="sort"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+            sortCatalog(radio.value);
+            filterCatalog();
+        });
+    });
+
+    // FAQ: аккордеон
+    document.querySelectorAll('.faq-item').forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+
+        question.addEventListener('click', () => {
+            const isOpen = item.classList.contains('active');
+
+            document.querySelectorAll('.faq-item').forEach(other => {
+                other.classList.remove('active');
+                other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                other.querySelector('.faq-answer').style.maxHeight = null;
+            });
+
+            if (!isOpen) {
+                item.classList.add('active');
+                question.setAttribute('aria-expanded', 'true');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        });
+    });
+    filterCatalog();
+
+});
+</script>
+</body>
+</html>
