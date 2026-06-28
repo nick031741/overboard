@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блог — Overboard Studio</title>
+  <meta name="description" content="Статьи о разработке Telegram-ботов и лендингов для бизнеса. Советы, кейсы и разборы от Overboard Studio.">
+
+  <link rel="canonical" href="https://overboardstudio.com/blog.html">
+  <meta property="og:title" content="Блог — Overboard Studio">
+  <meta property="og:description" content="Статьи о разработке Telegram-ботов и лендингов для бизнеса.">
+  <meta property="og:image" content="https://overboardstudio.com/img/logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://overboardstudio.com/blog.html">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#17212b">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ── BLOG PAGE ── */
+    .blog-hero {
+      padding: 140px 20px 60px;
+      text-align: center;
+    }
+
+    .blog-hero-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .blog-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(34,158,217,0.15);
+      color: #229ed9;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .blog-hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .blog-hero h1 span { color: #229ed9; }
+
+    .blog-hero p {
+      font-size: 17px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.65;
+    }
+
+    /* ── FILTERS ── */
+    .blog-filters {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0 20px 48px;
+    }
+
+    .blog-filter-btn {
+      padding: 8px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.65);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .blog-filter-btn:hover {
+      border-color: rgba(34,158,217,0.5);
+      color: #fff;
+    }
+
+    .blog-filter-btn.active {
+      background: #229ed9;
+      border-color: #229ed9;
+      color: #fff;
+    }
+
+    /* ── GRID ── */
+    .blog-section {
+      padding: 0 20px 100px;
+    }
+
+    .blog-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    /* ── CARD ── */
+    .blog-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      text-decoration: none;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(34,158,217,0.35);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.4);
+    }
+
+    .blog-card[data-hidden="true"] { display: none; }
+
+    /* Cover */
+    .blog-card-cover {
+      height: 200px;
+      background: linear-gradient(135deg, rgba(34,158,217,0.2), rgba(34,158,217,0.05));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 56px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-card-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    .blog-card-cat {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .cat-bot {
+      background: rgba(34,158,217,0.25);
+      color: #229ed9;
+      border: 1px solid rgba(34,158,217,0.3);
+    }
+
+    .cat-landing {
+      background: rgba(99,200,130,0.2);
+      color: #63c882;
+      border: 1px solid rgba(99,200,130,0.3);
+    }
+
+    .cat-business {
+      background: rgba(255,183,77,0.2);
+      color: #ffb74d;
+      border: 1px solid rgba(255,183,77,0.3);
+    }
+
+    /* Body */
+    .blog-card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .blog-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 12px;
+    }
+
+    .blog-card-meta span { display: flex; align-items: center; gap: 4px; }
+
+    .blog-card-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .blog-card-excerpt {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .blog-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #229ed9;
+      transition: gap 0.2s;
+    }
+
+    .blog-card:hover .blog-card-link { gap: 10px; }
+
+    /* ── EMPTY STATE ── */
+    .blog-empty {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 60px 20px;
+      color: rgba(255,255,255,0.35);
+      text-align: center;
+      font-size: 15px;
+    }
+    .blog-empty span { font-size: 40px; }
+    .blog-empty.visible { display: flex; }
+
+    /* ── SOON BANNER ── */
+    .blog-soon {
+      max-width: 1100px;
+      margin: 40px auto 0;
+      padding: 0 20px;
+    }
+
+    .blog-soon-inner {
+      background: rgba(34,158,217,0.06);
+      border: 1px solid rgba(34,158,217,0.15);
+      border-radius: 16px;
+      padding: 32px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .blog-soon-text h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .blog-soon-text p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .blog-soon-btn {
+      background: #229ed9;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 28px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+      white-space: nowrap;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .blog-soon-btn:hover { background: #1d8cc7; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .blog-hero { padding-top: 110px; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .blog-soon-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="logo" style="text-decoration:none;color:#fff;">
+      <img src="img/logo.png" alt="OB">
+      <span class="logo-text">Overboard Studio</span>
+    </a>
+
+    <div class="lang-switch">
+      <a href="/blog.html" class="lang-link active">RU</a>
+      <a href="/en/index.html" class="lang-link">EN</a>
+    </div>
+
+    <nav class="nav">
+      <a href="/#services">Услуги</a>
+      <a href="/#process">Процесс</a>
+      <a href="/#cases">Кейсы</a>
+      <a href="/portfolio.html">Портфолио</a>
+      <a href="/blog.html" style="color:#229ed9;opacity:1;">Блог</a>
+      <a href="/#reviews">Отзывы</a>
+      <a href="/#contacts">Контакты</a>
+    </nav>
+
+    <a href="/#contacts" class="header-btn">Оставить заявку</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <div class="blog-badge">✍️ Полезные материалы</div>
+    <h1>Блог <span>Overboard Studio</span></h1>
+    <p>Пишу о разработке Telegram-ботов и лендингов — кейсы, советы и разборы для тех, кто хочет автоматизировать бизнес.</p>
+  </div>
+</section>
+
+<!-- FILTERS -->
+<div class="blog-filters">
+  <button class="blog-filter-btn active" data-filter="all">Все статьи</button>
+  <button class="blog-filter-btn" data-filter="bot">Telegram-боты</button>
+  <button class="blog-filter-btn" data-filter="landing">Лендинги</button>
+  <button class="blog-filter-btn" data-filter="business">Бизнес</button>
+</div>
+
+<!-- ARTICLES -->
+<section class="blog-section">
+  <div class="blog-inner">
+    <div class="blog-grid" id="blogGrid">
+
+      <!-- Статья 1 — заглушка, замените на реальную -->
+      <a href="#" class="blog-card" data-cat="bot">
+        <div class="blog-card-cover">
+          🤖
+          <span class="blog-card-cat cat-bot">Telegram-боты</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span>📅 Скоро</span>
+            <span>⏱ 5 мин</span>
+          </div>
+          <h2 class="blog-card-title">Сколько стоит Telegram-бот для бизнеса в 2024</h2>
+          <p class="blog-card-excerpt">Разбираю реальные цены на разработку ботов — от простых до сложных с интеграциями и ИИ. Без воды и маркетинговых уловок.</p>
+          <span class="blog-card-link">Читать статью →</span>
+        </div>
+      </a>
+
+      <!-- Статья 2 — заглушка -->
+      <a href="#" class="blog-card" data-cat="landing">
+        <div class="blog-card-cover">
+          🌐
+          <span class="blog-card-cat cat-landing">Лендинги</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span>📅 Скоро</span>
+            <span>⏱ 7 мин</span>
+          </div>
+          <h2 class="blog-card-title">Чек-лист: что должно быть на продающем лендинге</h2>
+          <p class="blog-card-excerpt">15 элементов, без которых лендинг не будет конвертировать. Проверьте свой сайт по этому списку прямо сейчас.</p>
+          <span class="blog-card-link">Читать статью →</span>
+        </div>
+      </a>
+
+      <!-- Статья 3 — заглушка -->
+      <a href="#" class="blog-card" data-cat="business">
+        <div class="blog-card-cover">
+          📊
+          <span class="blog-card-cat cat-business">Бизнес</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span>📅 Скоро</span>
+            <span>⏱ 6 мин</span>
+          </div>
+          <h2 class="blog-card-title">Бот или лендинг: что выбрать для старта бизнеса</h2>
+          <p class="blog-card-excerpt">Сравниваю два инструмента по задачам, бюджету и скорости запуска. Помогу понять, что нужно именно вам.</p>
+          <span class="blog-card-link">Читать статью →</span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="blog-empty" id="blogEmpty">
+      <span>🔍</span>
+      <p>Статей по этой теме пока нет</p>
+    </div>
+  </div>
+
+  <!-- Баннер «скоро» -->
+  <div class="blog-soon">
+    <div class="blog-soon-inner">
+      <div class="blog-soon-text">
+        <h3>Статьи публикуются в ближайшее время</h3>
+        <p>Напишите в Telegram — отвечу на любой вопрос по боту или лендингу прямо сейчас.</p>
+      </div>
+      <a href="https://t.me/overboardbot" target="_blank" rel="noopener" class="blog-soon-btn">Написать в Telegram →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="contacts">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="img/logo.png" alt="Overboard Studio logo" class="footer-logo-img">
+        <span class="logo-text">Overboard Studio</span>
+      </div>
+      <p class="footer-description">Разработка Telegram-ботов и лендингов для бизнеса. Автоматизация, интеграции и поддержка.</p>
+    </div>
+
+    <div class="footer-nav">
+      <strong>Навигация</strong>
+      <a href="/#services">Услуги</a>
+      <a href="/#cases">Кейсы</a>
+      <a href="/portfolio.html">Портфолио</a>
+      <a href="/blog.html">Блог</a>
+      <a href="/#reviews">Отзывы</a>
+      <a href="/#faq">FAQ</a>
+    </div>
+
+    <div class="footer-contacts">
+      <strong>Контакты</strong>
+      <a href="https://t.me/overboardbot" target="_blank" rel="noopener">Telegram</a>
+      <a href="mailto:nickpremium1@proton.me">nickpremium1@proton.me</a>
+      <a href="/privacy.html" target="_blank" class="footer-policy">Политика конфиденциальности</a>
+      <span class="footer-copy">© 2026 Overboard Studio</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/84357565416" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <img src="img/whatsapp-logo.png" alt="WhatsApp">
+</a>
+
+<!-- Telegram -->
+<a href="https://t.me/overboardbot" class="telegram-float" target="_blank" rel="noopener" aria-label="Telegram">
+  <img src="img/telegram.png" alt="Telegram">
+</a>
+
+<style>
+  .telegram-float {
+    position: fixed;
+    bottom: 90px; right: 24px;
+    width: 52px; height: 52px;
+    background: #2AABEE;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    z-index: 999;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .telegram-float:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+  .telegram-float img { width: 28px; height: 28px; object-fit: contain; }
+</style>
+
+<script>
+  // Фильтрация статей
+  const filterBtns = document.querySelectorAll('.blog-filter-btn');
+  const cards = document.querySelectorAll('.blog-card');
+  const empty = document.getElementById('blogEmpty');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+      let visible = 0;
+
+      cards.forEach(card => {
+        const show = filter === 'all' || card.dataset.cat === filter;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+
+      empty.classList.toggle('visible', visible === 0);
+    });
+  });
+</script>
+
+</body>
+</html>
