@@ -24,10 +24,48 @@
 
   <style>
     /* ── ARTICLE PAGE ── */
+
+    /* 1. Фикс кнопки Оставить заявку */
+    .header-btn {
+      background: #229ed9 !important;
+      color: #fff !important;
+      padding: 10px 20px !important;
+      border-radius: 50px !important;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      text-decoration: none !important;
+      white-space: nowrap !important;
+      display: inline-block !important;
+    }
+    .header-btn:hover { background: #1d8cc7 !important; }
+
     .article-hero {
-      padding: 130px 20px 48px;
+      padding: 130px 20px 0;
       max-width: 760px;
       margin: 0 auto;
+    }
+
+    /* 2. Убираю большой пробел после заголовка */
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      padding-bottom: 0;
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .article-meta span { display: flex; align-items: center; gap: 5px; }
+
+    /* 3. Плашка Telegram-боты — в правый угол */
+    .article-hero-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
     }
 
     .article-back {
@@ -37,7 +75,6 @@
       font-size: 13px;
       color: rgba(255,255,255,0.45);
       text-decoration: none;
-      margin-bottom: 32px;
       transition: color 0.2s;
     }
     .article-back:hover { color: #fff; }
@@ -52,7 +89,6 @@
       color: #229ed9;
       font-size: 12px;
       font-weight: 600;
-      margin-bottom: 18px;
     }
 
     .article-title {
@@ -61,21 +97,14 @@
       line-height: 1.2;
       letter-spacing: -0.02em;
       color: #fff;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
-    .article-meta {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      font-size: 13px;
-      color: rgba(255,255,255,0.4);
-      padding-bottom: 32px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+    .article-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      margin: 24px 0 0;
     }
-
-    .article-meta span { display: flex; align-items: center; gap: 5px; }
 
     /* Content */
     .article-body {
@@ -174,15 +203,15 @@
     .article-cta-btn {
       display: inline-block;
       background: #229ed9;
-      color: #fff;
+      color: #fff !important;
       padding: 14px 36px;
       border-radius: 50px;
       font-size: 15px;
       font-weight: 600;
-      text-decoration: none;
+      text-decoration: none !important;
       transition: background 0.2s;
     }
-    .article-cta-btn:hover { background: #1d8cc7; text-decoration: none; }
+    .article-cta-btn:hover { background: #1d8cc7; }
 
     @media (max-width: 600px) {
       .article-hero { padding-top: 100px; }
@@ -220,14 +249,17 @@
 
 <!-- HERO -->
 <div class="article-hero">
-  <a href="/blog.html" class="article-back">← Все статьи</a>
-  <div class="article-cat">🤖 Telegram-боты</div>
+  <div class="article-hero-top">
+    <a href="/blog.html" class="article-back">← Все статьи</a>
+    <div class="article-cat">🤖 Telegram-боты</div>
+  </div>
   <h1 class="article-title">Сколько стоит Telegram-бот для бизнеса в 2026: честные цены от разработчика</h1>
   <div class="article-meta">
     <span>📅 Июль 2026</span>
     <span>⏱ 7 минут</span>
     <span>✍️ Overboard Studio</span>
   </div>
+  <div class="article-divider"></div>
 </div>
 
 <!-- CONTENT -->
