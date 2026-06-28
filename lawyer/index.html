@@ -1,1 +1,978 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Александр Морозов — Юрист</title>
+  <meta name="description" content="Юридические услуги по гражданским, корпоративным и семейным делам. Профессиональная защита ваших интересов.">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ── TOKENS ── */
+    :root {
+      --navy:    #0D1B2A;
+      --navy-mid:#162236;
+      --cream:   #F5F1EA;
+      --gold:    #C4973A;
+      --gold-lt: #DDB96A;
+      --stone:   #E8E2D8;
+      --gray:    #7A7570;
+      --text:    #1A1208;
+      --serif:   'Playfair Display', Georgia, serif;
+      --sans:    'Inter', system-ui, sans-serif;
+      --ease:    cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 48px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(13, 27, 42, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196,151,58,0.2);
+    }
+
+    .header-logo {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--cream);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .header-logo span { color: var(--gold); }
+
+    .header-nav {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .header-nav a {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: rgba(245,241,234,0.7);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .header-nav a:hover { color: var(--cream); }
+
+    .header-cta {
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      border-radius: 6px;
+      padding: 9px 22px;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      text-decoration: none;
+    }
+    .header-cta:hover { background: var(--gold-lt); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 120px 80px 80px;
+      gap: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle grid texture */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(196,151,58,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(196,151,58,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-left { position: relative; z-index: 1; }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(44px, 5vw, 72px);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.08;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .hero-name-line {
+      display: block;
+      height: 1px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      margin: 14px 0;
+      width: 80%;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(16px, 1.8vw, 22px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--gold-lt);
+      margin-bottom: 32px;
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(245,241,234,0.6);
+      max-width: 440px;
+      margin-bottom: 44px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      border-radius: 6px;
+      padding: 14px 32px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
+
+    .btn-outline {
+      border: 1px solid rgba(245,241,234,0.3);
+      color: rgba(245,241,234,0.8);
+      border-radius: 6px;
+      padding: 14px 32px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--cream); }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 52px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(245,241,234,0.1);
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .hero-stat span {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: rgba(245,241,234,0.45);
+      text-transform: uppercase;
+    }
+
+    /* Monogram */
+    .hero-right {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-monogram-wrap {
+      position: relative;
+      width: 520px;
+      height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(196,151,58,0.2);
+    }
+    .hero-ring:nth-child(2) {
+      inset: 24px;
+      border-color: rgba(196,151,58,0.12);
+    }
+    .hero-ring:nth-child(3) {
+      inset: 48px;
+      border-color: rgba(196,151,58,0.08);
+    }
+
+    .hero-photo-placeholder {
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: var(--navy-mid);
+      border: 2px solid rgba(196,151,58,0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      overflow: hidden;
+    }
+
+    .hero-monogram {
+      font-family: var(--serif);
+      font-size: 80px;
+      font-weight: 700;
+      color: rgba(196,151,58,0.3);
+      line-height: 1;
+      letter-spacing: -4px;
+      user-select: none;
+    }
+
+    .hero-photo-label {
+      font-size: 11px;
+      color: rgba(245,241,234,0.25);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── PRACTICE AREAS ── */
+    .practice {
+      background: var(--cream);
+      padding: 100px 80px;
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(30px, 3.5vw, 46px);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 56px;
+    }
+
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .practice-card {
+      background: var(--stone);
+      padding: 40px 32px;
+      transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .practice-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s var(--ease);
+    }
+
+    .practice-card:hover { background: var(--navy); transform: translateY(-4px); }
+    .practice-card:hover::after { transform: scaleX(1); }
+    .practice-card:hover .practice-card-num { color: rgba(196,151,58,0.3); }
+    .practice-card:hover .practice-card-title { color: var(--cream); }
+    .practice-card:hover .practice-card-text { color: rgba(245,241,234,0.55); }
+
+    .practice-card-num {
+      font-family: var(--serif);
+      font-size: 48px;
+      font-weight: 700;
+      color: rgba(13,27,42,0.08);
+      line-height: 1;
+      margin-bottom: 24px;
+      transition: color 0.3s;
+    }
+
+    .practice-card-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 14px;
+      transition: color 0.3s;
+    }
+
+    .practice-card-text {
+      font-size: 13.5px;
+      line-height: 1.7;
+      color: var(--gray);
+      transition: color 0.3s;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background: var(--navy);
+      padding: 100px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--navy-mid);
+      border: 1px solid rgba(196,151,58,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: rgba(245,241,234,0.2);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .about-accent {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 120px;
+      height: 120px;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+      text-align: center;
+      line-height: 1.4;
+      padding: 16px;
+    }
+
+    .about-content .section-eyebrow { margin-bottom: 14px; }
+    .about-content .section-title { color: var(--cream); margin-bottom: 24px; }
+
+    .about-text {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(245,241,234,0.6);
+      margin-bottom: 16px;
+    }
+
+    .about-credentials {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .about-cred {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(245,241,234,0.08);
+    }
+
+    .about-cred-year {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--gold);
+      white-space: nowrap;
+      margin-top: 2px;
+      min-width: 36px;
+    }
+
+    .about-cred-text {
+      font-size: 13.5px;
+      color: rgba(245,241,234,0.6);
+      line-height: 1.5;
+    }
+
+    .about-cred-text strong {
+      display: block;
+      color: var(--cream);
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    /* ── CONTACT ── */
+    .contact {
+      background: var(--stone);
+      padding: 100px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info .section-title { color: var(--navy); margin-bottom: 32px; }
+
+    .contact-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+
+    .contact-detail-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .contact-detail-value {
+      font-size: 16px;
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    a.contact-detail-value:hover { color: var(--gold); }
+
+    .contact-note {
+      margin-top: 36px;
+      padding: 20px 24px;
+      background: var(--navy);
+      border-left: 3px solid var(--gold);
+    }
+
+    .contact-note p {
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: rgba(245,241,234,0.65);
+      font-style: italic;
+    }
+
+    /* Form */
+    .contact-form {
+      background: white;
+      padding: 44px 40px;
+      box-shadow: 0 12px 48px rgba(13,27,42,0.1);
+    }
+
+    .form-title {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 28px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .form-field label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      border: 1px solid var(--stone);
+      border-radius: 4px;
+      padding: 12px 14px;
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--text);
+      background: var(--cream);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus { border-color: var(--gold); }
+
+    .form-field textarea { resize: vertical; min-height: 100px; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--navy);
+      color: var(--cream);
+      border: none;
+      border-radius: 4px;
+      padding: 15px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 6px;
+    }
+    .form-submit:hover { background: var(--navy-mid); }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--navy);
+      padding: 32px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(196,151,58,0.15);
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 18px;
+      color: var(--cream);
+      text-decoration: none;
+    }
+    .footer-logo span { color: var(--gold); }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(245,241,234,0.3);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-links a {
+      font-size: 12px;
+      color: rgba(245,241,234,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--cream); }
+
+    /* ── SUCCESS ── */
+    .success-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .success-overlay.active { display: flex; }
+    .success-box {
+      background: white;
+      border-radius: 8px;
+      padding: 48px 40px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+    }
+    .success-icon { font-size: 48px; margin-bottom: 16px; }
+    .success-box h3 {
+      font-family: var(--serif);
+      font-size: 24px;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .success-box p { font-size: 14px; color: var(--gray); margin-bottom: 28px; line-height: 1.6; }
+    .success-close {
+      background: var(--navy); color: var(--cream);
+      border: none; border-radius: 4px;
+      padding: 12px 32px; font-size: 14px;
+      font-weight: 600; font-family: var(--sans);
+      cursor: pointer; transition: background 0.2s;
+    }
+    .success-close:hover { background: var(--navy-mid); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; padding: 120px 40px 80px; }
+      .hero-right { display: none; }
+      .practice-grid { grid-template-columns: 1fr 1fr; }
+      .about { grid-template-columns: 1fr; padding: 80px 40px; }
+      .about-visual { display: none; }
+      .contact { grid-template-columns: 1fr; padding: 80px 40px; }
+    }
+
+    @media (max-width: 640px) {
+      .header { padding: 0 20px; }
+      .header-nav { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      .hero-stats { gap: 24px; }
+      .practice { padding: 60px 24px; }
+      .practice-grid { grid-template-columns: 1fr; gap: 2px; }
+      .about, .contact { padding: 60px 24px; }
+      .contact-form { padding: 28px 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer { padding: 24px 24px; flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <a href="#" class="header-logo">А.<span>Морозов</span></a>
+  <nav class="header-nav">
+    <a href="#practice">Практика</a>
+    <a href="#about">О юристе</a>
+    <a href="#contact">Контакты</a>
+  </nav>
+  <a href="#contact" class="header-cta">Консультация</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Юридические услуги</div>
+    <h1 class="hero-name">
+      Александр<br>Морозов
+    </h1>
+    <div class="hero-name-line"></div>
+    <p class="hero-title">Адвокат · Гражданское и корпоративное право</p>
+    <p class="hero-desc">
+      Защищаю интересы физических лиц и бизнеса в судах и переговорах.
+      Более 10 лет практики — каждое дело получает полное внимание и конкретный результат.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-gold">Получить консультацию</a>
+      <a href="#practice" class="btn-outline">Области практики</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <strong>10+</strong>
+        <span>Лет опыта</span>
+      </div>
+      <div class="hero-stat">
+        <strong>300+</strong>
+        <span>Дел завершено</span>
+      </div>
+      <div class="hero-stat">
+        <strong>92%</strong>
+        <span>Выигранных дел</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-monogram-wrap">
+      <div class="hero-ring"></div>
+      <div class="hero-ring"></div>
+      <div class="hero-ring"></div>
+      <div class="hero-photo-placeholder">
+        <img src="assets/images/hero.png" alt="Александр Морозов — юрист" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;border-radius:50%;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE AREAS -->
+<section class="practice" id="practice">
+  <div class="section-eyebrow">Области права</div>
+  <h2 class="section-title">Чем я занимаюсь</h2>
+
+  <div class="practice-grid">
+    <div class="practice-card">
+      <div class="practice-card-num">01</div>
+      <h3 class="practice-card-title">Гражданское право</h3>
+      <p class="practice-card-text">Споры по договорам, защита прав потребителей, возмещение ущерба, жилищные конфликты и наследственные дела.</p>
+    </div>
+    <div class="practice-card">
+      <div class="practice-card-num">02</div>
+      <h3 class="practice-card-title">Корпоративное право</h3>
+      <p class="practice-card-text">Регистрация и ликвидация компаний, корпоративные споры, договорная работа и защита интересов акционеров.</p>
+    </div>
+    <div class="practice-card">
+      <div class="practice-card-num">03</div>
+      <h3 class="practice-card-title">Семейное право</h3>
+      <p class="practice-card-text">Расторжение брака, раздел имущества, определение места жительства детей, алиментные обязательства.</p>
+    </div>
+    <div class="practice-card">
+      <div class="practice-card-num">04</div>
+      <h3 class="practice-card-title">Трудовые споры</h3>
+      <p class="practice-card-text">Незаконное увольнение, задержка заработной платы, дискриминация на рабочем месте и защита прав работника.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-visual">
+    <div class="about-photo-placeholder">
+      <img src="assets/images/about.png" alt="Александр Морозов" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="about-accent">10 лет<br>практики</div>
+  </div>
+
+  <div class="about-content">
+    <div class="section-eyebrow">О юристе</div>
+    <h2 class="section-title">Профессионализм,<br>основанный на опыте</h2>
+
+    <p class="about-text">
+      Я специализируюсь на гражданских и корпоративных делах с 2014 года.
+      Работал как в крупных юридических компаниях, так и самостоятельно —
+      это дало мне понимание как системных процессов, так и индивидуального подхода.
+    </p>
+    <p class="about-text">
+      Каждый клиент получает честную оценку ситуации ещё на первой консультации:
+      никаких обещаний без анализа, никаких скрытых платежей.
+    </p>
+
+    <div class="about-credentials">
+      <div class="about-cred">
+        <span class="about-cred-year">2013</span>
+        <div class="about-cred-text">
+          <strong>МГУ имени М.В. Ломоносова</strong>
+          Юридический факультет, специальность «Гражданское право»
+        </div>
+      </div>
+      <div class="about-cred">
+        <span class="about-cred-year">2015</span>
+        <div class="about-cred-text">
+          <strong>Адвокатское бюро «Право и Защита»</strong>
+          Старший юрист по корпоративным спорам
+        </div>
+      </div>
+      <div class="about-cred">
+        <span class="about-cred-year">2019</span>
+        <div class="about-cred-text">
+          <strong>Частная практика</strong>
+          Адвокат, член Адвокатской палаты г. Москвы
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-info">
+    <div class="section-eyebrow">Контакты</div>
+    <h2 class="section-title">Запишитесь на<br>консультацию</h2>
+
+    <div class="contact-detail">
+      <span class="contact-detail-label">Телефон</span>
+      <a href="tel:+74951234567" class="contact-detail-value">+7 (495) 123-45-67</a>
+    </div>
+    <div class="contact-detail">
+      <span class="contact-detail-label">Email</span>
+      <a href="mailto:morozov@law.ru" class="contact-detail-value">morozov@law.ru</a>
+    </div>
+    <div class="contact-detail">
+      <span class="contact-detail-label">Telegram</span>
+      <a href="https://t.me/morozov_law" target="_blank" class="contact-detail-value">@morozov_law</a>
+    </div>
+    <div class="contact-detail">
+      <span class="contact-detail-label">Адрес</span>
+      <span class="contact-detail-value">Москва, ул. Тверская, 10, оф. 304</span>
+    </div>
+    <div class="contact-detail">
+      <span class="contact-detail-label">Режим работы</span>
+      <span class="contact-detail-value">Пн–Пт: 9:00–19:00</span>
+    </div>
+
+    <div class="contact-note">
+      <p>Первичная консультация — 30 минут бесплатно. Разберём вашу ситуацию и определим дальнейшие шаги.</p>
+    </div>
+  </div>
+
+  <div class="contact-form">
+    <p class="form-title">Оставить заявку</p>
+    <div class="form-row">
+      <div class="form-field">
+        <label>Имя *</label>
+        <input type="text" id="fName" placeholder="Иван Иванов">
+      </div>
+      <div class="form-field">
+        <label>Телефон *</label>
+        <input type="tel" id="fPhone" placeholder="+7 (___) ___-__-__">
+      </div>
+    </div>
+    <div class="form-field">
+      <label>Область права</label>
+      <select id="fArea">
+        <option value="">Выберите...</option>
+        <option>Гражданское право</option>
+        <option>Корпоративное право</option>
+        <option>Семейное право</option>
+        <option>Трудовые споры</option>
+        <option>Другое</option>
+      </select>
+    </div>
+    <div class="form-field">
+      <label>Коротко о ситуации</label>
+      <textarea id="fMessage" placeholder="Опишите суть вопроса..."></textarea>
+    </div>
+    <button class="form-submit" id="fSubmit">Отправить заявку →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <a href="#" class="footer-logo">А.<span>Морозов</span></a>
+  <p class="footer-copy">© 2024 Александр Морозов. Все права защищены.</p>
+  <div class="footer-links">
+    <a href="#">Политика конфиденциальности</a>
+    <a href="#">Соглашение</a>
+  </div>
+</footer>
+
+<!-- SUCCESS -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-box">
+    <div class="success-icon">✅</div>
+    <h3>Заявка принята</h3>
+    <p>Свяжусь с вами в течение рабочего дня для согласования удобного времени консультации.</p>
+    <button class="success-close" onclick="document.getElementById('successOverlay').classList.remove('active')">Понятно</button>
+  </div>
+</div>
+
+<script>
+  // Smooth header shadow on scroll
+  const header = document.querySelector('.header');
+  window.addEventListener('scroll', () => {
+    header.style.boxShadow = window.scrollY > 20
+      ? '0 4px 24px rgba(0,0,0,0.3)'
+      : 'none';
+  });
+
+  // FAQ accordion (if needed)
+  document.querySelectorAll('.faq-question')?.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      item.classList.toggle('open');
+    });
+  });
+
+  // Form submit (заглушка)
+  document.getElementById('fSubmit').addEventListener('click', () => {
+    const name  = document.getElementById('fName').value.trim();
+    const phone = document.getElementById('fPhone').value.trim();
+    if (!name || !phone) {
+      alert('Пожалуйста, заполните имя и телефон');
+      return;
+    }
+    document.getElementById('successOverlay').classList.add('active');
+    document.getElementById('fName').value = '';
+    document.getElementById('fPhone').value = '';
+    document.getElementById('fArea').value = '';
+    document.getElementById('fMessage').value = '';
+  });
+
+  // Close success on overlay click
+  document.getElementById('successOverlay').addEventListener('click', e => {
+    if (e.target === e.currentTarget)
+      e.currentTarget.classList.remove('active');
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape')
+      document.getElementById('successOverlay').classList.remove('active');
+  });
+</script>
+
+</body>
+</html>
