@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Портфолио — Overboard Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Портфолио Overboard Studio — примеры лендингов и Telegram-ботов для бизнеса. Смотрите реальные работы: стоматология, интернет-магазин цветов и другие проекты.">
+
+  <link rel="canonical" href="https://overboardstudio.com/portfolio.html">
+
+  <meta property="og:title" content="Портфолио — Overboard Studio">
+  <meta property="og:description" content="Примеры лендингов и Telegram-ботов для бизнеса.">
+  <meta property="og:image" content="https://overboardstudio.com/img/logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://overboardstudio.com/portfolio.html">
+  <meta property="og:site_name" content="Overboard Studio">
+  <meta property="og:locale" content="ru_RU">
+
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#17212b">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ── PORTFOLIO PAGE ── */
+
+    .portfolio-hero {
+      padding: 160px 20px 80px;
+      text-align: center;
+    }
+
+    .portfolio-hero-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .portfolio-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 999px;
+      background: rgba(34,158,217,0.15);
+      color: #229ed9;
+    }
+
+    .portfolio-hero h1 {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .portfolio-hero h1 span { color: #229ed9; }
+
+    .portfolio-hero p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 40px;
+    }
+
+    /* ── FILTERS ── */
+
+    .portfolio-filters {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 64px;
+      padding: 0 20px;
+    }
+
+    .filter-btn {
+      padding: 9px 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    .filter-btn:hover {
+      border-color: rgba(34,158,217,0.5);
+      color: #fff;
+      background: rgba(34,158,217,0.08);
+    }
+
+    .filter-btn.active {
+      background: #229ed9;
+      border-color: #229ed9;
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(34,158,217,0.35);
+    }
+
+    /* ── GRID ── */
+
+    .portfolio-section {
+      padding: 0 20px 120px;
+    }
+
+    .portfolio-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 28px;
+    }
+
+    /* ── CARD ── */
+
+    .portfolio-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(34,158,217,0.35);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.4);
+    }
+
+    .portfolio-card[data-hidden="true"] {
+      display: none;
+    }
+
+    /* Preview */
+    .card-preview {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.03);
+      flex-shrink: 0;
+    }
+
+    .card-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .portfolio-card:hover .card-preview img {
+      transform: scale(1.03);
+    }
+
+    /* Плейсхолдер если нет скриншота */
+    .card-preview-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 56px;
+      background: radial-gradient(circle at 40% 40%, rgba(34,158,217,0.2), transparent 70%);
+    }
+
+    /* Категория-бейдж поверх превью */
+    .card-cat {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .card-cat.landing {
+      background: rgba(34,158,217,0.25);
+      color: #229ed9;
+      border: 1px solid rgba(34,158,217,0.3);
+    }
+
+    .card-cat.bot {
+      background: rgba(99,200,130,0.2);
+      color: #63c882;
+      border: 1px solid rgba(99,200,130,0.3);
+    }
+
+    /* Ссылка на проект поверх превью */
+    .card-view-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(23,33,43,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .portfolio-card:hover .card-view-overlay {
+      opacity: 1;
+    }
+
+    .card-view-overlay a {
+      padding: 10px 24px;
+      border-radius: 999px;
+      background: #229ed9;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(34,158,217,0.4);
+      transition: background 0.2s ease;
+    }
+
+    .card-view-overlay a:hover { background: #1d8cc7; }
+
+    /* Body */
+    .card-body {
+      padding: 22px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 18px;
+      flex: 1;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .card-tag {
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ── CTA ── */
+
+    .portfolio-cta {
+      padding: 0 20px 120px;
+    }
+
+    .portfolio-cta-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      background: rgba(34,158,217,0.08);
+      border: 1px solid rgba(34,158,217,0.2);
+      border-radius: 32px;
+      padding: 56px 48px;
+    }
+
+    .portfolio-cta h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+    }
+
+    .portfolio-cta h2 span { color: #229ed9; }
+
+    .portfolio-cta p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      position: relative;
+      height: 1px;
+      margin: 0;
+      background: linear-gradient(to right, transparent, rgba(34,158,217,0.6), transparent);
+    }
+
+    .section-divider::after {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 240px;
+      height: 40px;
+      background: radial-gradient(circle, rgba(34,158,217,0.35), transparent 70%);
+      filter: blur(30px);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      .portfolio-hero h1 { font-size: 38px; }
+      .portfolio-hero p  { font-size: 16px; }
+      .portfolio-grid    { grid-template-columns: 1fr; }
+      .portfolio-cta-inner { padding: 36px 24px; }
+      .portfolio-cta h2  { font-size: 28px; }
+    }
+
+    @media (max-width: 480px) {
+      .portfolio-hero { padding-top: 120px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="logo" style="text-decoration: none; color: #ffffff;">
+      <img src="img/logo.png" alt="OB">
+      <span class="logo-text">Overboard Studio</span>
+    </a>
+
+    <div class="lang-switch">
+      <a href="/portfolio.html" class="lang-link active">RU</a>
+      <a href="/en/index.html" class="lang-link">EN</a>
+    </div>
+
+    <nav class="nav">
+      <a href="/#services">Услуги</a>
+      <a href="/#process">Процесс</a>
+      <a href="/#cases">Кейсы</a>
+      <a href="/portfolio.html" style="color: #229ed9; opacity: 1;">Портфолио</a>
+      <a href="/#reviews">Отзывы</a>
+      <a href="/#contacts">Контакты</a>
+    </nav>
+
+    <a href="/#contacts" class="header-btn">Оставить заявку</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="portfolio-hero">
+  <div class="portfolio-hero-inner">
+    <div class="portfolio-badge">🎨 Реальные проекты</div>
+    <h1>Мои <span>работы</span></h1>
+    <p>Лендинги и Telegram-боты, сделанные под ключ — от идеи до запуска. Каждый проект уникален и написан вручную, без конструкторов.</p>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- FILTERS -->
+<div class="portfolio-filters" id="portfolioFilters">
+  <button class="filter-btn active" data-filter="all">Все проекты</button>
+  <button class="filter-btn" data-filter="landing">Лендинги</button>
+  <button class="filter-btn" data-filter="bot">Telegram-боты</button>
+</div>
+
+<!-- GRID -->
+<section class="portfolio-section">
+  <div class="portfolio-inner">
+    <div class="portfolio-grid" id="portfolioGrid">
+
+      <!-- ── КАРТОЧКА 1: Bloom ── -->
+      <div class="portfolio-card" data-cat="landing">
+        <div class="card-preview">
+          <!-- Замените src на скриншот: img/portfolio/bloom-preview.jpg -->
+          <div class="card-preview-placeholder">🌸</div>
+          <span class="card-cat landing">Лендинг</span>
+          <div class="card-view-overlay">
+            <a href="https://bloom.overboardstudio.com" target="_blank" rel="noopener">Смотреть проект →</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Bloom — интернет-магазин цветов</h3>
+          <p class="card-desc">Лендинг для онлайн-магазина цветов с каталогом, фильтрами, корзиной и формой заказа. Адаптивный дизайн, анимации, поиск по букетам.</p>
+          <div class="card-tags">
+            <span class="card-tag">HTML</span>
+            <span class="card-tag">CSS</span>
+            <span class="card-tag">JavaScript</span>
+            <span class="card-tag">Интернет-магазин</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── КАРТОЧКА 2: SmileStudio ── -->
+      <div class="portfolio-card" data-cat="landing">
+        <div class="card-preview">
+          <!-- Замените src на скриншот: img/portfolio/smilestudio-preview.jpg -->
+          <div class="card-preview-placeholder">🦷</div>
+          <span class="card-cat landing">Лендинг</span>
+          <div class="card-view-overlay">
+            <a href="https://smilestudio.overboardstudio.com" target="_blank" rel="noopener">Смотреть проект →</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">SmileStudio — стоматологическая клиника</h3>
+          <p class="card-desc">Продающий лендинг для стоматологии: услуги, врачи, отзывы, онлайн-запись. Быстрая загрузка, мобильная версия, SEO-оптимизация.</p>
+          <div class="card-tags">
+            <span class="card-tag">HTML</span>
+            <span class="card-tag">CSS</span>
+            <span class="card-tag">JavaScript</span>
+            <span class="card-tag">Медицина</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ШАБЛОН для новых работ (скрыт) — просто скопируйте и заполните -->
+      <!--
+      <div class="portfolio-card" data-cat="landing">
+        <div class="card-preview">
+          <img src="img/portfolio/project-preview.jpg" alt="Название проекта">
+          <span class="card-cat landing">Лендинг</span>
+          <div class="card-view-overlay">
+            <a href="ССЫЛКА_НА_ПРОЕКТ" target="_blank" rel="noopener">Смотреть проект →</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Название проекта</h3>
+          <p class="card-desc">Краткое описание проекта — что сделано, для кого, какие задачи решает.</p>
+          <div class="card-tags">
+            <span class="card-tag">HTML</span>
+            <span class="card-tag">CSS</span>
+            <span class="card-tag">JavaScript</span>
+            <span class="card-tag">Ниша</span>
+          </div>
+        </div>
+      </div>
+      -->
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="portfolio-cta">
+  <div class="portfolio-cta-inner">
+    <h2>Нужен <span>такой же проект?</span></h2>
+    <p>Разработаю лендинг или Telegram-бот под ваш бизнес — с нуля, без конструкторов, за 5–10 дней.</p>
+    <a href="/#contacts" class="btn primary">Обсудить проект</a>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="section-divider"></div>
+
+<!-- FOOTER -->
+<footer class="footer" id="contacts">
+  <div class="container footer-inner">
+
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="img/logo.png" alt="Overboard Studio logo" class="footer-logo-img">
+        <span class="logo-text">Overboard Studio</span>
+      </div>
+      <p class="footer-description">
+        Разработка Telegram-ботов и лендингов для бизнеса. Автоматизация, интеграции и поддержка.
+      </p>
+    </div>
+
+    <div class="footer-nav">
+      <strong>Навигация</strong>
+      <a href="/#services">Услуги</a>
+      <a href="/#cases">Кейсы</a>
+      <a href="/portfolio.html">Портфолио</a>
+      <a href="/#reviews">Отзывы</a>
+      <a href="/#faq">FAQ</a>
+    </div>
+
+    <div class="footer-contacts">
+      <strong>Контакты</strong>
+      <a href="https://t.me/overboardbot" target="_blank" rel="noopener">Telegram</a>
+      <a href="mailto:nickpremium1@proton.me">nickpremium1@proton.me</a>
+      <a href="/privacy.html" target="_blank" class="footer-policy">Политика конфиденциальности</a>
+      <span class="footer-copy">© 2026 Overboard Studio</span>
+    </div>
+
+  </div>
+</footer>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/84357565416" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">
+  <img src="img/whatsapp-logo.png" alt="WhatsApp">
+</a>
+
+<!-- Telegram Button -->
+<a href="https://t.me/overboardbot" class="telegram-float" target="_blank" rel="noopener" aria-label="Написать в Telegram">
+  <img src="img/telegram.png" alt="Telegram">
+</a>
+
+<script>
+  // Фильтрация по категориям
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const portfolioCards = document.querySelectorAll('.portfolio-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+
+      portfolioCards.forEach(card => {
+        const cat = card.dataset.cat;
+        card.style.display = (filter === 'all' || cat === filter) ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
