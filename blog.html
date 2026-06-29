@@ -215,9 +215,129 @@
       .blog-soon-inner { flex-direction: column; }
     }
   </style>
+  <style>
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: #1e2d3d;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 40px 36px;
+      width: 100%;
+      max-width: 460px;
+      position: relative;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 20px;
+      background: none; border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 24px; cursor: pointer;
+      line-height: 1; transition: color 0.2s;
+    }
+    .modal-close:hover { color: #fff; }
+    .modal h2 { font-size: 22px; font-weight: 700; color: #fff; margin: 0 0 8px; }
+    .modal p.modal-sub { font-size: 14px; color: rgba(255,255,255,0.55); margin: 0 0 28px; }
+    .modal-form { display: flex; flex-direction: column; gap: 14px; }
+    .modal-form label { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 4px; display: block; }
+    .modal-form input[type="text"],
+    .modal-form input[type="tel"] {
+      width: 100%; box-sizing: border-box;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px; padding: 12px 14px;
+      color: #fff; font-size: 15px; font-family: inherit;
+      outline: none; transition: border-color 0.2s;
+    }
+    .modal-form input::placeholder { color: rgba(255,255,255,0.3); }
+    .modal-form input:focus { border-color: #2AABEE; }
+    .modal-submit {
+      margin-top: 6px; background: #2AABEE; color: #fff;
+      border: none; border-radius: 10px; padding: 14px;
+      font-size: 16px; font-weight: 600; font-family: inherit;
+      cursor: pointer; transition: background 0.2s, transform 0.15s; width: 100%;
+    }
+    .modal-submit:hover:not(:disabled) { background: #1e9bd8; transform: translateY(-1px); }
+    .success-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 1100; align-items: center;
+      justify-content: center; padding: 16px;
+    }
+    .success-overlay.active { display: flex; }
+    .success-box {
+      background: #1e2d3d;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 40px 36px;
+      width: 100%; max-width: 400px;
+      text-align: center; box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+    .success-icon { font-size: 48px; margin-bottom: 16px; }
+    .success-box h3 { color: #fff; font-size: 20px; margin: 0 0 10px; }
+    .success-box p { color: rgba(255,255,255,0.55); font-size: 14px; margin: 0 0 24px; }
+    .success-box button {
+      background: #2AABEE; color: #fff; border: none;
+      border-radius: 10px; padding: 12px 32px;
+      font-size: 15px; font-weight: 600; font-family: inherit;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .success-box button:hover { background: #1e9bd8; }
+  </style>
 </head>
 
 <body>
+
+<!-- MODAL FORM -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">×</button>
+    <h2>Оставить заявку</h2>
+    <p class="modal-sub">Заполните форму — я свяжусь с вами в ближайшее время</p>
+    <div class="modal-form">
+      <div>
+        <label>Ваше имя</label>
+        <input type="text" id="fieldName" placeholder="Иван Иванов">
+      </div>
+      <div>
+        <label>Телефон</label>
+        <input type="tel" id="fieldPhone" placeholder="+7 999 000 00 00">
+      </div>
+      <div>
+        <label>Telegram</label>
+        <input type="text" id="fieldTg" placeholder="@username">
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:13px;color:rgba(255,255,255,0.6);margin-top:6px;padding:0 2px;">
+        <input type="checkbox" id="consentCheckbox" style="margin-top:3px;flex-shrink:0;cursor:pointer;">
+        <span style="line-height:1.5;">Я даю согласие на обработку персональных данных и принимаю
+          <a href="/privacy.html" target="_blank" style="color:#2AABEE;">политику конфиденциальности</a> и
+          <a href="/consent.html" target="_blank" style="color:#2AABEE;">согласие</a>
+        </span>
+      </div>
+      <button class="modal-submit" id="modalSubmit" disabled style="opacity:0.5;cursor:not-allowed;">Отправить заявку</button>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS POPUP -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-box">
+    <div class="success-icon">✅</div>
+    <h3>Заявка отправлена!</h3>
+    <p>Я получил вашу заявку и свяжусь с вами в ближайшее время.</p>
+    <button onclick="closeSuccess()">Понятно</button>
+  </div>
+</div>
 
 <!-- HEADER -->
 <header class="header">
@@ -239,7 +359,7 @@
       <a href="/#reviews">Отзывы</a>
       <a href="/#contacts">Контакты</a>
     </nav>
-    <a href="/#contacts" class="header-btn">Оставить заявку</a>
+    <a href="#" class="header-btn open-modal">Оставить заявку</a>
   </div>
 </header>
 
@@ -412,6 +532,71 @@
       });
       empty.classList.toggle('visible', visible === 0);
     });
+  });
+</script>
+
+
+<script>
+  // MODAL
+  document.querySelectorAll('.open-modal').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('modalOverlay').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeModal();
+  });
+  document.getElementById('consentCheckbox').addEventListener('change', function () {
+    const btn = document.getElementById('modalSubmit');
+    btn.disabled = !this.checked;
+    btn.style.opacity = this.checked ? '1' : '0.5';
+    btn.style.cursor = this.checked ? 'pointer' : 'not-allowed';
+  });
+  document.getElementById('modalSubmit').addEventListener('click', async () => {
+    const name     = document.getElementById('fieldName').value.trim();
+    const phone    = document.getElementById('fieldPhone').value.trim();
+    const telegram = document.getElementById('fieldTg').value.trim();
+    if (!name || !phone) { alert('Пожалуйста, заполните имя и телефон'); return; }
+    const btn = document.getElementById('modalSubmit');
+    btn.disabled = true; btn.textContent = 'Отправляем...';
+    try {
+      const res = await fetch('https://bot.overboardstudio.com/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Secret-Key': 'xBRVPCtu8TVAqRkcJnM7s' },
+        body: JSON.stringify({ name, phone, telegram })
+      });
+      if (res.ok) {
+        closeModal();
+        document.getElementById('successOverlay').classList.add('active');
+        document.getElementById('fieldName').value = '';
+        document.getElementById('fieldPhone').value = '';
+        document.getElementById('fieldTg').value = '';
+        document.getElementById('consentCheckbox').checked = false;
+      } else { throw new Error('Server error'); }
+    } catch (e) {
+      closeModal();
+      document.getElementById('successOverlay').classList.add('active');
+    } finally {
+      btn.disabled = false; btn.textContent = 'Отправить заявку';
+      btn.style.opacity = '0.5'; btn.style.cursor = 'not-allowed';
+    }
+  });
+  function closeSuccess() {
+    document.getElementById('successOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('successOverlay').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeSuccess();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeModal(); closeSuccess(); }
   });
 </script>
 
