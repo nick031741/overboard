@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page Checklist 2026: 15 Elements Every Converting Page Must Have — Overboard Studio</title>
+  <meta name="description" content="Check your landing page against 15 essential elements. First screen, trust signals, persuasion structure, technical requirements — what every converting page needs.">
+
+  <link rel="canonical" href="https://overboardstudio.com/en/blog/landing-checklist.html">
+  <link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog/landing-checklist.html">
+  <link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog/landing-checklist.html">
+
+  <meta property="og:title" content="Landing Page Checklist 2026: 15 Elements Every Converting Page Must Have">
+  <meta property="og:description" content="Check your landing page against 15 essential elements. What every converting site needs — broken down point by point.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://overboardstudio.com/en/blog/landing-checklist.html">
+  <meta property="og:image" content="https://overboardstudio.com/img/logo.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Overboard Studio">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#17212b">
+
+  <!-- Schema.org: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Landing Page Checklist 2026: 15 Elements Every Converting Page Must Have",
+    "description": "Check your landing page against 15 essential elements. First screen, trust signals, persuasion structure, technical requirements.",
+    "author": { "@type": "Organization", "name": "Overboard Studio", "url": "https://overboardstudio.com" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Overboard Studio",
+      "logo": { "@type": "ImageObject", "url": "https://overboardstudio.com/img/logo.png" }
+    },
+    "datePublished": "2026-07-01",
+    "dateModified": "2026-07-01",
+    "url": "https://overboardstudio.com/en/blog/landing-checklist.html"
+  }
+  </script>
+
+  <!-- Schema.org: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How many blocks should a landing page have?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There's no universal number. A landing page should have exactly as many blocks as needed to answer all questions and address all objections. A simple product might need 5–7 blocks; a complex one may need 10–15."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the most important element on a landing page?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The hero section — the first screen. If a visitor doesn't understand within 3–5 seconds what you offer and why they need it, they'll leave. The headline, subheadline, and CTA button on the first screen drive 80% of conversions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do landing pages need testimonials?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, absolutely. Testimonials are the cheapest way to build trust. Three real reviews with names and photos outperform twenty anonymous ones. Screenshots of real conversations work better than plain text blocks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How fast should a landing page load?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Under 3 seconds on mobile. According to Google, every additional second of load time reduces conversions by 7–12%. You can check your speed for free with Google PageSpeed Insights."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many CTA buttons should a landing page have?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "One target action, multiple buttons. All buttons should lead to the same action — a lead form, a call, or a purchase. Multiple competing CTAs (buy / subscribe / download) on one page reduce conversion rates."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="../../favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    .header-btn {
+      background: #229ed9 !important;
+      color: #fff !important;
+      padding: 10px 20px !important;
+      border-radius: 50px !important;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      line-height: 1.4 !important;
+      text-decoration: none !important;
+      white-space: nowrap !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      flex-shrink: 0 !important;
+      margin-left: auto !important;
+    }
+    .header-btn:hover { background: #1d8cc7 !important; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.65); z-index: 1000;
+      align-items: center; justify-content: center; padding: 16px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: #1e2d3d; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 40px 36px; width: 100%; max-width: 460px;
+      position: relative; box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 20px; background: none; border: none;
+      color: rgba(255,255,255,0.5); font-size: 24px; cursor: pointer; line-height: 1; transition: color 0.2s;
+    }
+    .modal-close:hover { color: #fff; }
+    .modal h2 { font-size: 22px; font-weight: 700; color: #fff; margin: 0 0 8px; }
+    .modal p.modal-sub { font-size: 14px; color: rgba(255,255,255,0.55); margin: 0 0 28px; }
+    .modal-form { display: flex; flex-direction: column; gap: 14px; }
+    .modal-form label { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 4px; display: block; }
+    .modal-form input[type="text"], .modal-form input[type="tel"] {
+      width: 100%; box-sizing: border-box; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 12px 14px;
+      color: #fff; font-size: 15px; font-family: inherit; outline: none; transition: border-color 0.2s;
+    }
+    .modal-form input::placeholder { color: rgba(255,255,255,0.3); }
+    .modal-form input:focus { border-color: #2AABEE; }
+    .modal-submit {
+      margin-top: 6px; background: #2AABEE; color: #fff; border: none;
+      border-radius: 10px; padding: 14px; font-size: 16px; font-weight: 600;
+      font-family: inherit; cursor: pointer; transition: background 0.2s, transform 0.15s; width: 100%;
+    }
+    .modal-submit:hover:not(:disabled) { background: #1e9bd8; transform: translateY(-1px); }
+    .success-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65);
+      z-index: 1100; align-items: center; justify-content: center; padding: 16px;
+    }
+    .success-overlay.active { display: flex; }
+    .success-box {
+      background: #1e2d3d; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 40px 36px; width: 100%; max-width: 400px;
+      text-align: center; box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+    .success-icon { font-size: 48px; margin-bottom: 16px; }
+    .success-box h3 { color: #fff; font-size: 20px; margin: 0 0 10px; }
+    .success-box p { color: rgba(255,255,255,0.55); font-size: 14px; margin: 0 0 24px; }
+    .success-box button {
+      background: #2AABEE; color: #fff; border: none; border-radius: 10px;
+      padding: 12px 32px; font-size: 15px; font-weight: 600; font-family: inherit;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .success-box button:hover { background: #1e9bd8; }
+
+    .article-hero { padding: 130px 20px 0; max-width: 760px; margin: 0 auto; }
+    .article-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 0; }
+    .article-meta span { display: flex; align-items: center; gap: 5px; }
+    .article-hero-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+    .article-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .article-back:hover { color: #fff; }
+    .article-cat { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 999px; background: rgba(76,175,125,0.15); color: #4caf7d; font-size: 12px; font-weight: 600; }
+    .article-title { font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; color: #fff; margin-bottom: 16px; }
+    .article-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 24px 0 0; }
+
+    .article-body { max-width: 760px; margin: 0 auto; padding: 48px 20px 80px; }
+    .article-body h2 { font-size: 24px; font-weight: 700; color: #fff; margin: 48px 0 16px; line-height: 1.3; }
+    .article-body h3 { font-size: 18px; font-weight: 600; color: rgba(255,255,255,0.9); margin: 32px 0 12px; }
+    .article-body p { font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.65); margin-bottom: 20px; }
+    .article-body ul { padding-left: 24px; margin-bottom: 20px; }
+    .article-body li { font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.65); margin-bottom: 8px; }
+    .article-body strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+    .article-body a { color: #229ed9; text-decoration: none; }
+    .article-body a:hover { text-decoration: underline; }
+
+    .callout {
+      background: rgba(34,158,217,0.08); border: 1px solid rgba(34,158,217,0.2);
+      border-left: 3px solid #229ed9; border-radius: 0 12px 12px 0; padding: 20px 24px; margin: 28px 0;
+    }
+    .callout p { margin: 0; color: rgba(255,255,255,0.75); }
+    .callout strong { color: #229ed9; }
+    .callout.green { background: rgba(76,175,125,0.08); border-color: rgba(76,175,125,0.25); border-left-color: #4caf7d; }
+    .callout.green strong { color: #4caf7d; }
+
+    /* Checklist items */
+    .checklist { display: flex; flex-direction: column; gap: 16px; margin: 24px 0 32px; }
+    .check-item {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; padding: 20px 24px; display: flex; gap: 16px; align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+    .check-item:hover { border-color: rgba(255,255,255,0.15); }
+    .check-num {
+      font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.05); border-radius: 6px; padding: 4px 8px;
+      flex-shrink: 0; margin-top: 2px; letter-spacing: 0.04em;
+    }
+    .check-body { flex: 1; }
+    .check-title { font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 6px; }
+    .check-desc { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.5); margin: 0; }
+    .check-bad { font-size: 12px; color: #e06c75; margin-top: 8px; display: flex; gap: 6px; align-items: flex-start; }
+
+    /* Summary table */
+    .check-table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 14px; }
+    .check-table th {
+      background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.7); font-weight: 600;
+      padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .check-table td { padding: 12px 16px; color: rgba(255,255,255,0.6); border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: middle; }
+    .check-table tr:last-child td { border-bottom: none; }
+    .check-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .check-table .cat { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.25); padding: 14px 16px 6px; background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 10px; margin: 24px 0 32px; }
+    .faq-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; }
+    .faq-question {
+      width: 100%; background: none; border: none; padding: 18px 20px;
+      text-align: left; font-family: inherit; font-size: 15px; font-weight: 600;
+      color: rgba(255,255,255,0.85); cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    }
+    .faq-question:hover { color: #fff; }
+    .faq-icon { color: #229ed9; font-size: 20px; font-weight: 300; flex-shrink: 0; transition: transform 0.25s; line-height: 1; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.25s ease; padding: 0 20px; font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5); }
+    .faq-item.open .faq-answer { max-height: 400px; padding: 0 20px 18px; }
+
+    .article-cta { background: rgba(34,158,217,0.08); border: 1px solid rgba(34,158,217,0.2); border-radius: 20px; padding: 40px; text-align: center; margin-top: 56px; }
+    .article-cta h3 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .article-cta p { font-size: 15px; color: rgba(255,255,255,0.55); margin-bottom: 28px; }
+    .article-cta-btn { display: inline-block; background: #229ed9; color: #fff !important; padding: 14px 36px; border-radius: 50px; font-size: 15px; font-weight: 600; text-decoration: none !important; transition: background 0.2s; }
+    .article-cta-btn:hover { background: #1d8cc7; }
+    .article-cta-sub { margin-top: 12px; font-size: 12px; color: rgba(255,255,255,0.3); }
+
+    @media (max-width: 600px) {
+      .article-hero { padding-top: 100px; }
+      .check-table { font-size: 13px; }
+      .check-table th, .check-table td { padding: 10px 12px; }
+      .article-cta { padding: 28px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- MODAL FORM -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">×</button>
+    <h2>Start a project</h2>
+    <p class="modal-sub">Fill in the form and I'll get back to you shortly</p>
+    <div class="modal-form">
+      <div><label>Your name</label><input type="text" id="fieldName" placeholder="John Smith"></div>
+      <div><label>Phone</label><input type="tel" id="fieldPhone" placeholder="+1 234 567 8900"></div>
+      <div><label>Telegram</label><input type="text" id="fieldTg" placeholder="@username"></div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:13px;color:rgba(255,255,255,0.6);margin-top:6px;padding:0 2px;">
+        <input type="checkbox" id="consentCheckbox" style="margin-top:3px;flex-shrink:0;cursor:pointer;">
+        <span style="line-height:1.5;">I consent to the processing of my personal data and accept the
+          <a href="/en/privacy.html" target="_blank" style="color:#2AABEE;">Privacy Policy</a> and
+          <a href="/en/consent.html" target="_blank" style="color:#2AABEE;">Consent</a>
+        </span>
+      </div>
+      <button class="modal-submit" id="modalSubmit" disabled style="opacity:0.5;cursor:not-allowed;">Send request</button>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS POPUP -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-box">
+    <div class="success-icon">✅</div>
+    <h3>Request sent!</h3>
+    <p>I've received your request and will get back to you shortly.</p>
+    <button onclick="closeSuccess()">Got it</button>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <a href="/en/" class="logo" style="text-decoration:none;color:#fff;">
+      <img src="../../img/logo.png" alt="OB">
+      <span class="logo-text">Overboard Studio</span>
+    </a>
+    <div class="lang-switch">
+      <a href="/blog/landing-checklist.html" class="lang-link">RU</a>
+      <a href="/en/blog/landing-checklist.html" class="lang-link active">EN</a>
+    </div>
+    <nav class="nav">
+      <a href="/en/#services">Services</a>
+      <a href="/en/#process">Process</a>
+      <a href="/en/#cases">Cases</a>
+      <a href="/en/#reviews">Reviews</a>
+      <a href="/en/blog.html" style="color:#229ed9;opacity:1;">Blog</a>
+      <a href="/en/#contacts">Contacts</a>
+    </nav>
+    <a href="#" class="header-btn open-modal">Get a quote</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="article-hero">
+  <div class="article-hero-top">
+    <a href="/en/blog.html" class="article-back">← All articles</a>
+    <div class="article-cat">🌐 Landing pages</div>
+  </div>
+  <h1 class="article-title">Landing Page Checklist: 15 Elements Without Which Your Page Won't Convert</h1>
+  <div class="article-meta">
+    <span>📅 July 2026</span>
+    <span>⏱ 7 minutes</span>
+    <span>✍️ Overboard Studio</span>
+  </div>
+  <div class="article-divider"></div>
+</div>
+
+<!-- CONTENT -->
+<article class="article-body">
+
+  <p>Most landing pages don't convert — not because they look bad, but because they're missing fundamental elements that guide visitors toward a decision. Design is packaging. Structure is the sale.</p>
+
+  <p>Here are 15 elements every converting landing page needs. Go through each one and check your page right now.</p>
+
+  <div class="callout">
+    <p><strong>The short version:</strong> a landing page converts when a visitor understands what you offer within 5 seconds, trusts you within 30 seconds, and gets answers to all their objections within 2 minutes.</p>
+  </div>
+
+  <!-- BLOCK 1 -->
+  <h2>Block 1. Hero Section — Make It Clear in 5 Seconds</h2>
+  <p>The hero section is what visitors see before scrolling. You have 3–5 seconds to keep them. If they don't understand what you're selling and why they need it — they're gone. For good.</p>
+
+  <div class="checklist">
+    <div class="check-item">
+      <div class="check-num">01</div>
+      <div class="check-body">
+        <div class="check-title">A clear headline with a specific benefit</div>
+        <p class="check-desc">The headline should answer "what will I get?" — not "who are you?". Not "Web Studio #1", but "A converting landing page in 7 days — from kickoff to first leads."</p>
+        <div class="check-bad">✗ Bad: "We build websites for your business" — too vague, no tangible benefit</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-num">02</div>
+      <div class="check-body">
+        <div class="check-title">A subheadline that expands the offer</div>
+        <p class="check-desc">One or two sentences that clarify the headline: who it's for, what exactly you deliver, what result they get. Readable in 5–7 seconds and answers the first obvious questions.</p>
+        <div class="check-bad">✗ Bad: a subheadline that just rephrases the headline in different words — wasted prime real estate</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-num">03</div>
+      <div class="check-body">
+        <div class="check-title">A CTA button above the fold</div>
+        <p class="check-desc">A button with a specific action — not "Learn more", but "Get a free estimate", "Book a call", "Message on Telegram". Must be visible without scrolling on any device.</p>
+        <div class="check-bad">✗ Bad: "Learn more" — they came to learn more; give them a next step</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-num">04</div>
+      <div class="check-body">
+        <div class="check-title">A visual that confirms your product</div>
+        <p class="check-desc">A product photo, interface screenshot, or result illustration — something visual that instantly explains what you do. The brain processes images 60,000 times faster than text.</p>
+        <div class="check-bad">✗ Bad: stock photos of people in suits — they add no trust and explain nothing about your product</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 2 -->
+  <h2>Block 2. Trust — Why They Should Believe You</h2>
+  <p>The visitor doesn't know you. They landed from search or an ad, and the first thought is "what if they scam me?" Trust blocks remove that fear.</p>
+
+  <div class="checklist">
+    <div class="check-item">
+      <div class="check-num">05</div>
+      <div class="check-body">
+        <div class="check-title">Real testimonials with names and proof</div>
+        <p class="check-desc">Three real reviews with a name, role, and ideally a photo outperform twenty anonymous ones. Even better — screenshots of real conversations: they're harder to fake and feel genuine.</p>
+        <div class="check-bad">✗ Bad: "Anna K., New York" with no context — nobody takes nameless reviews seriously</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-num">06</div>
+      <div class="check-body">
+        <div class="check-title">Numbers and concrete results</div>
+        <p class="check-desc">"5+ years in business", "47 projects launched", "7-day delivery". Specific numbers read as facts. Vague claims like "extensive experience" read as marketing.</p>
+        <div class="check-bad">✗ Bad: "Years of experience in the field" — how many? Why not say the number?</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-num">07</div>
+      <div class="check-body">
+        <div class="check-title">Portfolio or examples of your work</div>
+        <p class="check-desc">Show what you've already built. Even 3–5 projects with a brief description — "landing page for a gym, 4% conversion rate" — convince better than any amount of copy.</p>
+        <div class="check-bad">✗ Bad: a "Our work" section with placeholder images — better to skip it than show empty cards</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 3 -->
+  <h2>Block 3. Persuasion Structure — From Pain to Solution</h2>
+  <p>People don't buy a product — they buy a solution to their problem. A landing page must first show that you understand their pain, then offer the solution, and only then talk about price.</p>
+
+  <div class="checklist">
+    <div class="check-item">
+      <div class="check-num">08</div>
+      <div class="check-body">
+        <div class="check-title">A pain points block in the client's language</div>
+        <p class="check-desc">Describe the problems your product solves using the client's own words, not yours. If they read it and think "that's exactly me" — they'll keep reading. Usually 3–5 short statements.</p>
+        <div class="check-bad">✗ Bad: jumping straight to service descriptions — the client hasn't felt understood yet</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-num">09</div>
+      <div class="check-body">
+        <div class="check-title">A clear description of exactly what you deliver</div>
+        <p class="check-desc">A services or product block — specific and without filler. What's included, what's not, what the result is. The visitor shouldn't have to guess whether they'll get what they want.</p>
+        <div class="check-bad">✗ Bad: a list of 20 bullet points in small font — information overload kills conversion</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-num">10</div>
+      <div class="check-body">
+        <div class="check-title">Why you — not your competitors</div>
+        <p class="check-desc">Not "quality", "experience", and "individual approach" — everyone says that. Real differentiators: "hand-coded, no templates", "delivered in 7 days", "support after launch". What actually sets you apart.</p>
+        <div class="check-bad">✗ Bad: "professional team" and "quality guaranteed" — these phrases have lost all meaning</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-num">11</div>
+      <div class="check-body">
+        <div class="check-title">Objection handling or FAQ block</div>
+        <p class="check-desc">Every visitor has 3–5 reasons not to buy right now: "too expensive", "takes too long", "what if it doesn't fit", "don't understand how it works". Answer them before they leave to "think about it".</p>
+        <div class="check-bad">✗ Bad: ignoring objections and hoping they'll "figure it out" — they won't, they'll just leave</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-num">12</div>
+      <div class="check-body">
+        <div class="check-title">A clear step-by-step process</div>
+        <p class="check-desc">Show how everything works: step 1, step 2, step 3. Clients fear the unknown. When they see a clear process — the fear disappears and it becomes easier to make a decision.</p>
+        <div class="check-bad">✗ Bad: "Contact us and we'll explain everything" — that's not a process, that's an evasion</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 4 -->
+  <h2>Block 4. Technical Requirements — Without These, Everything Else Is Pointless</h2>
+  <p>You can write perfect copy and create a beautiful design — but if the page takes 8 seconds to load or is broken on mobile, there will be no conversions. Technical issues kill sales silently.</p>
+
+  <div class="checklist">
+    <div class="check-item">
+      <div class="check-num">13</div>
+      <div class="check-body">
+        <div class="check-title">Mobile responsiveness</div>
+        <p class="check-desc">Over 60% of traffic today comes from mobile devices. If text is tiny, buttons don't work, or blocks are misaligned on phone — you're losing more than half your potential clients. Check with browser DevTools.</p>
+        <div class="check-bad">✗ Bad: "we'll do a mobile version later" — later never comes, but traffic is leaving now</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-num">14</div>
+      <div class="check-body">
+        <div class="check-title">Load time under 3 seconds</div>
+        <p class="check-desc">Every additional second of load time reduces conversions by 7–12% according to Google. Check with <strong>PageSpeed Insights</strong>. The main culprits: unoptimized images and unnecessary scripts.</p>
+        <div class="check-bad">✗ Bad: a hero image weighing 5MB — compress it to 200–400KB in WebP and speed will double</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-num">15</div>
+      <div class="check-body">
+        <div class="check-title">Basic SEO optimization</div>
+        <p class="check-desc">Title, meta description, H1 — filled in and contain relevant keywords. Without this, your landing page is invisible to search engines and all traffic has to be paid for. 30 minutes of work, maximum payoff.</p>
+        <div class="check-bad">✗ Bad: title "Home" or an empty description — that's literally throwing away organic traffic</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY TABLE -->
+  <h2>Full Checklist: Review Your Page</h2>
+  <p>Go through the table and mark what's already on your site and what still needs to be added.</p>
+
+  <div style="overflow-x:auto; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+    <table class="check-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Element</th>
+          <th>Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="3" class="cat">Hero section</td></tr>
+        <tr><td>☐</td><td>Clear headline with a specific benefit</td><td style="color:#e06c75;font-weight:600;">Critical</td></tr>
+        <tr><td>☐</td><td>Subheadline that expands the offer</td><td style="color:#e06c75;font-weight:600;">Critical</td></tr>
+        <tr><td>☐</td><td>CTA button with a specific action above the fold</td><td style="color:#e06c75;font-weight:600;">Critical</td></tr>
+        <tr><td>☐</td><td>Visual that confirms your product</td><td style="color:#229ed9;font-weight:600;">Important</td></tr>
+        <tr><td colspan="3" class="cat">Trust</td></tr>
+        <tr><td>☐</td><td>Real testimonials with names and proof</td><td style="color:#e06c75;font-weight:600;">Critical</td></tr>
+        <tr><td>☐</td><td>Numbers and concrete results</td><td style="color:#229ed9;font-weight:600;">Important</td></tr>
+        <tr><td>☐</td><td>Portfolio or examples of your work</td><td style="color:#229ed9;font-weight:600;">Important</td></tr>
+        <tr><td colspan="3" class="cat">Persuasion structure</td></tr>
+        <tr><td>☐</td><td>Pain points block in the client's language</td><td style="color:#229ed9;font-weight:600;">Important</td></tr>
+        <tr><td>☐</td><td>Clear description of what you deliver</td><td style="color:#e06c75;font-weight:600;">Critical</td></tr>
+        <tr><td>☐</td><td>Why you — not your competitors</td><td style="color:#229ed9;font-weight:600;">Important</td></tr>
+        <tr><td>☐</td><td>FAQ — answers to main objections</td><td style="color:#229ed9;font-weight:600;">Important</td></tr>
+        <tr><td>☐</td><td>Clear step-by-step process</td><td style="color:#4caf7d;font-weight:600;">Recommended</td></tr>
+        <tr><td colspan="3" class="cat">Technical requirements</td></tr>
+        <tr><td>☐</td><td>Mobile responsiveness</td><td style="color:#e06c75;font-weight:600;">Critical</td></tr>
+        <tr><td>☐</td><td>Load time under 3 seconds</td><td style="color:#e06c75;font-weight:600;">Critical</td></tr>
+        <tr><td>☐</td><td>Basic SEO: title, H1, meta description</td><td style="color:#229ed9;font-weight:600;">Important</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout green">
+    <p><strong>Score:</strong> 12–15 checked — your page is ready to convert. 8–11 — there are serious gaps hurting your results. Under 8 — the page needs a rebuild.</p>
+  </div>
+
+  <!-- FAQ -->
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question">How many blocks should a landing page have?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">There's no universal number. A landing page should have exactly as many blocks as needed to answer all questions and address all objections. A simple product might need 5–7 blocks; a complex one may need 10–15.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">What is the most important element on a landing page?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">The hero section. If a visitor doesn't understand within 3–5 seconds what you offer and why they need it, they'll leave. The headline, subheadline, and CTA button on the first screen drive 80% of conversions.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Do landing pages need testimonials?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">Yes, absolutely. Testimonials are the cheapest way to build trust. Three real reviews with names and photos outperform twenty anonymous ones. Screenshots of real conversations work better than plain text blocks.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">How fast should a landing page load?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">Under 3 seconds on mobile. According to Google, every additional second of load time reduces conversions by 7–12%. You can check your speed for free with Google PageSpeed Insights.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">How many CTA buttons should a landing page have?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">One target action, multiple buttons. All buttons should lead to the same action — a lead form, a call, or a purchase. Multiple competing CTAs on one page reduce conversion rates.</div>
+    </div>
+  </div>
+
+  <div class="article-cta">
+    <h3>Need a landing page that ticks all 15 boxes?</h3>
+    <p>We build converting landing pages from scratch — right structure, mobile-first, SEO-ready. Delivered in 7–10 days.</p>
+    <a href="https://t.me/overboardbot" target="_blank" rel="noopener" class="article-cta-btn">Discuss your project →</a>
+    <div class="article-cta-sub">Reply within an hour · No commitment</div>
+  </div>
+
+</article>
+
+<!-- FOOTER -->
+<footer class="footer" id="contacts">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="../../img/logo.png" alt="Overboard Studio logo" class="footer-logo-img">
+        <span class="logo-text">Overboard Studio</span>
+      </div>
+      <p class="footer-description">Custom Telegram bot and landing page development for businesses. Automation, integrations, and support.</p>
+    </div>
+    <div class="footer-nav">
+      <strong>Navigation</strong>
+      <a href="/en/#services">Services</a>
+      <a href="/en/#cases">Cases</a>
+      <a href="/en/#reviews">Reviews</a>
+      <a href="/en/blog.html">Blog</a>
+      <a href="/en/#faq">FAQ</a>
+    </div>
+    <div class="footer-contacts">
+      <strong>Contacts</strong>
+      <a href="https://t.me/overboardbot" target="_blank" rel="noopener">Telegram</a>
+      <a href="mailto:nickpremium1@proton.me">nickpremium1@proton.me</a>
+      <a href="/en/privacy.html" target="_blank" class="footer-policy">Privacy Policy</a>
+      <span class="footer-copy">© 2026 Overboard Studio</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/84357565416" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <img src="../../img/whatsapp-logo.png" alt="WhatsApp">
+</a>
+<a href="https://t.me/overboardbot" class="telegram-float" target="_blank" rel="noopener" aria-label="Telegram">
+  <img src="../../img/telegram.png" alt="Telegram">
+</a>
+<style>
+  .telegram-float { position:fixed; bottom:90px; right:24px; width:52px; height:52px; background:#2AABEE; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(0,0,0,0.3); z-index:999; transition:transform 0.2s; }
+  .telegram-float:hover { transform:translateY(-3px); }
+  .telegram-float img { width:28px; height:28px; object-fit:contain; }
+</style>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+  document.querySelectorAll('.open-modal').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+  document.getElementById('consentCheckbox').addEventListener('change', function () {
+    const btn = document.getElementById('modalSubmit');
+    btn.disabled = !this.checked;
+    btn.style.opacity = this.checked ? '1' : '0.5';
+    btn.style.cursor = this.checked ? 'pointer' : 'not-allowed';
+  });
+  document.getElementById('modalSubmit').addEventListener('click', async () => {
+    const name = document.getElementById('fieldName').value.trim();
+    const phone = document.getElementById('fieldPhone').value.trim();
+    const telegram = document.getElementById('fieldTg').value.trim();
+    if (!name || !phone) { alert('Please fill in your name and phone number'); return; }
+    const btn = document.getElementById('modalSubmit');
+    btn.disabled = true; btn.textContent = 'Sending...';
+    try {
+      const res = await fetch('https://bot.overboardstudio.com/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Secret-Key': 'xBRVPCtu8TVAqRkcJnM7s' },
+        body: JSON.stringify({ name, phone, telegram })
+      });
+      if (res.ok) {
+        closeModal();
+        document.getElementById('successOverlay').classList.add('active');
+        document.getElementById('fieldName').value = '';
+        document.getElementById('fieldPhone').value = '';
+        document.getElementById('fieldTg').value = '';
+        document.getElementById('consentCheckbox').checked = false;
+      } else { throw new Error('Server error'); }
+    } catch (e) {
+      closeModal();
+      document.getElementById('successOverlay').classList.add('active');
+    } finally {
+      btn.disabled = false; btn.textContent = 'Send request';
+      btn.style.opacity = '0.5'; btn.style.cursor = 'not-allowed';
+    }
+  });
+  function closeSuccess() {
+    document.getElementById('successOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('successOverlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeSuccess(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeSuccess(); } });
+</script>
+
+</body>
+</html>

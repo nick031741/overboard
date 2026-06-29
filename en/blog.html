@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Overboard Studio</title>
+  <meta name="description" content="Articles about Telegram bot and landing page development for business. Tips, case studies, and breakdowns from Overboard Studio.">
+
+  <link rel="canonical" href="https://overboardstudio.com/en/blog.html">
+  <link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog.html">
+  <link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog.html">
+
+  <meta property="og:title" content="Blog — Overboard Studio">
+  <meta property="og:description" content="Articles about Telegram bot and landing page development for business.">
+  <meta property="og:image" content="https://overboardstudio.com/img/logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://overboardstudio.com/en/blog.html">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#17212b">
+
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    /* ── FIX HEADER BUTTON ── */
+    .header-btn {
+      padding: 10px 20px !important;
+      border-radius: 999px !important;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
+      line-height: 1.4 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+    }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: #1e2d3d;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 40px 36px;
+      width: 100%;
+      max-width: 460px;
+      position: relative;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 20px;
+      background: none; border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 24px; cursor: pointer;
+      line-height: 1; transition: color 0.2s;
+    }
+    .modal-close:hover { color: #fff; }
+    .modal h2 { font-size: 22px; font-weight: 700; color: #fff; margin: 0 0 8px; }
+    .modal p.modal-sub { font-size: 14px; color: rgba(255,255,255,0.55); margin: 0 0 28px; }
+    .modal-form { display: flex; flex-direction: column; gap: 14px; }
+    .modal-form label { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 4px; display: block; }
+    .modal-form input[type="text"],
+    .modal-form input[type="tel"] {
+      width: 100%; box-sizing: border-box;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px; padding: 12px 14px;
+      color: #fff; font-size: 15px; font-family: inherit;
+      outline: none; transition: border-color 0.2s;
+    }
+    .modal-form input::placeholder { color: rgba(255,255,255,0.3); }
+    .modal-form input:focus { border-color: #2AABEE; }
+    .modal-submit {
+      margin-top: 6px; background: #2AABEE; color: #fff;
+      border: none; border-radius: 10px; padding: 14px;
+      font-size: 16px; font-weight: 600; font-family: inherit;
+      cursor: pointer; transition: background 0.2s, transform 0.15s; width: 100%;
+    }
+    .modal-submit:hover:not(:disabled) { background: #1e9bd8; transform: translateY(-1px); }
+    .success-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 1100; align-items: center;
+      justify-content: center; padding: 16px;
+    }
+    .success-overlay.active { display: flex; }
+    .success-box {
+      background: #1e2d3d;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 40px 36px;
+      width: 100%; max-width: 400px;
+      text-align: center; box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+    .success-icon { font-size: 48px; margin-bottom: 16px; }
+    .success-box h3 { color: #fff; font-size: 20px; margin: 0 0 10px; }
+    .success-box p { color: rgba(255,255,255,0.55); font-size: 14px; margin: 0 0 24px; }
+    .success-box button {
+      background: #2AABEE; color: #fff; border: none;
+      border-radius: 10px; padding: 12px 32px;
+      font-size: 15px; font-weight: 600; font-family: inherit;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .success-box button:hover { background: #1e9bd8; }
+
+    /* ── BLOG PAGE ── */
+    .blog-hero {
+      padding: 140px 20px 60px;
+      text-align: center;
+    }
+    .blog-hero-inner { max-width: 680px; margin: 0 auto; }
+    .blog-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(34,158,217,0.15);
+      color: #229ed9;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .blog-hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .blog-hero h1 span { color: #229ed9; }
+    .blog-hero p { font-size: 17px; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+    /* ── FILTERS ── */
+    .blog-filters {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0 20px 48px;
+    }
+    .blog-filter-btn {
+      padding: 8px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.65);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .blog-filter-btn:hover { border-color: rgba(34,158,217,0.5); color: #fff; }
+    .blog-filter-btn.active { background: #229ed9; border-color: #229ed9; color: #fff; }
+
+    /* ── GRID ── */
+    .blog-section { padding: 0 20px 100px; }
+    .blog-inner { max-width: 1100px; margin: 0 auto; }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    /* ── CARD ── */
+    .blog-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      text-decoration: none;
+    }
+    .blog-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(34,158,217,0.35);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.4);
+    }
+    .blog-card-cover {
+      height: 200px;
+      background: linear-gradient(135deg, rgba(34,158,217,0.2), rgba(34,158,217,0.05));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 56px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-card-cover img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .blog-card-cat {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .cat-bot    { background: rgba(34,158,217,0.25); color: #229ed9; border: 1px solid rgba(34,158,217,0.3); }
+    .cat-landing { background: rgba(99,200,130,0.2); color: #63c882; border: 1px solid rgba(99,200,130,0.3); }
+    .cat-business { background: rgba(255,183,77,0.2); color: #ffb74d; border: 1px solid rgba(255,183,77,0.3); }
+
+    .blog-card-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+    .blog-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .blog-card-meta span { display: flex; align-items: center; gap: 4px; }
+    .blog-card-title { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.4; margin-bottom: 10px; }
+    .blog-card-excerpt { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.65; flex: 1; margin-bottom: 20px; }
+    .blog-card-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #229ed9; transition: gap 0.2s; }
+    .blog-card:hover .blog-card-link { gap: 10px; }
+
+    /* ── EMPTY ── */
+    .blog-empty {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 60px 20px;
+      color: rgba(255,255,255,0.35);
+      text-align: center;
+      font-size: 15px;
+    }
+    .blog-empty span { font-size: 40px; }
+    .blog-empty.visible { display: flex; }
+
+    /* ── SOON BANNER ── */
+    .blog-soon { max-width: 1100px; margin: 40px auto 0; padding: 0 20px; }
+    .blog-soon-inner {
+      background: rgba(34,158,217,0.06);
+      border: 1px solid rgba(34,158,217,0.15);
+      border-radius: 16px;
+      padding: 32px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .blog-soon-text h3 { font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+    .blog-soon-text p { font-size: 14px; color: rgba(255,255,255,0.5); }
+    .blog-soon-btn {
+      background: #229ed9;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 28px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+      white-space: nowrap;
+      font-family: 'Inter', sans-serif;
+    }
+    .blog-soon-btn:hover { background: #1d8cc7; }
+
+    @media (max-width: 600px) {
+      .blog-hero { padding-top: 110px; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .blog-soon-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- MODAL FORM -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">×</button>
+    <h2>Start a project</h2>
+    <p class="modal-sub">Fill in the form and I'll get back to you shortly</p>
+    <div class="modal-form">
+      <div>
+        <label>Your name</label>
+        <input type="text" id="fieldName" placeholder="John Smith">
+      </div>
+      <div>
+        <label>Phone</label>
+        <input type="tel" id="fieldPhone" placeholder="+1 234 567 8900">
+      </div>
+      <div>
+        <label>Telegram</label>
+        <input type="text" id="fieldTg" placeholder="@username">
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:13px;color:rgba(255,255,255,0.6);margin-top:6px;padding:0 2px;">
+        <input type="checkbox" id="consentCheckbox" style="margin-top:3px;flex-shrink:0;cursor:pointer;">
+        <span style="line-height:1.5;">I consent to the processing of my personal data and accept the
+          <a href="/en/privacy.html" target="_blank" style="color:#2AABEE;">Privacy Policy</a> and
+          <a href="/en/consent.html" target="_blank" style="color:#2AABEE;">Consent</a>
+        </span>
+      </div>
+      <button class="modal-submit" id="modalSubmit" disabled style="opacity:0.5;cursor:not-allowed;">Send request</button>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS POPUP -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-box">
+    <div class="success-icon">✅</div>
+    <h3>Request sent!</h3>
+    <p>I've received your request and will get back to you shortly.</p>
+    <button onclick="closeSuccess()">Got it</button>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <a href="/en/" class="logo" style="text-decoration:none;color:#fff;">
+      <img src="../img/logo.png" alt="OB">
+      <span class="logo-text">Overboard Studio</span>
+    </a>
+    <div class="lang-switch">
+      <a href="/blog.html" class="lang-link">RU</a>
+      <a href="/en/blog.html" class="lang-link active">EN</a>
+    </div>
+    <nav class="nav">
+      <a href="/en/#services">Services</a>
+      <a href="/en/#process">Process</a>
+      <a href="/en/#cases">Cases</a>
+      <a href="/en/#reviews">Reviews</a>
+      <a href="/en/blog.html" style="color:#229ed9;opacity:1;">Blog</a>
+      <a href="/en/#contacts">Contacts</a>
+    </nav>
+    <a href="#" class="header-btn open-modal">Get a quote</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <div class="blog-badge">✍️ Useful materials</div>
+    <h1>Blog <span>Overboard Studio</span></h1>
+    <p>Articles about Telegram bot and landing page development — cases, tips and breakdowns for businesses that want to automate.</p>
+  </div>
+</section>
+
+<!-- FILTERS -->
+<div class="blog-filters">
+  <button class="blog-filter-btn active" data-filter="all">All articles</button>
+  <button class="blog-filter-btn" data-filter="bot">Telegram bots</button>
+  <button class="blog-filter-btn" data-filter="landing">Landing pages</button>
+  <button class="blog-filter-btn" data-filter="business">Business</button>
+</div>
+
+<!-- ARTICLES -->
+<section class="blog-section">
+  <div class="blog-inner">
+    <div class="blog-grid" id="blogGrid">
+
+      <!-- Article 1 -->
+      <a href="/en/blog/telegram-bot-cost.html" class="blog-card" data-cat="bot">
+        <div class="blog-card-cover">
+          <img src="../img/blog-bot-cost.png" alt="How much does a Telegram bot cost">
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span>📅 July 2026</span>
+            <span>⏱ 9 min</span>
+            <span class="blog-card-cat cat-bot">Telegram bots</span>
+          </div>
+          <h2 class="blog-card-title">How Much Does a Telegram Bot Cost in 2026: Real Prices from a Developer</h2>
+          <p class="blog-card-excerpt">Real price breakdown: from simple bots at $120 to AI-powered solutions. Constructor vs Python development — what to choose and why.</p>
+          <span class="blog-card-link">Read article →</span>
+        </div>
+      </a>
+
+      <!-- Article 2 -->
+      <a href="/en/blog/landing-checklist.html" class="blog-card" data-cat="landing">
+        <div class="blog-card-cover">
+          <img src="../img/landing-checklist.png" alt="Landing page checklist">
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span>📅 July 2026</span>
+            <span>⏱ 7 min</span>
+            <span class="blog-card-cat cat-landing">Landing pages</span>
+          </div>
+          <h2 class="blog-card-title">Landing Page Checklist: 15 Elements Every Converting Page Must Have</h2>
+          <p class="blog-card-excerpt">15 elements without which your landing page won't convert. Check your site against this list right now.</p>
+          <span class="blog-card-link">Read article →</span>
+        </div>
+      </a>
+
+      <!-- Article 4 -->
+      <a href="/en/blog/ai-telegram-bot.html" class="blog-card" data-cat="bot">
+        <div class="blog-card-cover">
+          <img src="../img/ai-telegram-bot.png" alt="AI Telegram bot">
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span>📅 July 2026</span>
+            <span>⏱ 8 min</span>
+            <span class="blog-card-cat cat-bot">Telegram bots</span>
+          </div>
+          <h2 class="blog-card-title">AI Telegram Bot: What It Can Do, How It Works and Why Your Business Needs It</h2>
+          <p class="blog-card-excerpt">How an AI bot differs from a regular one, what tasks it handles better, and which niches it fits. A plain-language breakdown.</p>
+          <span class="blog-card-link">Read article →</span>
+        </div>
+      </a>
+
+      <!-- Article 3 -->
+      <a href="/en/blog/bot-or-landing.html" class="blog-card" data-cat="business">
+        <div class="blog-card-cover">
+          <img src="../img/bot-or-landing.png" alt="Bot or landing page">
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span>📅 July 2026</span>
+            <span>⏱ 6 min</span>
+            <span class="blog-card-cat cat-business">Business</span>
+          </div>
+          <h2 class="blog-card-title">Bot or Landing Page: What to Choose When Starting a Business</h2>
+          <p class="blog-card-excerpt">Comparing two tools by use case, budget and launch speed. Find out which one your business actually needs.</p>
+          <span class="blog-card-link">Read article →</span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="blog-empty" id="blogEmpty">
+      <span>🔍</span>
+      <p>No articles on this topic yet</p>
+    </div>
+  </div>
+
+  <div class="blog-soon">
+    <div class="blog-soon-inner">
+      <div class="blog-soon-text">
+        <h3>New articles coming regularly</h3>
+        <p>Message me on Telegram — I'll answer any question about bots or landing pages right now.</p>
+      </div>
+      <a href="https://t.me/overboardbot" target="_blank" rel="noopener" class="blog-soon-btn">Message on Telegram →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="contacts">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="../img/logo.png" alt="Overboard Studio logo" class="footer-logo-img">
+        <span class="logo-text">Overboard Studio</span>
+      </div>
+      <p class="footer-description">Custom Telegram bot and landing page development for businesses. Automation, integrations, and support.</p>
+    </div>
+    <div class="footer-nav">
+      <strong>Navigation</strong>
+      <a href="/en/#services">Services</a>
+      <a href="/en/#cases">Cases</a>
+      <a href="/en/#reviews">Reviews</a>
+      <a href="/en/blog.html">Blog</a>
+      <a href="/en/#faq">FAQ</a>
+    </div>
+    <div class="footer-contacts">
+      <strong>Contacts</strong>
+      <a href="https://t.me/overboardbot" target="_blank" rel="noopener">Telegram</a>
+      <a href="mailto:nickpremium1@proton.me">nickpremium1@proton.me</a>
+      <a href="/en/privacy.html" target="_blank" class="footer-policy">Privacy Policy</a>
+      <span class="footer-copy">© 2026 Overboard Studio</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/84357565416" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <img src="../img/whatsapp-logo.png" alt="WhatsApp">
+</a>
+<a href="https://t.me/overboardbot" class="telegram-float" target="_blank" rel="noopener" aria-label="Telegram">
+  <img src="../img/telegram.png" alt="Telegram">
+</a>
+<style>
+  .telegram-float { position:fixed; bottom:90px; right:24px; width:52px; height:52px; background:#2AABEE; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(0,0,0,0.3); z-index:999; transition:transform 0.2s, box-shadow 0.2s; }
+  .telegram-float:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,0.4); }
+  .telegram-float img { width:28px; height:28px; object-fit:contain; }
+</style>
+
+<script>
+  // Filters
+  const filterBtns = document.querySelectorAll('.blog-filter-btn');
+  const cards = document.querySelectorAll('.blog-card');
+  const empty = document.getElementById('blogEmpty');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      let visible = 0;
+      cards.forEach(card => {
+        const show = filter === 'all' || card.dataset.cat === filter;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      empty.classList.toggle('visible', visible === 0);
+    });
+  });
+
+  // Modal
+  document.querySelectorAll('.open-modal').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('modalOverlay').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeModal();
+  });
+  document.getElementById('consentCheckbox').addEventListener('change', function () {
+    const btn = document.getElementById('modalSubmit');
+    btn.disabled = !this.checked;
+    btn.style.opacity = this.checked ? '1' : '0.5';
+    btn.style.cursor = this.checked ? 'pointer' : 'not-allowed';
+  });
+  document.getElementById('modalSubmit').addEventListener('click', async () => {
+    const name     = document.getElementById('fieldName').value.trim();
+    const phone    = document.getElementById('fieldPhone').value.trim();
+    const telegram = document.getElementById('fieldTg').value.trim();
+    if (!name || !phone) { alert('Please fill in your name and phone number'); return; }
+    const btn = document.getElementById('modalSubmit');
+    btn.disabled = true; btn.textContent = 'Sending...';
+    try {
+      const res = await fetch('https://bot.overboardstudio.com/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Secret-Key': 'xBRVPCtu8TVAqRkcJnM7s' },
+        body: JSON.stringify({ name, phone, telegram })
+      });
+      if (res.ok) {
+        closeModal();
+        document.getElementById('successOverlay').classList.add('active');
+        document.getElementById('fieldName').value = '';
+        document.getElementById('fieldPhone').value = '';
+        document.getElementById('fieldTg').value = '';
+        document.getElementById('consentCheckbox').checked = false;
+      } else { throw new Error('Server error'); }
+    } catch (e) {
+      closeModal();
+      document.getElementById('successOverlay').classList.add('active');
+    } finally {
+      btn.disabled = false; btn.textContent = 'Send request';
+      btn.style.opacity = '0.5'; btn.style.cursor = 'not-allowed';
+    }
+  });
+  function closeSuccess() {
+    document.getElementById('successOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('successOverlay').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeSuccess();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeModal(); closeSuccess(); }
+  });
+</script>
+
+</body>
+</html>

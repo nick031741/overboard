@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Telegram Bot: What It Can Do, How It Works and Why Your Business Needs It — Overboard Studio</title>
+  <meta name="description" content="What is an AI Telegram bot, how it differs from a regular bot, what tasks it handles better, and which businesses need it. A plain-language breakdown.">
+
+  <link rel="canonical" href="https://overboardstudio.com/en/blog/ai-telegram-bot.html">
+  <link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog/ai-telegram-bot.html">
+  <link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog/ai-telegram-bot.html">
+
+  <meta property="og:title" content="AI Telegram Bot: What It Can Do, How It Works and Why Your Business Needs It">
+  <meta property="og:description" content="How an AI bot differs from a regular one, what tasks it handles better, and which niches it fits. A plain-language breakdown.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://overboardstudio.com/en/blog/ai-telegram-bot.html">
+  <meta property="og:image" content="https://overboardstudio.com/img/logo.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Overboard Studio">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#17212b">
+
+  <!-- Schema.org: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Telegram Bot: What It Can Do, How It Works and Why Your Business Needs It",
+    "description": "How an AI bot differs from a regular one, what tasks it handles better, and which businesses need it.",
+    "author": { "@type": "Organization", "name": "Overboard Studio", "url": "https://overboardstudio.com" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Overboard Studio",
+      "logo": { "@type": "ImageObject", "url": "https://overboardstudio.com/img/logo.png" }
+    },
+    "datePublished": "2026-07-01",
+    "dateModified": "2026-07-01",
+    "url": "https://overboardstudio.com/en/blog/ai-telegram-bot.html"
+  }
+  </script>
+
+  <!-- Schema.org: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is an AI Telegram bot?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An AI Telegram bot is a chatbot connected to a language model (ChatGPT, Claude, etc.). Unlike a regular button-based bot, it understands free-form text, answers non-standard questions, and holds natural conversations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does an AI Telegram bot cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Development costs from $600 to $1,800 depending on the complexity of scenarios and integrations. Plus monthly API costs for the language model — typically $25–$120/month depending on conversation volume."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which language model is best for a bot?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For most business tasks, GPT-4o or Claude work well. GPT-4o is faster and cheaper per API call; Claude handles longer contexts and detailed instructions better. The right choice depends on your specific use case."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can an AI bot make mistakes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Language models can produce inaccurate answers — this is called hallucination. To minimize errors, the bot is trained on your specific knowledge base and constrained to defined topics. Critical operations like payments and bookings always go through structured logic, not the AI."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is an AI bot better than a regular one?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A regular bot only works with predefined scenarios — if a user says something unexpected, the bot fails. An AI bot understands free-form text, adapts to conversation context, and handles non-standard questions. This is especially valuable for consultations, support, and sales where dialogue is unpredictable."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="../../favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    .header-btn {
+      background: #229ed9 !important; color: #fff !important;
+      padding: 10px 20px !important; border-radius: 50px !important;
+      font-size: 14px !important; font-weight: 600 !important;
+      line-height: 1.4 !important; text-decoration: none !important;
+      white-space: nowrap !important; display: inline-flex !important;
+      align-items: center !important; flex-shrink: 0 !important; margin-left: auto !important;
+    }
+    .header-btn:hover { background: #1d8cc7 !important; }
+
+    /* ── MODAL ── */
+    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:1000; align-items:center; justify-content:center; padding:16px; }
+    .modal-overlay.active { display:flex; }
+    .modal { background:#1e2d3d; border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:40px 36px; width:100%; max-width:460px; position:relative; box-shadow:0 24px 60px rgba(0,0,0,0.5); }
+    .modal-close { position:absolute; top:16px; right:20px; background:none; border:none; color:rgba(255,255,255,0.5); font-size:24px; cursor:pointer; line-height:1; transition:color 0.2s; }
+    .modal-close:hover { color:#fff; }
+    .modal h2 { font-size:22px; font-weight:700; color:#fff; margin:0 0 8px; }
+    .modal p.modal-sub { font-size:14px; color:rgba(255,255,255,0.55); margin:0 0 28px; }
+    .modal-form { display:flex; flex-direction:column; gap:14px; }
+    .modal-form label { font-size:13px; color:rgba(255,255,255,0.6); margin-bottom:4px; display:block; }
+    .modal-form input[type="text"], .modal-form input[type="tel"] { width:100%; box-sizing:border-box; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:12px 14px; color:#fff; font-size:15px; font-family:inherit; outline:none; transition:border-color 0.2s; }
+    .modal-form input::placeholder { color:rgba(255,255,255,0.3); }
+    .modal-form input:focus { border-color:#2AABEE; }
+    .modal-submit { margin-top:6px; background:#2AABEE; color:#fff; border:none; border-radius:10px; padding:14px; font-size:16px; font-weight:600; font-family:inherit; cursor:pointer; transition:background 0.2s, transform 0.15s; width:100%; }
+    .modal-submit:hover:not(:disabled) { background:#1e9bd8; transform:translateY(-1px); }
+    .success-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:1100; align-items:center; justify-content:center; padding:16px; }
+    .success-overlay.active { display:flex; }
+    .success-box { background:#1e2d3d; border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:40px 36px; width:100%; max-width:400px; text-align:center; box-shadow:0 24px 60px rgba(0,0,0,0.5); }
+    .success-icon { font-size:48px; margin-bottom:16px; }
+    .success-box h3 { color:#fff; font-size:20px; margin:0 0 10px; }
+    .success-box p { color:rgba(255,255,255,0.55); font-size:14px; margin:0 0 24px; }
+    .success-box button { background:#2AABEE; color:#fff; border:none; border-radius:10px; padding:12px 32px; font-size:15px; font-weight:600; font-family:inherit; cursor:pointer; transition:background 0.2s; }
+    .success-box button:hover { background:#1e9bd8; }
+
+    .article-hero { padding:130px 20px 0; max-width:760px; margin:0 auto; }
+    .article-meta { display:flex; align-items:center; gap:20px; flex-wrap:wrap; font-size:13px; color:rgba(255,255,255,0.4); margin-bottom:0; }
+    .article-meta span { display:flex; align-items:center; gap:5px; }
+    .article-hero-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; }
+    .article-back { display:inline-flex; align-items:center; gap:6px; font-size:13px; color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.2s; }
+    .article-back:hover { color:#fff; }
+    .article-cat { display:inline-flex; align-items:center; gap:6px; padding:5px 14px; border-radius:999px; background:rgba(34,158,217,0.15); color:#229ed9; font-size:12px; font-weight:600; }
+    .article-title { font-size:clamp(28px, 4vw, 44px); font-weight:700; line-height:1.2; letter-spacing:-0.02em; color:#fff; margin-bottom:16px; }
+    .article-divider { height:1px; background:rgba(255,255,255,0.08); margin:24px 0 0; }
+
+    .article-body { max-width:760px; margin:0 auto; padding:48px 20px 80px; }
+    .article-body h2 { font-size:24px; font-weight:700; color:#fff; margin:48px 0 16px; line-height:1.3; }
+    .article-body h3 { font-size:18px; font-weight:600; color:rgba(255,255,255,0.9); margin:32px 0 12px; }
+    .article-body p { font-size:16px; line-height:1.8; color:rgba(255,255,255,0.65); margin-bottom:20px; }
+    .article-body ul { padding-left:24px; margin-bottom:20px; }
+    .article-body li { font-size:15px; line-height:1.75; color:rgba(255,255,255,0.65); margin-bottom:8px; }
+    .article-body strong { color:rgba(255,255,255,0.9); font-weight:600; }
+    .article-body a { color:#229ed9; text-decoration:none; }
+    .article-body a:hover { text-decoration:underline; }
+
+    .callout { background:rgba(34,158,217,0.08); border:1px solid rgba(34,158,217,0.2); border-left:3px solid #229ed9; border-radius:0 12px 12px 0; padding:20px 24px; margin:28px 0; }
+    .callout p { margin:0; color:rgba(255,255,255,0.75); }
+    .callout strong { color:#229ed9; }
+    .callout.green { background:rgba(76,175,125,0.08); border-color:rgba(76,175,125,0.25); border-left-color:#4caf7d; }
+    .callout.green strong { color:#4caf7d; }
+
+    .diff-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0 32px; }
+    .diff-card { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:24px; }
+    .diff-card.highlighted { border-color:rgba(34,158,217,0.4); background:rgba(34,158,217,0.05); }
+    .diff-card-icon { font-size:28px; margin-bottom:10px; }
+    .diff-card-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.3); margin-bottom:6px; }
+    .diff-card-label.accent { color:#229ed9; }
+    .diff-card-title { font-size:16px; font-weight:700; color:#fff; margin-bottom:16px; }
+    .diff-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
+    .diff-list li { font-size:14px; color:rgba(255,255,255,0.55); display:flex; gap:8px; align-items:flex-start; margin:0; }
+    .ico-plus { color:#4caf7d; flex-shrink:0; }
+    .ico-minus { color:#e06c75; flex-shrink:0; }
+
+    .usecase-list { display:flex; flex-direction:column; gap:14px; margin:20px 0 32px; }
+    .usecase-item { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:22px 24px; display:flex; gap:18px; align-items:flex-start; transition:border-color 0.2s; }
+    .usecase-item:hover { border-color:rgba(255,255,255,0.15); }
+    .usecase-emoji { font-size:26px; flex-shrink:0; margin-top:2px; }
+    .usecase-body { flex:1; }
+    .usecase-title { font-size:15px; font-weight:600; color:rgba(255,255,255,0.9); margin-bottom:6px; }
+    .usecase-desc { font-size:14px; color:rgba(255,255,255,0.5); line-height:1.65; margin:0; }
+    .usecase-result { font-size:12px; color:#4caf7d; margin-top:8px; font-weight:600; }
+
+    .niche-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:12px; margin:20px 0 32px; }
+    .niche-card { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:18px 20px; }
+    .niche-icon { font-size:22px; margin-bottom:8px; }
+    .niche-title { font-size:14px; font-weight:600; color:rgba(255,255,255,0.85); margin-bottom:4px; }
+    .niche-desc { font-size:12px; color:rgba(255,255,255,0.4); line-height:1.5; }
+
+    .steps { display:flex; flex-direction:column; gap:0; margin:20px 0 32px; }
+    .step { display:flex; gap:16px; }
+    .step-line { display:flex; flex-direction:column; align-items:center; }
+    .step-dot { width:32px; height:32px; border-radius:50%; background:rgba(34,158,217,0.15); border:1px solid rgba(34,158,217,0.4); color:#229ed9; font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .step-bar { width:1px; background:rgba(255,255,255,0.07); flex:1; margin:4px 0; }
+    .step:last-child .step-bar { display:none; }
+    .step-content { padding-bottom:24px; padding-top:4px; }
+    .step-title { font-size:15px; font-weight:600; color:rgba(255,255,255,0.9); margin-bottom:4px; }
+    .step-desc { font-size:14px; color:rgba(255,255,255,0.5); line-height:1.6; }
+
+    .price-table { width:100%; border-collapse:collapse; margin:24px 0 32px; font-size:14px; }
+    .price-table th { background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.7); font-weight:600; padding:12px 16px; text-align:left; border-bottom:1px solid rgba(255,255,255,0.1); }
+    .price-table td { padding:13px 16px; color:rgba(255,255,255,0.6); border-bottom:1px solid rgba(255,255,255,0.06); vertical-align:top; }
+    .price-table tr:last-child td { border-bottom:none; }
+    .price-table tr:hover td { background:rgba(255,255,255,0.02); }
+    .price-highlight { color:#229ed9 !important; font-weight:600; }
+
+    .faq-list { display:flex; flex-direction:column; gap:10px; margin:24px 0 32px; }
+    .faq-item { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; overflow:hidden; }
+    .faq-question { width:100%; background:none; border:none; padding:18px 20px; text-align:left; font-family:inherit; font-size:15px; font-weight:600; color:rgba(255,255,255,0.85); cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    .faq-question:hover { color:#fff; }
+    .faq-icon { color:#229ed9; font-size:20px; font-weight:300; flex-shrink:0; transition:transform 0.25s; line-height:1; }
+    .faq-item.open .faq-icon { transform:rotate(45deg); }
+    .faq-answer { max-height:0; overflow:hidden; transition:max-height 0.35s ease, padding 0.25s ease; padding:0 20px; font-size:14px; line-height:1.7; color:rgba(255,255,255,0.5); }
+    .faq-item.open .faq-answer { max-height:400px; padding:0 20px 18px; }
+
+    .article-cta { background:rgba(34,158,217,0.08); border:1px solid rgba(34,158,217,0.2); border-radius:20px; padding:40px; text-align:center; margin-top:56px; }
+    .article-cta h3 { font-size:22px; font-weight:700; color:#fff; margin-bottom:10px; }
+    .article-cta p { font-size:15px; color:rgba(255,255,255,0.55); margin-bottom:28px; }
+    .article-cta-btn { display:inline-block; background:#229ed9; color:#fff !important; padding:14px 36px; border-radius:50px; font-size:15px; font-weight:600; text-decoration:none !important; transition:background 0.2s; }
+    .article-cta-btn:hover { background:#1d8cc7; }
+    .article-cta-sub { margin-top:12px; font-size:12px; color:rgba(255,255,255,0.3); }
+
+    @media (max-width:600px) {
+      .article-hero { padding-top:100px; }
+      .diff-grid { grid-template-columns:1fr; }
+      .niche-grid { grid-template-columns:1fr 1fr; }
+      .price-table { font-size:13px; }
+      .price-table th, .price-table td { padding:10px 12px; }
+      .article-cta { padding:28px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- MODAL FORM -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">×</button>
+    <h2>Start a project</h2>
+    <p class="modal-sub">Fill in the form and I'll get back to you shortly</p>
+    <div class="modal-form">
+      <div><label>Your name</label><input type="text" id="fieldName" placeholder="John Smith"></div>
+      <div><label>Phone</label><input type="tel" id="fieldPhone" placeholder="+1 234 567 8900"></div>
+      <div><label>Telegram</label><input type="text" id="fieldTg" placeholder="@username"></div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:13px;color:rgba(255,255,255,0.6);margin-top:6px;padding:0 2px;">
+        <input type="checkbox" id="consentCheckbox" style="margin-top:3px;flex-shrink:0;cursor:pointer;">
+        <span style="line-height:1.5;">I consent to the processing of my personal data and accept the
+          <a href="/en/privacy.html" target="_blank" style="color:#2AABEE;">Privacy Policy</a> and
+          <a href="/en/consent.html" target="_blank" style="color:#2AABEE;">Consent</a>
+        </span>
+      </div>
+      <button class="modal-submit" id="modalSubmit" disabled style="opacity:0.5;cursor:not-allowed;">Send request</button>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS POPUP -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-box">
+    <div class="success-icon">✅</div>
+    <h3>Request sent!</h3>
+    <p>I've received your request and will get back to you shortly.</p>
+    <button onclick="closeSuccess()">Got it</button>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <a href="/en/" class="logo" style="text-decoration:none;color:#fff;">
+      <img src="../../img/logo.png" alt="OB">
+      <span class="logo-text">Overboard Studio</span>
+    </a>
+    <div class="lang-switch">
+      <a href="/blog/ai-telegram-bot.html" class="lang-link">RU</a>
+      <a href="/en/blog/ai-telegram-bot.html" class="lang-link active">EN</a>
+    </div>
+    <nav class="nav">
+      <a href="/en/#services">Services</a>
+      <a href="/en/#process">Process</a>
+      <a href="/en/#cases">Cases</a>
+      <a href="/en/#reviews">Reviews</a>
+      <a href="/en/blog.html" style="color:#229ed9;opacity:1;">Blog</a>
+      <a href="/en/#contacts">Contacts</a>
+    </nav>
+    <a href="#" class="header-btn open-modal">Get a quote</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="article-hero">
+  <div class="article-hero-top">
+    <a href="/en/blog.html" class="article-back">← All articles</a>
+    <div class="article-cat">🤖 Telegram bots</div>
+  </div>
+  <h1 class="article-title">AI Telegram Bot: What It Can Do, How It Works and Why Your Business Needs It</h1>
+  <div class="article-meta">
+    <span>📅 July 2026</span>
+    <span>⏱ 8 minutes</span>
+    <span>✍️ Overboard Studio</span>
+  </div>
+  <div class="article-divider"></div>
+</div>
+
+<!-- CONTENT -->
+<article class="article-body">
+
+  <p>A regular Telegram bot follows a script: press a button, get a response. If a user types something unexpected — the bot goes silent or says "I don't understand." An AI bot works differently: it understands natural language, responds like a human, and doesn't lose its footing when the conversation goes off-script.</p>
+
+  <p>In this article — no technical jargon — we'll explain what an AI Telegram bot is, what problems it solves better than a regular bot, and which businesses actually need one.</p>
+
+  <div class="callout">
+    <p><strong>Short answer:</strong> an AI bot is a Telegram bot connected to a language model (ChatGPT, Claude). It understands free-form text, holds natural conversations, and handles non-standard questions. Starts at $600, and isn't for everyone — but where it fits, the results are real.</p>
+  </div>
+
+  <h2>How an AI Bot Differs from a Regular One</h2>
+  <p>The key difference is in how the bot understands the user. A regular bot works with commands and buttons. An AI bot works with language.</p>
+
+  <div class="diff-grid">
+    <div class="diff-card">
+      <div class="diff-card-icon">🔘</div>
+      <div class="diff-card-label">Regular bot</div>
+      <div class="diff-card-title">Button-based scripted bot</div>
+      <ul class="diff-list">
+        <li><span class="ico-plus">✓</span> Follows its script precisely</li>
+        <li><span class="ico-plus">✓</span> Cheaper to build</li>
+        <li><span class="ico-plus">✓</span> No unexpected responses</li>
+        <li><span class="ico-plus">✓</span> No API running costs</li>
+        <li><span class="ico-minus">✗</span> Doesn't understand free text</li>
+        <li><span class="ico-minus">✗</span> Breaks on unexpected input</li>
+        <li><span class="ico-minus">✗</span> Feels like an answering machine</li>
+        <li><span class="ico-minus">✗</span> Every scenario needs separate work</li>
+      </ul>
+    </div>
+    <div class="diff-card highlighted">
+      <div class="diff-card-icon">🧠</div>
+      <div class="diff-card-label accent">AI bot</div>
+      <div class="diff-card-title">Bot with a language model</div>
+      <ul class="diff-list">
+        <li><span class="ico-plus">✓</span> Understands any text the user sends</li>
+        <li><span class="ico-plus">✓</span> Responds like a live consultant</li>
+        <li><span class="ico-plus">✓</span> Handles objections naturally</li>
+        <li><span class="ico-plus">✓</span> Remembers conversation context</li>
+        <li><span class="ico-plus">✓</span> Adapts tone to the user</li>
+        <li><span class="ico-minus">✗</span> Higher development cost</li>
+        <li><span class="ico-minus">✗</span> Monthly API running costs</li>
+        <li><span class="ico-minus">✗</span> Requires setup and training</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>A simple example: a client messages "any chance of a discount?" A regular bot doesn't recognise that command and asks them to pick from a menu. An AI bot understands the question, responds on point, and offers something relevant — like a first-time client deal.</p>
+
+  <h2>How It Works Under the Hood</h2>
+  <p>Technically, an AI bot is a Python Telegram bot that sends each user message to a language model API. The model receives the message, the conversation history, and instructions about how to respond — then returns a reply. The whole round trip takes 1–3 seconds.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-line"><div class="step-dot">1</div><div class="step-bar"></div></div>
+      <div class="step-content">
+        <div class="step-title">User sends a message</div>
+        <div class="step-desc">Any text in any language — a question, objection, complaint, or something completely off-script.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-line"><div class="step-dot">2</div><div class="step-bar"></div></div>
+      <div class="step-content">
+        <div class="step-title">The bot forwards it to the language model</div>
+        <div class="step-desc">Along with the message, a system prompt is sent — instructions about the bot's role, your product knowledge base, topic boundaries, and tone of voice.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-line"><div class="step-dot">3</div><div class="step-bar"></div></div>
+      <div class="step-content">
+        <div class="step-title">The model generates a response</div>
+        <div class="step-desc">GPT-4o or Claude analyses the request in the context of the full conversation and forms a reply according to the instructions. Takes 1–3 seconds.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-line"><div class="step-dot">4</div><div class="step-bar"></div></div>
+      <div class="step-content">
+        <div class="step-title">The bot sends the reply and saves context</div>
+        <div class="step-desc">The user gets the response in Telegram. The conversation history is stored — the bot remembers what was discussed earlier.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-line"><div class="step-dot">5</div><div class="step-bar"></div></div>
+      <div class="step-content">
+        <div class="step-title">At the right moment — a targeted action</div>
+        <div class="step-desc">When the client is ready, the bot prompts them to submit a request, book an appointment, or proceed to payment. This is embedded through structured instructions, not left to chance.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>What an AI Bot Can Actually Do</h2>
+  <p>AI is a tool, not magic. It excels at specific tasks. Here's where it delivers real results.</p>
+
+  <div class="usecase-list">
+    <div class="usecase-item">
+      <div class="usecase-emoji">💬</div>
+      <div class="usecase-body">
+        <div class="usecase-title">Product and service consultations</div>
+        <p class="usecase-desc">The bot knows everything about your product and answers like an experienced sales rep. "Which plan suits me?", "What makes you different from competitors?", "Do you offer payment plans?" — all handled without a human.</p>
+        <div class="usecase-result">→ Reduces manager workload by 40–60%</div>
+      </div>
+    </div>
+    <div class="usecase-item">
+      <div class="usecase-emoji">🎯</div>
+      <div class="usecase-body">
+        <div class="usecase-title">Handling sales objections</div>
+        <p class="usecase-desc">"Too expensive", "I'll think about it", "not right now" — the AI bot understands the context behind an objection and responds with relevant arguments, not a canned line. Especially valuable for online schools, services, and digital products.</p>
+        <div class="usecase-result">→ Conversion to lead up 25–40% vs a regular bot</div>
+      </div>
+    </div>
+    <div class="usecase-item">
+      <div class="usecase-emoji">🤝</div>
+      <div class="usecase-body">
+        <div class="usecase-title">Lead qualification</div>
+        <p class="usecase-desc">The bot learns what the client needs, their budget, and their goals through conversation — then passes a complete profile to the manager. No more wasting time on basic screening questions.</p>
+        <div class="usecase-result">→ Manager receives a warm lead with a pre-filled brief</div>
+      </div>
+    </div>
+    <div class="usecase-item">
+      <div class="usecase-emoji">🆘</div>
+      <div class="usecase-body">
+        <div class="usecase-title">Support and FAQ</div>
+        <p class="usecase-desc">The bot handles common client questions: order status, return policy, how to use the product. Works 24/7 with no queues, no wait time.</p>
+        <div class="usecase-result">→ Saves 2–4 hours of support work per day</div>
+      </div>
+    </div>
+    <div class="usecase-item">
+      <div class="usecase-emoji">🌍</div>
+      <div class="usecase-body">
+        <div class="usecase-title">Multilingual conversations</div>
+        <p class="usecase-desc">The AI bot automatically detects the user's language and replies in kind. English, Spanish, Arabic, French — without any extra configuration.</p>
+        <div class="usecase-result">→ Perfect for businesses with an international audience</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Which Businesses Need an AI Bot</h2>
+  <p>An AI bot delivers the most value when conversations are complex, questions are unpredictable, and keeping the client engaged matters. Here are the niches where it works best:</p>
+
+  <div class="niche-grid">
+    <div class="niche-card">
+      <div class="niche-icon">📚</div>
+      <div class="niche-title">Online schools & courses</div>
+      <div class="niche-desc">Course consultations, objection handling, trial lesson sign-ups</div>
+    </div>
+    <div class="niche-card">
+      <div class="niche-icon">🏥</div>
+      <div class="niche-title">Clinics & medical centres</div>
+      <div class="niche-desc">Service questions, appointment booking, initial consultations</div>
+    </div>
+    <div class="niche-card">
+      <div class="niche-icon">🏠</div>
+      <div class="niche-title">Real estate</div>
+      <div class="niche-desc">Property matching, question answering, viewing scheduling</div>
+    </div>
+    <div class="niche-card">
+      <div class="niche-icon">💼</div>
+      <div class="niche-title">B2B services</div>
+      <div class="niche-desc">Lead qualification, product Q&A, brief collection</div>
+    </div>
+    <div class="niche-card">
+      <div class="niche-icon">🛍️</div>
+      <div class="niche-title">E-commerce</div>
+      <div class="niche-desc">Product selection help, shipping and return queries, support</div>
+    </div>
+    <div class="niche-card">
+      <div class="niche-icon">✈️</div>
+      <div class="niche-title">Travel & tourism</div>
+      <div class="niche-desc">Tour selection, visa and itinerary questions, bookings</div>
+    </div>
+  </div>
+
+  <div class="callout green">
+    <p><strong>When you don't need an AI bot:</strong> if your process is straightforward — collect a lead, show a price list, book an appointment — a regular bot is enough. It's cheaper, more predictable, and has no API running costs. AI is justified when the conversation is genuinely unpredictable.</p>
+  </div>
+
+  <h2>How Much Does an AI Telegram Bot Cost</h2>
+  <p>The price has two parts: development (one-time) and language model API usage (monthly).</p>
+
+  <div style="overflow-x:auto; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th>Type of AI bot</th>
+          <th>Development</th>
+          <th>API / month</th>
+          <th>Timeline</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Product consultant</td>
+          <td class="price-highlight">from $600</td>
+          <td>$25–$60/mo</td>
+          <td>10–14 days</td>
+        </tr>
+        <tr>
+          <td>Sales bot with objection handling</td>
+          <td class="price-highlight">from $780</td>
+          <td>$35–$95/mo</td>
+          <td>12–16 days</td>
+        </tr>
+        <tr>
+          <td>AI bot + CRM integration</td>
+          <td class="price-highlight">from $960</td>
+          <td>$35–$95/mo</td>
+          <td>14–20 days</td>
+        </tr>
+        <tr>
+          <td>Complex multi-scenario bot</td>
+          <td class="price-highlight">from $1,440</td>
+          <td>$60–$180/mo</td>
+          <td>3+ weeks</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>API costs depend on conversation volume and message length. For a small business with 100–300 conversations per month, that's typically <strong>$25–$50/month</strong>. For a high-traffic bot, more.</p>
+
+  <p>For a full breakdown of bot prices, see our article <a href="/en/blog/telegram-bot-cost.html">How Much Does a Telegram Bot Cost in 2026</a>.</p>
+
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question">What is an AI Telegram bot?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">An AI Telegram bot is a chatbot connected to a language model (ChatGPT, Claude, etc.). Unlike a regular button-based bot, it understands free-form text, answers non-standard questions, and holds natural conversations.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">How much does an AI Telegram bot cost?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">Development costs from $600 to $1,800 depending on complexity. Plus monthly API costs for the language model — typically $25–$120/month depending on conversation volume.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Which language model is best for a bot?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">For most business tasks, GPT-4o or Claude work well. GPT-4o is faster and cheaper per API call; Claude handles longer contexts and detailed instructions better. The right choice depends on your specific use case — we discuss this for every project individually.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Can an AI bot make mistakes?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">Yes. Language models can produce inaccurate answers — this is called hallucination. To minimise errors, the bot is trained on your specific knowledge base and constrained to defined topics. Critical operations like payments and bookings always go through structured logic, not the AI.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">How is an AI bot better than a regular one?<span class="faq-icon">+</span></button>
+      <div class="faq-answer">A regular bot only works with predefined scenarios — if a user says something unexpected, the bot fails. An AI bot understands free-form text, adapts to conversation context, and handles non-standard questions. This is especially valuable for consultations, support, and sales where dialogue is unpredictable.</div>
+    </div>
+  </div>
+
+  <div class="article-cta">
+    <h3>Want an AI bot for your business?</h3>
+    <p>Tell us about your use case — we'll analyse it for free, recommend the right model, and give you a fixed price. Launch in 10–20 days.</p>
+    <a href="https://t.me/overboardbot" target="_blank" rel="noopener" class="article-cta-btn">Discuss your project →</a>
+    <div class="article-cta-sub">Reply within an hour · No commitment</div>
+  </div>
+
+</article>
+
+<!-- FOOTER -->
+<footer class="footer" id="contacts">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="../../img/logo.png" alt="Overboard Studio logo" class="footer-logo-img">
+        <span class="logo-text">Overboard Studio</span>
+      </div>
+      <p class="footer-description">Custom Telegram bot and landing page development for businesses. Automation, integrations, and support.</p>
+    </div>
+    <div class="footer-nav">
+      <strong>Navigation</strong>
+      <a href="/en/#services">Services</a>
+      <a href="/en/#cases">Cases</a>
+      <a href="/en/#reviews">Reviews</a>
+      <a href="/en/blog.html">Blog</a>
+      <a href="/en/#faq">FAQ</a>
+    </div>
+    <div class="footer-contacts">
+      <strong>Contacts</strong>
+      <a href="https://t.me/overboardbot" target="_blank" rel="noopener">Telegram</a>
+      <a href="mailto:nickpremium1@proton.me">nickpremium1@proton.me</a>
+      <a href="/en/privacy.html" target="_blank" class="footer-policy">Privacy Policy</a>
+      <span class="footer-copy">© 2026 Overboard Studio</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/84357565416" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <img src="../../img/whatsapp-logo.png" alt="WhatsApp">
+</a>
+<a href="https://t.me/overboardbot" class="telegram-float" target="_blank" rel="noopener" aria-label="Telegram">
+  <img src="../../img/telegram.png" alt="Telegram">
+</a>
+<style>
+  .telegram-float { position:fixed; bottom:90px; right:24px; width:52px; height:52px; background:#2AABEE; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(0,0,0,0.3); z-index:999; transition:transform 0.2s; }
+  .telegram-float:hover { transform:translateY(-3px); }
+  .telegram-float img { width:28px; height:28px; object-fit:contain; }
+</style>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+  document.querySelectorAll('.open-modal').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+  document.getElementById('consentCheckbox').addEventListener('change', function () {
+    const btn = document.getElementById('modalSubmit');
+    btn.disabled = !this.checked;
+    btn.style.opacity = this.checked ? '1' : '0.5';
+    btn.style.cursor = this.checked ? 'pointer' : 'not-allowed';
+  });
+  document.getElementById('modalSubmit').addEventListener('click', async () => {
+    const name = document.getElementById('fieldName').value.trim();
+    const phone = document.getElementById('fieldPhone').value.trim();
+    const telegram = document.getElementById('fieldTg').value.trim();
+    if (!name || !phone) { alert('Please fill in your name and phone number'); return; }
+    const btn = document.getElementById('modalSubmit');
+    btn.disabled = true; btn.textContent = 'Sending...';
+    try {
+      const res = await fetch('https://bot.overboardstudio.com/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Secret-Key': 'xBRVPCtu8TVAqRkcJnM7s' },
+        body: JSON.stringify({ name, phone, telegram })
+      });
+      if (res.ok) {
+        closeModal();
+        document.getElementById('successOverlay').classList.add('active');
+        document.getElementById('fieldName').value = '';
+        document.getElementById('fieldPhone').value = '';
+        document.getElementById('fieldTg').value = '';
+        document.getElementById('consentCheckbox').checked = false;
+      } else { throw new Error('Server error'); }
+    } catch (e) {
+      closeModal();
+      document.getElementById('successOverlay').classList.add('active');
+    } finally {
+      btn.disabled = false; btn.textContent = 'Send request';
+      btn.style.opacity = '0.5'; btn.style.cursor = 'not-allowed';
+    }
+  });
+  function closeSuccess() {
+    document.getElementById('successOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('successOverlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeSuccess(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeSuccess(); } });
+</script>
+
+</body>
+</html>

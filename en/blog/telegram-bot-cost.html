@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Much Does a Telegram Bot Cost in 2026: Full Price Breakdown — Overboard Studio</title>
+  <meta name="description" content="How much does Telegram bot development cost in 2026? Real prices from $60 to $1,800. What affects the price, constructor vs Python — an honest breakdown.">
+
+  <link rel="canonical" href="https://overboardstudio.com/en/blog/telegram-bot-cost.html">
+  <link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog/telegram-bot-cost.html">
+  <link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog/telegram-bot-cost.html">
+
+  <meta property="og:title" content="How Much Does a Telegram Bot Cost in 2026: Full Price Breakdown">
+  <meta property="og:description" content="Real Telegram bot prices: from simple bots at $120 to AI-powered solutions at $1,800. Constructor vs Python — what's worth it.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://overboardstudio.com/en/blog/telegram-bot-cost.html">
+  <meta property="og:image" content="https://overboardstudio.com/img/logo.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Overboard Studio">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#17212b">
+
+  <!-- Schema.org: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How Much Does a Telegram Bot Cost in 2026: Full Price Breakdown",
+    "description": "Real Telegram bot development prices in 2026. Types of bots, what affects the cost, constructor vs Python explained.",
+    "author": { "@type": "Organization", "name": "Overboard Studio", "url": "https://overboardstudio.com" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Overboard Studio",
+      "logo": { "@type": "ImageObject", "url": "https://overboardstudio.com/img/logo.png" }
+    },
+    "datePublished": "2026-07-01",
+    "dateModified": "2026-07-01",
+    "url": "https://overboardstudio.com/en/blog/telegram-bot-cost.html"
+  }
+  </script>
+
+  <!-- Schema.org: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does a simple Telegram bot cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A simple informational bot or lead collection bot costs $60–$220 from a freelancer and from $120 from a development studio. On a no-code builder — from $10–$60/month."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which is more expensive — a bot builder or Python development?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A builder is cheaper upfront but more expensive long-term due to monthly subscriptions. A custom Python bot pays for itself in 12–18 months and has no functional limitations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does an AI Telegram bot cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An AI bot with GPT integration costs from $600 to $1,800 depending on the complexity of scenarios and integrations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to pay for hosting after the bot launches?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. A custom Python bot runs on a server, which costs $2–$12/month depending on load. This is significantly cheaper than a monthly builder subscription."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to build a Telegram bot?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A simple bot takes 2–4 days. A booking bot takes 5–10 days. An AI bot with integrations takes 10–20 days."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="../../favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    .header-btn {
+      background: #229ed9 !important;
+      color: #fff !important;
+      padding: 10px 20px !important;
+      border-radius: 50px !important;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      line-height: 1.4 !important;
+      text-decoration: none !important;
+      white-space: nowrap !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      flex-shrink: 0 !important;
+      margin-left: auto !important;
+    }
+    .header-btn:hover { background: #1d8cc7 !important; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.65); z-index: 1000;
+      align-items: center; justify-content: center; padding: 16px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: #1e2d3d; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 40px 36px;
+      width: 100%; max-width: 460px; position: relative;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 20px;
+      background: none; border: none; color: rgba(255,255,255,0.5);
+      font-size: 24px; cursor: pointer; line-height: 1; transition: color 0.2s;
+    }
+    .modal-close:hover { color: #fff; }
+    .modal h2 { font-size: 22px; font-weight: 700; color: #fff; margin: 0 0 8px; }
+    .modal p.modal-sub { font-size: 14px; color: rgba(255,255,255,0.55); margin: 0 0 28px; }
+    .modal-form { display: flex; flex-direction: column; gap: 14px; }
+    .modal-form label { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 4px; display: block; }
+    .modal-form input[type="text"], .modal-form input[type="tel"] {
+      width: 100%; box-sizing: border-box;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px; padding: 12px 14px; color: #fff;
+      font-size: 15px; font-family: inherit; outline: none; transition: border-color 0.2s;
+    }
+    .modal-form input::placeholder { color: rgba(255,255,255,0.3); }
+    .modal-form input:focus { border-color: #2AABEE; }
+    .modal-submit {
+      margin-top: 6px; background: #2AABEE; color: #fff; border: none;
+      border-radius: 10px; padding: 14px; font-size: 16px; font-weight: 600;
+      font-family: inherit; cursor: pointer; transition: background 0.2s, transform 0.15s; width: 100%;
+    }
+    .modal-submit:hover:not(:disabled) { background: #1e9bd8; transform: translateY(-1px); }
+    .success-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65);
+      z-index: 1100; align-items: center; justify-content: center; padding: 16px;
+    }
+    .success-overlay.active { display: flex; }
+    .success-box {
+      background: #1e2d3d; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 40px 36px; width: 100%; max-width: 400px;
+      text-align: center; box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+    .success-icon { font-size: 48px; margin-bottom: 16px; }
+    .success-box h3 { color: #fff; font-size: 20px; margin: 0 0 10px; }
+    .success-box p { color: rgba(255,255,255,0.55); font-size: 14px; margin: 0 0 24px; }
+    .success-box button {
+      background: #2AABEE; color: #fff; border: none; border-radius: 10px;
+      padding: 12px 32px; font-size: 15px; font-weight: 600; font-family: inherit;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .success-box button:hover { background: #1e9bd8; }
+
+    .article-hero { padding: 130px 20px 0; max-width: 760px; margin: 0 auto; }
+    .article-meta {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 0;
+    }
+    .article-meta span { display: flex; align-items: center; gap: 5px; }
+    .article-hero-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+    .article-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s;
+    }
+    .article-back:hover { color: #fff; }
+    .article-cat {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 14px; border-radius: 999px;
+      background: rgba(34,158,217,0.15); color: #229ed9;
+      font-size: 12px; font-weight: 600;
+    }
+    .article-title {
+      font-size: clamp(28px, 4vw, 44px); font-weight: 700;
+      line-height: 1.2; letter-spacing: -0.02em; color: #fff; margin-bottom: 16px;
+    }
+    .article-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 24px 0 0; }
+
+    .article-body { max-width: 760px; margin: 0 auto; padding: 48px 20px 80px; }
+    .article-body h2 { font-size: 24px; font-weight: 700; color: #fff; margin: 48px 0 16px; line-height: 1.3; }
+    .article-body h3 { font-size: 18px; font-weight: 600; color: rgba(255,255,255,0.9); margin: 32px 0 12px; }
+    .article-body p { font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.65); margin-bottom: 20px; }
+    .article-body ul { padding-left: 24px; margin-bottom: 20px; }
+    .article-body li { font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.65); margin-bottom: 8px; }
+    .article-body strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+    .article-body a { color: #229ed9; text-decoration: none; }
+    .article-body a:hover { text-decoration: underline; }
+
+    .callout {
+      background: rgba(34,158,217,0.08); border: 1px solid rgba(34,158,217,0.2);
+      border-left: 3px solid #229ed9; border-radius: 0 12px 12px 0;
+      padding: 20px 24px; margin: 28px 0;
+    }
+    .callout p { margin: 0; color: rgba(255,255,255,0.75); }
+    .callout strong { color: #229ed9; }
+
+    .price-table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 14px; }
+    .price-table th {
+      background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.7);
+      font-weight: 600; padding: 12px 16px; text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .price-table td {
+      padding: 13px 16px; color: rgba(255,255,255,0.6);
+      border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top;
+    }
+    .price-table tr:last-child td { border-bottom: none; }
+    .price-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .price-highlight { color: #229ed9 !important; font-weight: 600; }
+
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0 32px; }
+    .compare-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 24px;
+    }
+    .compare-card.highlighted { border-color: rgba(34,158,217,0.4); background: rgba(34,158,217,0.05); }
+    .compare-card-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.3); margin-bottom: 6px; }
+    .compare-card-label.accent { color: #229ed9; }
+    .compare-card-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 16px; }
+    .compare-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+    .compare-list li { font-size: 14px; color: rgba(255,255,255,0.55); display: flex; gap: 8px; align-items: flex-start; margin: 0; }
+    .ico-plus { color: #4caf7d; flex-shrink: 0; }
+    .ico-minus { color: #e06c75; flex-shrink: 0; }
+
+    .case-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 24px; margin-bottom: 16px;
+    }
+    .case-card h3 { margin-top: 0; margin-bottom: 16px; }
+    .case-stats { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 14px; }
+    .case-stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.35); margin-bottom: 3px; }
+    .case-stat-val { font-size: 15px; font-weight: 600; color: #fff; }
+    .case-stat-val.accent { color: #229ed9; }
+    .case-stat-val.green { color: #4caf7d; }
+    .case-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.65; margin: 0; }
+
+    .faq-list { display: flex; flex-direction: column; gap: 10px; margin: 24px 0 32px; }
+    .faq-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; }
+    .faq-question {
+      width: 100%; background: none; border: none; padding: 18px 20px;
+      text-align: left; font-family: inherit; font-size: 15px; font-weight: 600;
+      color: rgba(255,255,255,0.85); cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    }
+    .faq-question:hover { color: #fff; }
+    .faq-icon { color: #229ed9; font-size: 20px; font-weight: 300; flex-shrink: 0; transition: transform 0.25s; line-height: 1; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s ease;
+      padding: 0 20px; font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5);
+    }
+    .faq-item.open .faq-answer { max-height: 400px; padding: 0 20px 18px; }
+
+    .article-cta {
+      background: rgba(34,158,217,0.08); border: 1px solid rgba(34,158,217,0.2);
+      border-radius: 20px; padding: 40px; text-align: center; margin-top: 56px;
+    }
+    .article-cta h3 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .article-cta p { font-size: 15px; color: rgba(255,255,255,0.55); margin-bottom: 28px; }
+    .article-cta-btn {
+      display: inline-block; background: #229ed9; color: #fff !important;
+      padding: 14px 36px; border-radius: 50px; font-size: 15px; font-weight: 600;
+      text-decoration: none !important; transition: background 0.2s;
+    }
+    .article-cta-btn:hover { background: #1d8cc7; }
+    .article-cta-sub { margin-top: 12px; font-size: 12px; color: rgba(255,255,255,0.3); }
+
+    @media (max-width: 600px) {
+      .article-hero { padding-top: 100px; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .price-table { font-size: 13px; }
+      .price-table th, .price-table td { padding: 10px 12px; }
+      .article-cta { padding: 28px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- MODAL FORM -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">×</button>
+    <h2>Start a project</h2>
+    <p class="modal-sub">Fill in the form and I'll get back to you shortly</p>
+    <div class="modal-form">
+      <div>
+        <label>Your name</label>
+        <input type="text" id="fieldName" placeholder="John Smith">
+      </div>
+      <div>
+        <label>Phone</label>
+        <input type="tel" id="fieldPhone" placeholder="+1 234 567 8900">
+      </div>
+      <div>
+        <label>Telegram</label>
+        <input type="text" id="fieldTg" placeholder="@username">
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:13px;color:rgba(255,255,255,0.6);margin-top:6px;padding:0 2px;">
+        <input type="checkbox" id="consentCheckbox" style="margin-top:3px;flex-shrink:0;cursor:pointer;">
+        <span style="line-height:1.5;">I consent to the processing of my personal data and accept the
+          <a href="/en/privacy.html" target="_blank" style="color:#2AABEE;">Privacy Policy</a> and
+          <a href="/en/consent.html" target="_blank" style="color:#2AABEE;">Consent</a>
+        </span>
+      </div>
+      <button class="modal-submit" id="modalSubmit" disabled style="opacity:0.5;cursor:not-allowed;">Send request</button>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS POPUP -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-box">
+    <div class="success-icon">✅</div>
+    <h3>Request sent!</h3>
+    <p>I've received your request and will get back to you shortly.</p>
+    <button onclick="closeSuccess()">Got it</button>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <a href="/en/" class="logo" style="text-decoration:none;color:#fff;">
+      <img src="../../img/logo.png" alt="OB">
+      <span class="logo-text">Overboard Studio</span>
+    </a>
+    <div class="lang-switch">
+      <a href="/blog/telegram-bot-cost.html" class="lang-link">RU</a>
+      <a href="/en/blog/telegram-bot-cost.html" class="lang-link active">EN</a>
+    </div>
+    <nav class="nav">
+      <a href="/en/#services">Services</a>
+      <a href="/en/#process">Process</a>
+      <a href="/en/#cases">Cases</a>
+      <a href="/en/#reviews">Reviews</a>
+      <a href="/en/blog.html" style="color:#229ed9;opacity:1;">Blog</a>
+      <a href="/en/#contacts">Contacts</a>
+    </nav>
+    <a href="#" class="header-btn open-modal">Get a quote</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="article-hero">
+  <div class="article-hero-top">
+    <a href="/en/blog.html" class="article-back">← All articles</a>
+    <div class="article-cat">🤖 Telegram bots</div>
+  </div>
+  <h1 class="article-title">How Much Does a Telegram Bot Cost in 2026: Full Price Breakdown</h1>
+  <div class="article-meta">
+    <span>📅 July 2026</span>
+    <span>⏱ 9 minutes</span>
+    <span>✍️ Overboard Studio</span>
+  </div>
+  <div class="article-divider"></div>
+</div>
+
+<!-- CONTENT -->
+<article class="article-body">
+
+  <p>Telegram bot prices vary wildly — from $60 to $3,600. If you're ordering a bot for the first time, it's hard to make sense of it. This article gives you an honest breakdown: what types of bots exist, what actually drives the price, and where the line is between "cheap and risky" and "worth every dollar."</p>
+
+  <div class="callout">
+    <p><strong>Quick answer:</strong> a simple lead collection bot starts at $120, a booking bot with reminders starts at $300, an AI bot with integrations starts at $600. Timeline: 3 to 20 days. A builder is cheaper upfront but costs more over 2 years.</p>
+  </div>
+
+  <h2>Types of Telegram Bots and Their Prices</h2>
+  <p>Before talking about price — it's important to understand that "a bot" isn't a single product. It's a spectrum of solutions with fundamentally different complexity. Here are the main types with real market prices:</p>
+
+  <h3>1. Informational bot</h3>
+  <p>The simplest type. Answers questions via buttons: schedule, address, pricing, FAQ. No logic — just pre-written responses. Great for small businesses that want to free up staff from repetitive questions. <strong>From $60–$180.</strong></p>
+
+  <h3>2. Lead collection bot</h3>
+  <p>Collects name, phone number, and question from the user, then forwards to a manager via Telegram or email. Can integrate with Google Sheets or a CRM. The most popular type for small and mid-size businesses. <strong>From $120–$300.</strong></p>
+
+  <h3>3. Appointment booking bot</h3>
+  <p>Lets clients choose a service, date, and time on their own. Sends reminders, handles cancellations and reschedules. Perfect for beauty salons, clinics, gyms, and tutors. <strong>From $300–$720.</strong></p>
+
+  <h3>4. E-commerce bot</h3>
+  <p>Shows a catalog, takes orders, issues invoices, and notifies the manager. Can process payments directly inside Telegram via Stripe or other gateways — no redirect to a website needed. <strong>From $480–$1,200.</strong></p>
+
+  <h3>5. AI bot</h3>
+  <p>Understands free-form text, responds like a live consultant, handles objections. Connected to ChatGPT or other language models. Ideal for online schools, complex services, and businesses with non-standard customer inquiries. <strong>From $600–$1,800.</strong></p>
+
+  <h3>6. Corporate internal bot</h3>
+  <p>An internal tool for teams: task approvals, leave requests, CRM notifications, dashboards. Used by companies to automate internal workflows. <strong>From $720+.</strong></p>
+
+  <h2>Price Comparison by Bot Type</h2>
+
+  <div style="overflow-x:auto; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th>Bot type</th>
+          <th>No-code builder</th>
+          <th>Freelancer</th>
+          <th>Studio / developer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Informational</td>
+          <td>$10–$35/mo</td>
+          <td>$60–$180</td>
+          <td class="price-highlight">from $120</td>
+        </tr>
+        <tr>
+          <td>Lead collection</td>
+          <td>$25–$60/mo</td>
+          <td>$120–$300</td>
+          <td class="price-highlight">from $180</td>
+        </tr>
+        <tr>
+          <td>Appointment booking</td>
+          <td>$35–$95/mo</td>
+          <td>$240–$600</td>
+          <td class="price-highlight">from $300</td>
+        </tr>
+        <tr>
+          <td>E-commerce</td>
+          <td>Hard to implement</td>
+          <td>$360–$960</td>
+          <td class="price-highlight">from $480</td>
+        </tr>
+        <tr>
+          <td>AI bot</td>
+          <td>Not available</td>
+          <td>$480–$1,200</td>
+          <td class="price-highlight">from $600</td>
+        </tr>
+        <tr>
+          <td>Corporate bot</td>
+          <td>Not available</td>
+          <td>$600–$1,440</td>
+          <td class="price-highlight">from $720</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Builder or Custom Python Development: Which to Choose</h2>
+  <p>No-code builders (ManyChat, Chatfuel, Botmother) let you create a simple bot without coding. That's fine for testing an idea. But for ongoing use, they come with serious limitations.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <div class="compare-card-label">Option 1</div>
+      <div class="compare-card-title">No-code builder</div>
+      <ul class="compare-list">
+        <li><span class="ico-plus">✓</span> Quick to launch — within a day</li>
+        <li><span class="ico-plus">✓</span> Low upfront cost: $10–$60/mo</li>
+        <li><span class="ico-minus">✗</span> Monthly fee forever</li>
+        <li><span class="ico-minus">✗</span> Complex scenarios nearly impossible</li>
+        <li><span class="ico-minus">✗</span> No own database</li>
+        <li><span class="ico-minus">✗</span> Platform dependency</li>
+        <li><span class="ico-minus">✗</span> Costs more than custom dev over 2 years</li>
+      </ul>
+    </div>
+    <div class="compare-card highlighted">
+      <div class="compare-card-label accent">Option 2 — better long-term</div>
+      <div class="compare-card-title">Custom Python (Aiogram 3)</div>
+      <ul class="compare-list">
+        <li><span class="ico-plus">✓</span> Pay once — runs for years</li>
+        <li><span class="ico-plus">✓</span> Any logic and integrations</li>
+        <li><span class="ico-plus">✓</span> Own database (PostgreSQL/SQLite)</li>
+        <li><span class="ico-plus">✓</span> Full control over the code</li>
+        <li><span class="ico-plus">✓</span> Server from $2/mo, no dependency</li>
+        <li><span class="ico-minus">✗</span> Higher upfront cost</li>
+        <li><span class="ico-minus">✗</span> Needs a developer for changes</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p><strong>Bottom line:</strong> a builder makes sense if you need a bot for 1–2 months to test an idea. For permanent use, custom Python development pays for itself within 12–18 months and gives far more capability.</p>
+  </div>
+
+  <h2>What Drives the Price</h2>
+  <p>Two bots with similar descriptions can cost $120 and $960 — and both quotes can be fair. Here's what actually affects the price:</p>
+
+  <ul>
+    <li><strong>Number of scenarios and dialog branches</strong> — a bot with 3 buttons and one with 15 scenarios are fundamentally different scopes of work. Each branch requires separate logic, error handling, and edge cases.</li>
+    <li><strong>Integrations</strong> — connecting to a CRM, Google Sheets, payment systems, email services — each integration is a separate task. One integration adds $36–$180 to the cost.</li>
+    <li><strong>Database</strong> — if the bot needs to remember users, order history, or bookings, a database is required. This adds architectural complexity and development time.</li>
+    <li><strong>Notifications and broadcasts</strong> — automated reminders, bulk messaging to your base — these are separate functional blocks.</li>
+    <li><strong>AI and language models</strong> — connecting to GPT, prompt engineering, handling edge-case inputs — the most expensive component. Adds $240–$720.</li>
+    <li><strong>Clarity of requirements</strong> — vague "I want a bot for my business" briefs make developers add risk buffers. A clear spec reduces the price by 15–30%.</li>
+  </ul>
+
+  <h2>Development Timeline</h2>
+  <ul>
+    <li>Informational bot — <strong>2–4 days</strong></li>
+    <li>Lead collection bot — <strong>3–5 days</strong></li>
+    <li>Booking bot with reminders — <strong>5–10 days</strong></li>
+    <li>Bot with payments or catalog — <strong>7–14 days</strong></li>
+    <li>AI bot with integrations — <strong>10–20 days</strong></li>
+    <li>Corporate bot — <strong>3+ weeks</strong></li>
+  </ul>
+
+  <h2>Real Examples with Numbers</h2>
+
+  <div class="case-card">
+    <h3>🍽️ Telegram bot for a restaurant or café</h3>
+    <div class="case-stats">
+      <div>
+        <div class="case-stat-label">Cost</div>
+        <div class="case-stat-val accent">from $240</div>
+      </div>
+      <div>
+        <div class="case-stat-label">Timeline</div>
+        <div class="case-stat-val">5–7 days</div>
+      </div>
+      <div>
+        <div class="case-stat-label">Result</div>
+        <div class="case-stat-val green">Bookings 24/7, −30% admin load</div>
+      </div>
+    </div>
+    <p class="case-desc">The bot accepts table reservations, shows the menu and promotions, and logs bookings to a database. The manager gets instant notifications. Guests book without calls or back-and-forth messages.</p>
+  </div>
+
+  <div class="case-card">
+    <h3>💪 Telegram bot for a fitness club</h3>
+    <div class="case-stats">
+      <div>
+        <div class="case-stat-label">Cost</div>
+        <div class="case-stat-val accent">from $300</div>
+      </div>
+      <div>
+        <div class="case-stat-label">Timeline</div>
+        <div class="case-stat-val">6–8 days</div>
+      </div>
+      <div>
+        <div class="case-stat-label">Result</div>
+        <div class="case-stat-val green">−40% repetitive questions</div>
+      </div>
+    </div>
+    <p class="case-desc">Clients check schedules, membership plans, and trainers directly in the bot. Common questions no longer take up admin time — the bot handles them automatically.</p>
+  </div>
+
+  <div class="case-card">
+    <h3>🎓 AI bot for an online school</h3>
+    <div class="case-stats">
+      <div>
+        <div class="case-stat-label">Cost</div>
+        <div class="case-stat-val accent">from $660</div>
+      </div>
+      <div>
+        <div class="case-stat-label">Timeline</div>
+        <div class="case-stat-val">12–16 days</div>
+      </div>
+      <div>
+        <div class="case-stat-label">Result</div>
+        <div class="case-stat-val green">Conversion to signup +35%</div>
+      </div>
+    </div>
+    <p class="case-desc">The AI holds conversations with prospective students, answers product questions, handles objections, and guides them toward a free trial lesson — without any manager involvement, 24/7.</p>
+  </div>
+
+  <h2>Why a Bot Pays for Itself</h2>
+
+  <p><strong>Works 24/7.</strong> A client submits a lead at midnight — the bot catches it and notifies the manager. Without the bot, that lead is lost. Studies show 30–40% of online inquiries come outside business hours.</p>
+
+  <p><strong>Reduces manager workload.</strong> Common questions — price, address, hours — the bot answers on its own. Your team only deals with warm, ready-to-buy leads.</p>
+
+  <p><strong>Cuts no-shows.</strong> An automated reminder 24 hours before an appointment reduces no-shows by 30–50%. For a clinic or salon, that's hundreds of dollars recovered every month.</p>
+
+  <p><strong>Builds your client database.</strong> Everyone who messages the bot is already in your base — ready for broadcasts, promotions, and repeat sales with zero ad spend.</p>
+
+  <h2>FAQ</h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question">
+        How much does a simple Telegram bot cost?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">A simple informational bot or lead collection bot costs $60–$220 from a freelancer and from $120 from a studio. On a no-code builder — from $10–$60/month.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Which is more expensive — a builder or Python development?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">A builder is cheaper upfront but more expensive long-term due to monthly subscriptions. A custom Python bot pays for itself in 12–18 months and has no functional limitations.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Do I need to pay for hosting after the bot launches?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Yes. A custom bot runs on a server, which costs $2–$12/month depending on load. This is significantly cheaper than a monthly builder subscription.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Can I add features after launch?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">For custom Python bots — yes, easily. The developer modifies the code. For builder bots — depends on the platform's plan and its limitations.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        How do I avoid choosing the wrong developer?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Ask to see real working bots (not just screenshots), confirm whether it's built on Python or a builder, and ask about post-launch support. A good developer asks questions about your business before quoting a price.</div>
+    </div>
+  </div>
+
+  <div class="article-cta">
+    <h3>Want to know the exact cost for your project?</h3>
+    <p>Tell us about your idea — we'll break it down for free and give you a fixed price. Launch in 3–10 days.</p>
+    <a href="https://t.me/overboardbot" target="_blank" rel="noopener" class="article-cta-btn">Discuss your project →</a>
+    <div class="article-cta-sub">Reply within an hour · No commitment</div>
+  </div>
+
+</article>
+
+<!-- FOOTER -->
+<footer class="footer" id="contacts">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="../../img/logo.png" alt="Overboard Studio logo" class="footer-logo-img">
+        <span class="logo-text">Overboard Studio</span>
+      </div>
+      <p class="footer-description">Custom Telegram bot and landing page development for businesses. Automation, integrations, and support.</p>
+    </div>
+    <div class="footer-nav">
+      <strong>Navigation</strong>
+      <a href="/en/#services">Services</a>
+      <a href="/en/#cases">Cases</a>
+      <a href="/en/#reviews">Reviews</a>
+      <a href="/en/blog.html">Blog</a>
+      <a href="/en/#faq">FAQ</a>
+    </div>
+    <div class="footer-contacts">
+      <strong>Contacts</strong>
+      <a href="https://t.me/overboardbot" target="_blank" rel="noopener">Telegram</a>
+      <a href="mailto:nickpremium1@proton.me">nickpremium1@proton.me</a>
+      <a href="/en/privacy.html" target="_blank" class="footer-policy">Privacy Policy</a>
+      <span class="footer-copy">© 2026 Overboard Studio</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/84357565416" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <img src="../../img/whatsapp-logo.png" alt="WhatsApp">
+</a>
+<a href="https://t.me/overboardbot" class="telegram-float" target="_blank" rel="noopener" aria-label="Telegram">
+  <img src="../../img/telegram.png" alt="Telegram">
+</a>
+<style>
+  .telegram-float { position:fixed; bottom:90px; right:24px; width:52px; height:52px; background:#2AABEE; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(0,0,0,0.3); z-index:999; transition:transform 0.2s; }
+  .telegram-float:hover { transform:translateY(-3px); }
+  .telegram-float img { width:28px; height:28px; object-fit:contain; }
+</style>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  document.querySelectorAll('.open-modal').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('modalOverlay').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeModal();
+  });
+  document.getElementById('consentCheckbox').addEventListener('change', function () {
+    const btn = document.getElementById('modalSubmit');
+    btn.disabled = !this.checked;
+    btn.style.opacity = this.checked ? '1' : '0.5';
+    btn.style.cursor = this.checked ? 'pointer' : 'not-allowed';
+  });
+  document.getElementById('modalSubmit').addEventListener('click', async () => {
+    const name     = document.getElementById('fieldName').value.trim();
+    const phone    = document.getElementById('fieldPhone').value.trim();
+    const telegram = document.getElementById('fieldTg').value.trim();
+    if (!name || !phone) { alert('Please fill in your name and phone number'); return; }
+    const btn = document.getElementById('modalSubmit');
+    btn.disabled = true; btn.textContent = 'Sending...';
+    try {
+      const res = await fetch('https://bot.overboardstudio.com/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Secret-Key': 'xBRVPCtu8TVAqRkcJnM7s' },
+        body: JSON.stringify({ name, phone, telegram })
+      });
+      if (res.ok) {
+        closeModal();
+        document.getElementById('successOverlay').classList.add('active');
+        document.getElementById('fieldName').value = '';
+        document.getElementById('fieldPhone').value = '';
+        document.getElementById('fieldTg').value = '';
+        document.getElementById('consentCheckbox').checked = false;
+      } else { throw new Error('Server error'); }
+    } catch (e) {
+      closeModal();
+      document.getElementById('successOverlay').classList.add('active');
+    } finally {
+      btn.disabled = false; btn.textContent = 'Send request';
+      btn.style.opacity = '0.5'; btn.style.cursor = 'not-allowed';
+    }
+  });
+  function closeSuccess() {
+    document.getElementById('successOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('successOverlay').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeSuccess();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeModal(); closeSuccess(); }
+  });
+</script>
+
+</body>
+</html>
