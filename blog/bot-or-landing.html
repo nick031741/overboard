@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Бот или лендинг: что выбрать для старта бизнеса в 2026 — Overboard Studio</title>
+  <meta name="description" content="Telegram-бот или лендинг — что нужно вашему бизнесу? Сравниваем по задачам, бюджету и скорости запуска. Помогаем выбрать правильный инструмент.">
+
+  <link rel="canonical" href="https://overboardstudio.com/blog/bot-or-landing.html">
+  <meta property="og:title" content="Бот или лендинг: что выбрать для старта бизнеса в 2026">
+  <meta property="og:description" content="Telegram-бот или лендинг — что нужно вашему бизнесу? Сравниваем по задачам, бюджету и скорости запуска.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://overboardstudio.com/blog/bot-or-landing.html">
+  <meta property="og:image" content="https://overboardstudio.com/img/logo.png">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Overboard Studio">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#17212b">
+
+  <!-- Schema.org: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Бот или лендинг: что выбрать для старта бизнеса в 2026",
+    "description": "Telegram-бот или лендинг — что нужно вашему бизнесу? Сравниваем по задачам, бюджету и скорости запуска.",
+    "author": { "@type": "Organization", "name": "Overboard Studio", "url": "https://overboardstudio.com" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Overboard Studio",
+      "logo": { "@type": "ImageObject", "url": "https://overboardstudio.com/img/logo.png" }
+    },
+    "datePublished": "2026-07-01",
+    "dateModified": "2026-07-01",
+    "url": "https://overboardstudio.com/blog/bot-or-landing.html"
+  }
+  </script>
+
+  <!-- Schema.org: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Что дешевле — бот или лендинг?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Простой лендинг и простой бот стоят примерно одинаково — от 10 000–15 000 ₽. Разница начинается при усложнении: бот с записью и интеграциями дороже базового лендинга, но лендинг с анимацией и нестандартным дизайном может стоить дороже среднего бота."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Можно ли использовать и бот и лендинг одновременно?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да, и это лучший вариант для большинства бизнесов. Лендинг привлекает трафик из поиска и рекламы, бот обрабатывает заявки и общается с клиентами. Связка лендинг + бот даёт максимальную конверсию."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Что быстрее запустить — бот или лендинг?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Простой бот и простой лендинг делаются примерно за одинаковое время — 3–7 дней. Лендинг с нестандартным дизайном может занять 10–14 дней. Бот со сложными интеграциями — 2–3 недели."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Нужен ли лендинг если есть Telegram-канал?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да. Telegram-канал не индексируется поисковиками — новые клиенты не найдут вас через Google или Яндекс. Лендинг решает эту проблему и служит точкой входа для органического трафика."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "С чего начать — с бота или лендинга?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Зависит от источника трафика. Если клиенты приходят из Telegram, рекламы или соцсетей — начните с бота. Если рассчитываете на поиск Google/Яндекс — начните с лендинга. Если оба источника важны — делайте оба одновременно."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    .header-btn {
+      background: #229ed9 !important;
+      color: #fff !important;
+      padding: 10px 20px !important;
+      border-radius: 50px !important;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      text-decoration: none !important;
+      white-space: nowrap !important;
+      display: inline-block !important;
+    }
+    .header-btn:hover { background: #1d8cc7 !important; }
+
+    .article-hero {
+      padding: 130px 20px 0;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 0;
+    }
+    .article-meta span { display: flex; align-items: center; gap: 5px; }
+
+    .article-hero-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .article-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .article-back:hover { color: #fff; }
+
+    .article-cat {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      background: rgba(255,183,77,0.15);
+      color: #ffb74d;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .article-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .article-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      margin: 24px 0 0;
+    }
+
+    .article-body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 20px 80px;
+    }
+
+    .article-body h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      margin: 48px 0 16px;
+      line-height: 1.3;
+    }
+
+    .article-body h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin: 32px 0 12px;
+    }
+
+    .article-body p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 20px;
+    }
+
+    .article-body ul {
+      padding-left: 24px;
+      margin-bottom: 20px;
+    }
+
+    .article-body li {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 8px;
+    }
+
+    .article-body strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+    .article-body a { color: #229ed9; text-decoration: none; }
+    .article-body a:hover { text-decoration: underline; }
+
+    /* Callout */
+    .callout {
+      background: rgba(34,158,217,0.08);
+      border: 1px solid rgba(34,158,217,0.2);
+      border-left: 3px solid #229ed9;
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+      margin: 28px 0;
+    }
+    .callout p { margin: 0; color: rgba(255,255,255,0.75); }
+    .callout strong { color: #229ed9; }
+
+    .callout.yellow {
+      background: rgba(255,183,77,0.07);
+      border-color: rgba(255,183,77,0.2);
+      border-left-color: #ffb74d;
+    }
+    .callout.yellow strong { color: #ffb74d; }
+
+    /* Compare grid */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0 32px;
+    }
+
+    .compare-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .compare-card.highlighted {
+      border-color: rgba(34,158,217,0.4);
+      background: rgba(34,158,217,0.05);
+    }
+
+    .compare-card-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 6px;
+    }
+
+    .compare-card-icon { font-size: 28px; margin-bottom: 10px; }
+
+    .compare-card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .compare-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .compare-list li {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      margin: 0;
+    }
+
+    .ico-plus { color: #4caf7d; flex-shrink: 0; }
+    .ico-minus { color: #e06c75; flex-shrink: 0; }
+
+    /* Scenario cards */
+    .scenario-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 20px 0 32px;
+    }
+
+    .scenario-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 20px 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .scenario-emoji { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+
+    .scenario-body { flex: 1; }
+
+    .scenario-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 4px;
+    }
+
+    .scenario-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .scenario-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .badge-bot {
+      background: rgba(34,158,217,0.15);
+      color: #229ed9;
+      border: 1px solid rgba(34,158,217,0.3);
+    }
+
+    .badge-landing {
+      background: rgba(76,175,125,0.15);
+      color: #4caf7d;
+      border: 1px solid rgba(76,175,125,0.3);
+    }
+
+    .badge-both {
+      background: rgba(255,183,77,0.15);
+      color: #ffb74d;
+      border: 1px solid rgba(255,183,77,0.3);
+    }
+
+    /* Summary table */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0 32px;
+      font-size: 14px;
+    }
+
+    .compare-table th {
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.7);
+      font-weight: 600;
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .compare-table td {
+      padding: 13px 16px;
+      color: rgba(255,255,255,0.6);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      vertical-align: top;
+    }
+
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .td-bot { color: #229ed9; font-weight: 600; }
+    .td-landing { color: #4caf7d; font-weight: 600; }
+    .td-both { color: #ffb74d; font-weight: 600; }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 24px 0 32px;
+    }
+
+    .faq-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 18px 20px;
+      text-align: left;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .faq-question:hover { color: #fff; }
+
+    .faq-icon {
+      color: #229ed9;
+      font-size: 20px;
+      font-weight: 300;
+      flex-shrink: 0;
+      transition: transform 0.25s;
+      line-height: 1;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s ease;
+      padding: 0 20px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+      padding: 0 20px 18px;
+    }
+
+    /* CTA */
+    .article-cta {
+      background: rgba(34,158,217,0.08);
+      border: 1px solid rgba(34,158,217,0.2);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      margin-top: 56px;
+    }
+
+    .article-cta h3 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .article-cta p { font-size: 15px; color: rgba(255,255,255,0.55); margin-bottom: 28px; }
+
+    .article-cta-btn {
+      display: inline-block;
+      background: #229ed9;
+      color: #fff !important;
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none !important;
+      transition: background 0.2s;
+    }
+
+    .article-cta-btn:hover { background: #1d8cc7; }
+
+    .article-cta-sub {
+      margin-top: 12px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    @media (max-width: 600px) {
+      .article-hero { padding-top: 100px; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .compare-table { font-size: 13px; }
+      .compare-table th, .compare-table td { padding: 10px 12px; }
+      .article-cta { padding: 28px 20px; }
+      .scenario-item { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="logo" style="text-decoration:none;color:#fff;">
+      <img src="/img/logo.png" alt="OB">
+      <span class="logo-text">Overboard Studio</span>
+    </a>
+    <div class="lang-switch">
+      <a href="/blog.html" class="lang-link active">RU</a>
+      <a href="/en/index.html" class="lang-link">EN</a>
+    </div>
+    <nav class="nav">
+      <a href="/#services">Услуги</a>
+      <a href="/#process">Процесс</a>
+      <a href="/#cases">Кейсы</a>
+      <a href="/portfolio.html">Портфолио</a>
+      <a href="/blog.html" style="color:#229ed9;opacity:1;">Блог</a>
+      <a href="/#reviews">Отзывы</a>
+      <a href="/#contacts">Контакты</a>
+    </nav>
+    <a href="/#contacts" class="header-btn">Оставить заявку</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="article-hero">
+  <div class="article-hero-top">
+    <a href="/blog.html" class="article-back">← Все статьи</a>
+    <div class="article-cat">📊 Бизнес</div>
+  </div>
+  <h1 class="article-title">Бот или лендинг: что выбрать для старта бизнеса</h1>
+  <div class="article-meta">
+    <span>📅 Июль 2026</span>
+    <span>⏱ 6 минут</span>
+    <span>✍️ Overboard Studio</span>
+  </div>
+  <div class="article-divider"></div>
+</div>
+
+<!-- CONTENT -->
+<article class="article-body">
+
+  <p>«Нам нужен сайт» или «нам нужен бот» — предприниматели часто приходят с уже готовым решением, хотя правильный вопрос звучит иначе: какую задачу вы хотите решить? Именно от задачи зависит инструмент.</p>
+
+  <p>В этой статье разберём чем принципиально отличаются лендинг и Telegram-бот, когда нужен каждый из них, и что делать если кажется что нужно оба.</p>
+
+  <div class="callout">
+    <p><strong>Коротко:</strong> лендинг привлекает новых клиентов из поиска и рекламы. Бот обрабатывает заявки и общается с теми, кто уже знает о вас. Лучший результат — когда они работают вместе.</p>
+  </div>
+
+  <!-- ЧЕМ ОТЛИЧАЮТСЯ -->
+  <h2>Чем принципиально отличаются лендинг и бот</h2>
+
+  <p>Это два разных инструмента с разной логикой работы. Лендинг — это витрина. Бот — это продавец-консультант. Витрина привлекает людей с улицы, продавец работает с теми кто уже зашёл.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card">
+      <div class="compare-card-icon">🌐</div>
+      <div class="compare-card-label">Инструмент 1</div>
+      <div class="compare-card-title">Лендинг</div>
+      <ul class="compare-list">
+        <li><span class="ico-plus">✓</span> Индексируется в Google и Яндекс</li>
+        <li><span class="ico-plus">✓</span> Работает с холодным трафиком из рекламы</li>
+        <li><span class="ico-plus">✓</span> Рассказывает о продукте визуально</li>
+        <li><span class="ico-plus">✓</span> Подходит для презентации бренда</li>
+        <li><span class="ico-minus">✗</span> Не общается с клиентом</li>
+        <li><span class="ico-minus">✗</span> Не автоматизирует процессы</li>
+        <li><span class="ico-minus">✗</span> Не напоминает и не рассылает</li>
+      </ul>
+    </div>
+    <div class="compare-card highlighted">
+      <div class="compare-card-icon">🤖</div>
+      <div class="compare-card-label">Инструмент 2</div>
+      <div class="compare-card-title">Telegram-бот</div>
+      <ul class="compare-list">
+        <li><span class="ico-plus">✓</span> Принимает заявки и записи 24/7</li>
+        <li><span class="ico-plus">✓</span> Отправляет напоминания автоматически</li>
+        <li><span class="ico-plus">✓</span> Делает рассылки по базе клиентов</li>
+        <li><span class="ico-plus">✓</span> Интегрируется с CRM и оплатой</li>
+        <li><span class="ico-minus">✗</span> Не индексируется поисковиками</li>
+        <li><span class="ico-minus">✗</span> Работает только внутри Telegram</li>
+        <li><span class="ico-minus">✗</span> Требует чтобы клиент уже был в TG</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- КОГДА БОТ -->
+  <h2>Когда нужен Telegram-бот</h2>
+
+  <p>Бот решает задачи коммуникации и автоматизации. Если вам нужно принимать заявки, записывать клиентов, отвечать на вопросы или делать рассылки — это территория бота.</p>
+
+  <div class="scenario-list">
+    <div class="scenario-item">
+      <div class="scenario-emoji">📋</div>
+      <div class="scenario-body">
+        <div class="scenario-title">Приём заявок и обращений</div>
+        <p class="scenario-desc">Клиенты пишут в Telegram — бот собирает данные и передаёт менеджеру. Работает ночью, в выходные, без пропусков.</p>
+      </div>
+      <div class="scenario-badge badge-bot">Бот</div>
+    </div>
+    <div class="scenario-item">
+      <div class="scenario-emoji">📅</div>
+      <div class="scenario-body">
+        <div class="scenario-title">Запись клиентов на услуги</div>
+        <p class="scenario-desc">Для салонов, клиник, фитнеса, репетиторов. Клиент сам выбирает дату и время, бот напоминает за 24 часа.</p>
+      </div>
+      <div class="scenario-badge badge-bot">Бот</div>
+    </div>
+    <div class="scenario-item">
+      <div class="scenario-emoji">📣</div>
+      <div class="scenario-body">
+        <div class="scenario-title">Рассылки и акции по базе</div>
+        <p class="scenario-desc">Все кто написали боту — ваша база. Можно делать рассылки об акциях, новых услугах, напоминания о записях.</p>
+      </div>
+      <div class="scenario-badge badge-bot">Бот</div>
+    </div>
+    <div class="scenario-item">
+      <div class="scenario-emoji">🎓</div>
+      <div class="scenario-body">
+        <div class="scenario-title">Онлайн-обучение и вебинары</div>
+        <p class="scenario-desc">Регистрация участников, рассылка материалов, напоминания о занятиях — всё автоматически без ручной работы.</p>
+      </div>
+      <div class="scenario-badge badge-bot">Бот</div>
+    </div>
+    <div class="scenario-item">
+      <div class="scenario-emoji">🛒</div>
+      <div class="scenario-body">
+        <div class="scenario-title">Продажи внутри Telegram</div>
+        <p class="scenario-desc">Каталог, корзина, оплата — всё без перехода на сайт. Работает для небольших магазинов и инфопродуктов.</p>
+      </div>
+      <div class="scenario-badge badge-bot">Бот</div>
+    </div>
+  </div>
+
+  <!-- КОГДА ЛЕНДИНГ -->
+  <h2>Когда нужен лендинг</h2>
+
+  <p>Лендинг нужен когда вы хотите получать клиентов из поиска или рекламы. Это ваша точка присутствия в интернете — место куда можно отправить ссылку, куда придут люди из Google, Яндекса или таргета.</p>
+
+  <div class="scenario-list">
+    <div class="scenario-item">
+      <div class="scenario-emoji">🔍</div>
+      <div class="scenario-body">
+        <div class="scenario-title">Органический трафик из поиска</div>
+        <p class="scenario-desc">Люди ищут ваши услуги в Google и Яндекс. Без лендинга они вас просто не найдут — Telegram-канал и бот не индексируются.</p>
+      </div>
+      <div class="scenario-badge badge-landing">Лендинг</div>
+    </div>
+    <div class="scenario-item">
+      <div class="scenario-emoji">📢</div>
+      <div class="scenario-body">
+        <div class="scenario-title">Реклама в Яндекс.Директ, VK, таргет</div>
+        <p class="scenario-desc">Рекламные кампании ведут на страницу — нужна страница которая убеждает и конвертирует в заявку.</p>
+      </div>
+      <div class="scenario-badge badge-landing">Лендинг</div>
+    </div>
+    <div class="scenario-item">
+      <div class="scenario-emoji">🏢</div>
+      <div class="scenario-body">
+        <div class="scenario-title">Презентация бизнеса и портфолио</div>
+        <p class="scenario-desc">Клиенты хотят «посмотреть сайт» перед тем как обратиться. Лендинг — это визитка которая работает за вас.</p>
+      </div>
+      <div class="scenario-badge badge-landing">Лендинг</div>
+    </div>
+    <div class="scenario-item">
+      <div class="scenario-emoji">🚀</div>
+      <div class="scenario-body">
+        <div class="scenario-title">Запуск нового продукта или услуги</div>
+        <p class="scenario-desc">Нужно быстро проверить спрос на идею — лендинг с формой заявки покажет есть ли интерес без лишних вложений.</p>
+      </div>
+      <div class="scenario-badge badge-landing">Лендинг</div>
+    </div>
+  </div>
+
+  <!-- КОГДА ОБА -->
+  <h2>Когда нужны оба инструмента</h2>
+
+  <p>В большинстве случаев лендинг и бот не конкурируют — они дополняют друг друга. Лендинг привлекает трафик и убеждает, бот принимает заявку и дальше ведёт клиента.</p>
+
+  <div class="callout yellow">
+    <p><strong>Связка которая работает:</strong> клиент находит вас в поиске → попадает на лендинг → оставляет заявку через кнопку «Написать в Telegram» → бот принимает заявку, присылает информацию и напоминание. Конверсия выше чем у каждого инструмента отдельно.</p>
+  </div>
+
+  <div class="scenario-list">
+    <div class="scenario-item">
+      <div class="scenario-emoji">💇</div>
+      <div class="scenario-body">
+        <div class="scenario-title">Салон красоты, клиника, фитнес</div>
+        <p class="scenario-desc">Лендинг — для клиентов из поиска «маникюр рядом». Бот — для записи, напоминаний и акций по базе постоянных клиентов.</p>
+      </div>
+      <div class="scenario-badge badge-both">Оба</div>
+    </div>
+    <div class="scenario-item">
+      <div class="scenario-emoji">📚</div>
+      <div class="scenario-body">
+        <div class="scenario-title">Онлайн-школа, курсы, репетитор</div>
+        <p class="scenario-desc">Лендинг продаёт курс и принимает заявки на бесплатный урок. Бот ведёт ученика через воронку и автоматизирует коммуникацию.</p>
+      </div>
+      <div class="scenario-badge badge-both">Оба</div>
+    </div>
+    <div class="scenario-item">
+      <div class="scenario-emoji">🔧</div>
+      <div class="scenario-body">
+        <div class="scenario-title">Услуги и сервисный бизнес</div>
+        <p class="scenario-desc">Лендинг объясняет услугу и формирует доверие. Бот принимает заявку на расчёт и не теряет клиента после первого контакта.</p>
+      </div>
+      <div class="scenario-badge badge-both">Оба</div>
+    </div>
+  </div>
+
+  <!-- СРАВНИТЕЛЬНАЯ ТАБЛИЦА -->
+  <h2>Сравнение по ключевым параметрам</h2>
+
+  <div style="overflow-x:auto; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Параметр</th>
+          <th>Лендинг</th>
+          <th>Telegram-бот</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Стоимость старта</td>
+          <td>от 10 000 ₽</td>
+          <td>от 10 000 ₽</td>
+        </tr>
+        <tr>
+          <td>Срок запуска</td>
+          <td>7–14 дней</td>
+          <td>3–10 дней</td>
+        </tr>
+        <tr>
+          <td>Трафик из поиска</td>
+          <td class="td-landing">✓ Да</td>
+          <td style="color:rgba(255,255,255,0.4);">✗ Нет</td>
+        </tr>
+        <tr>
+          <td>Работа с рекламой</td>
+          <td class="td-landing">✓ Идеально</td>
+          <td style="color:rgba(255,255,255,0.4);">Ограниченно</td>
+        </tr>
+        <tr>
+          <td>Приём заявок 24/7</td>
+          <td style="color:rgba(255,255,255,0.4);">Форма на сайте</td>
+          <td class="td-bot">✓ Автоматически</td>
+        </tr>
+        <tr>
+          <td>Напоминания клиентам</td>
+          <td style="color:rgba(255,255,255,0.4);">✗ Нет</td>
+          <td class="td-bot">✓ Да</td>
+        </tr>
+        <tr>
+          <td>Рассылки по базе</td>
+          <td style="color:rgba(255,255,255,0.4);">✗ Нет</td>
+          <td class="td-bot">✓ Да</td>
+        </tr>
+        <tr>
+          <td>Интеграция с CRM</td>
+          <td style="color:rgba(255,255,255,0.4);">Сложно</td>
+          <td class="td-bot">✓ Легко</td>
+        </tr>
+        <tr>
+          <td>Презентация продукта</td>
+          <td class="td-landing">✓ Идеально</td>
+          <td style="color:rgba(255,255,255,0.4);">Ограниченно</td>
+        </tr>
+        <tr>
+          <td>Ежемесячные расходы</td>
+          <td>Хостинг ~200 ₽/мес</td>
+          <td>Сервер ~300 ₽/мес</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- С ЧЕГО НАЧАТЬ -->
+  <h2>С чего начать если бюджет ограничен</h2>
+
+  <p>Если ресурсы позволяют запустить только что-то одно — выбор зависит от вашего главного источника клиентов прямо сейчас.</p>
+
+  <ul>
+    <li><strong>Клиенты приходят из Telegram, соцсетей или по рекомендациям</strong> — начните с бота. Он сразу автоматизирует приём заявок и сэкономит время.</li>
+    <li><strong>Планируете запускать рекламу или рассчитываете на поиск</strong> — начните с лендинга. Без него рекламный трафик некуда вести.</li>
+    <li><strong>Не знаете откуда придут клиенты</strong> — начните с лендинга. Он даёт точку присутствия в интернете и базу для будущего SEO.</li>
+  </ul>
+
+  <p>Если бюджет позволяет — делайте оба сразу. Мы часто запускаем лендинг и бота как единую связку: лендинг привлекает, бот конвертирует. Подробнее — в разделе <a href="/#services">наших услуг</a>.</p>
+
+  <!-- FAQ -->
+  <h2>Частые вопросы</h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question">
+        Что дешевле — бот или лендинг?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Простой лендинг и простой бот стоят примерно одинаково — от 10 000–15 000 ₽. Разница начинается при усложнении: бот с записью и интеграциями дороже базового лендинга, но лендинг с анимацией и нестандартным дизайном может стоить дороже среднего бота.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Можно ли использовать и бот и лендинг одновременно?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Да, и это лучший вариант для большинства бизнесов. Лендинг привлекает трафик из поиска и рекламы, бот обрабатывает заявки и общается с клиентами. Связка лендинг + бот даёт максимальную конверсию.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Что быстрее запустить — бот или лендинг?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Простой бот и простой лендинг делаются примерно за одинаковое время — 3–7 дней. Лендинг с нестандартным дизайном может занять 10–14 дней. Бот со сложными интеграциями — 2–3 недели.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Нужен ли лендинг если есть Telegram-канал?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Да. Telegram-канал не индексируется поисковиками — новые клиенты не найдут вас через Google или Яндекс. Лендинг решает эту проблему и служит точкой входа для органического трафика.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        С чего начать — с бота или лендинга?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Зависит от источника трафика. Если клиенты приходят из Telegram, рекламы или соцсетей — начните с бота. Если рассчитываете на поиск Google/Яндекс — начните с лендинга. Если оба источника важны — делайте оба одновременно.</div>
+    </div>
+  </div>
+
+  <div class="article-cta">
+    <h3>Не знаете что выбрать для вашего бизнеса?</h3>
+    <p>Расскажите задачу — разберём бесплатно и предложим оптимальное решение. Бот, лендинг или связку обоих.</p>
+    <a href="https://t.me/overboardbot" target="_blank" rel="noopener" class="article-cta-btn">Обсудить проект →</a>
+    <div class="article-cta-sub">Ответим в течение часа · Без обязательств</div>
+  </div>
+
+</article>
+
+<!-- FOOTER -->
+<footer class="footer" id="contacts">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="/img/logo.png" alt="Overboard Studio logo" class="footer-logo-img">
+        <span class="logo-text">Overboard Studio</span>
+      </div>
+      <p class="footer-description">Разработка Telegram-ботов и лендингов для бизнеса. Автоматизация, интеграции и поддержка.</p>
+    </div>
+    <div class="footer-nav">
+      <strong>Навигация</strong>
+      <a href="/#services">Услуги</a>
+      <a href="/#cases">Кейсы</a>
+      <a href="/portfolio.html">Портфолио</a>
+      <a href="/blog.html">Блог</a>
+      <a href="/#faq">FAQ</a>
+    </div>
+    <div class="footer-contacts">
+      <strong>Контакты</strong>
+      <a href="https://t.me/overboardbot" target="_blank" rel="noopener">Telegram</a>
+      <a href="mailto:nickpremium1@proton.me">nickpremium1@proton.me</a>
+      <a href="/privacy.html" target="_blank" class="footer-policy">Политика конфиденциальности</a>
+      <span class="footer-copy">© 2026 Overboard Studio</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/84357565416" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <img src="/img/whatsapp-logo.png" alt="WhatsApp">
+</a>
+<a href="https://t.me/overboardbot" class="telegram-float" target="_blank" rel="noopener" aria-label="Telegram">
+  <img src="/img/telegram.png" alt="Telegram">
+</a>
+<style>
+  .telegram-float { position:fixed; bottom:90px; right:24px; width:52px; height:52px; background:#2AABEE; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(0,0,0,0.3); z-index:999; transition:transform 0.2s; }
+  .telegram-float:hover { transform:translateY(-3px); }
+  .telegram-float img { width:28px; height:28px; object-fit:contain; }
+</style>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>
