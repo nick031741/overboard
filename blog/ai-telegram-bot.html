@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ИИ-бот для Telegram: что умеет, как работает и зачем бизнесу в 2026 — Overboard Studio</title>
+  <meta name="description" content="ИИ-бот для Telegram — что это такое, чем отличается от обычного бота, какие задачи решает и сколько стоит. Реальные сценарии для бизнеса.">
+
+  <link rel="canonical" href="https://overboardstudio.com/blog/ai-telegram-bot.html">
+  <meta property="og:title" content="ИИ-бот для Telegram: что умеет, как работает и зачем бизнесу">
+  <meta property="og:description" content="Чем ИИ-бот отличается от обычного, что умеет, кому подходит и сколько стоит. Разбор без технического жаргона.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://overboardstudio.com/blog/ai-telegram-bot.html">
+  <meta property="og:image" content="https://overboardstudio.com/img/logo.png">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Overboard Studio">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#17212b">
+
+  <!-- Schema.org: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "ИИ-бот для Telegram: что умеет, как работает и зачем бизнесу в 2026",
+    "description": "Чем ИИ-бот отличается от обычного, что умеет, кому подходит и сколько стоит. Разбор без технического жаргона.",
+    "author": { "@type": "Organization", "name": "Overboard Studio", "url": "https://overboardstudio.com" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Overboard Studio",
+      "logo": { "@type": "ImageObject", "url": "https://overboardstudio.com/img/logo.png" }
+    },
+    "datePublished": "2026-07-01",
+    "dateModified": "2026-07-01",
+    "url": "https://overboardstudio.com/blog/ai-telegram-bot.html"
+  }
+  </script>
+
+  <!-- Schema.org: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Что такое ИИ-бот для Telegram?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ИИ-бот для Telegram — это чат-бот, подключённый к языковой модели (ChatGPT, Claude и другим). В отличие от обычного бота с кнопками, он понимает свободный текст, отвечает на нестандартные вопросы и ведёт естественный диалог."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Сколько стоит ИИ-бот для Telegram?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Стоимость разработки ИИ-бота — от 50 000 до 150 000 ₽ в зависимости от сложности сценариев и интеграций. Плюс ежемесячные расходы на API языковой модели — обычно 2 000–10 000 ₽/мес в зависимости от объёма диалогов."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Какую языковую модель лучше использовать для бота?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Для большинства бизнес-задач подходит GPT-4o или Claude. GPT-4o быстрее и дешевле, Claude лучше работает с длинными контекстами и инструкциями. Выбор зависит от конкретной задачи бота."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Может ли ИИ-бот ошибаться?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да. Языковые модели могут давать неточные ответы — это называется галлюцинациями. Чтобы минимизировать ошибки, бот обучается на конкретной базе знаний о продукте и ограничивается заданной темой. Критические операции (оплата, запись) всегда проверяются через структурированную логику."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Чем ИИ-бот лучше обычного?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Обычный бот работает только по заранее заданным сценариям — если пользователь написал что-то неожиданное, бот не ответит. ИИ-бот понимает свободный текст, адаптируется к контексту разговора и обрабатывает нестандартные вопросы. Это особенно важно для консультаций, поддержки и продаж."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    .header-btn {
+      background: #229ed9 !important;
+      color: #fff !important;
+      padding: 10px 20px !important;
+      border-radius: 50px !important;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      text-decoration: none !important;
+      white-space: nowrap !important;
+      display: inline-block !important;
+      line-height: 1.4 !important;
+    }
+    .header-btn:hover { background: #1d8cc7 !important; }
+
+    .article-hero {
+      padding: 130px 20px 0;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 0;
+    }
+    .article-meta span { display: flex; align-items: center; gap: 5px; }
+
+    .article-hero-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .article-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .article-back:hover { color: #fff; }
+
+    .article-cat {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      background: rgba(34,158,217,0.15);
+      color: #229ed9;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .article-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .article-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      margin: 24px 0 0;
+    }
+
+    .article-body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 20px 80px;
+    }
+
+    .article-body h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      margin: 48px 0 16px;
+      line-height: 1.3;
+    }
+
+    .article-body h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin: 32px 0 12px;
+    }
+
+    .article-body p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 20px;
+    }
+
+    .article-body ul {
+      padding-left: 24px;
+      margin-bottom: 20px;
+    }
+
+    .article-body li {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 8px;
+    }
+
+    .article-body strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+    .article-body a { color: #229ed9; text-decoration: none; }
+    .article-body a:hover { text-decoration: underline; }
+
+    /* Callout */
+    .callout {
+      background: rgba(34,158,217,0.08);
+      border: 1px solid rgba(34,158,217,0.2);
+      border-left: 3px solid #229ed9;
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+      margin: 28px 0;
+    }
+    .callout p { margin: 0; color: rgba(255,255,255,0.75); }
+    .callout strong { color: #229ed9; }
+
+    .callout.green {
+      background: rgba(76,175,125,0.08);
+      border-color: rgba(76,175,125,0.25);
+      border-left-color: #4caf7d;
+    }
+    .callout.green strong { color: #4caf7d; }
+
+    /* Diff table */
+    .diff-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0 32px;
+    }
+
+    .diff-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .diff-card.highlighted {
+      border-color: rgba(34,158,217,0.4);
+      background: rgba(34,158,217,0.05);
+    }
+
+    .diff-card-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 6px;
+    }
+
+    .diff-card-label.accent { color: #229ed9; }
+
+    .diff-card-icon { font-size: 28px; margin-bottom: 10px; }
+
+    .diff-card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .diff-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .diff-list li {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      margin: 0;
+    }
+
+    .ico-plus { color: #4caf7d; flex-shrink: 0; }
+    .ico-minus { color: #e06c75; flex-shrink: 0; }
+    .ico-neutral { color: rgba(255,255,255,0.3); flex-shrink: 0; }
+
+    /* Use case cards */
+    .usecase-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 20px 0 32px;
+    }
+
+    .usecase-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 22px 24px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+
+    .usecase-item:hover { border-color: rgba(255,255,255,0.15); }
+
+    .usecase-emoji { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
+
+    .usecase-body { flex: 1; }
+
+    .usecase-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 6px;
+    }
+
+    .usecase-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .usecase-result {
+      font-size: 12px;
+      color: #4caf7d;
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    /* Niche cards */
+    .niche-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 20px 0 32px;
+    }
+
+    .niche-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+
+    .niche-icon { font-size: 22px; margin-bottom: 8px; }
+
+    .niche-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 4px;
+    }
+
+    .niche-desc {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+    }
+
+    /* How it works steps */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 20px 0 32px;
+    }
+
+    .step {
+      display: flex;
+      gap: 16px;
+    }
+
+    .step-line {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .step-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(34,158,217,0.15);
+      border: 1px solid rgba(34,158,217,0.4);
+      color: #229ed9;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-bar {
+      width: 1px;
+      background: rgba(255,255,255,0.07);
+      flex: 1;
+      margin: 4px 0;
+    }
+
+    .step:last-child .step-bar { display: none; }
+
+    .step-content { padding-bottom: 24px; padding-top: 4px; }
+
+    .step-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 4px;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+
+    /* Price table */
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0 32px;
+      font-size: 14px;
+    }
+
+    .price-table th {
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.7);
+      font-weight: 600;
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .price-table td {
+      padding: 13px 16px;
+      color: rgba(255,255,255,0.6);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      vertical-align: top;
+    }
+
+    .price-table tr:last-child td { border-bottom: none; }
+    .price-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .price-highlight { color: #229ed9 !important; font-weight: 600; }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 24px 0 32px;
+    }
+
+    .faq-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 18px 20px;
+      text-align: left;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .faq-question:hover { color: #fff; }
+
+    .faq-icon {
+      color: #229ed9;
+      font-size: 20px;
+      font-weight: 300;
+      flex-shrink: 0;
+      transition: transform 0.25s;
+      line-height: 1;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s ease;
+      padding: 0 20px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+      padding: 0 20px 18px;
+    }
+
+    /* CTA */
+    .article-cta {
+      background: rgba(34,158,217,0.08);
+      border: 1px solid rgba(34,158,217,0.2);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      margin-top: 56px;
+    }
+
+    .article-cta h3 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .article-cta p { font-size: 15px; color: rgba(255,255,255,0.55); margin-bottom: 28px; }
+
+    .article-cta-btn {
+      display: inline-block;
+      background: #229ed9;
+      color: #fff !important;
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none !important;
+      transition: background 0.2s;
+    }
+
+    .article-cta-btn:hover { background: #1d8cc7; }
+
+    .article-cta-sub {
+      margin-top: 12px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    @media (max-width: 600px) {
+      .article-hero { padding-top: 100px; }
+      .diff-grid { grid-template-columns: 1fr; }
+      .niche-grid { grid-template-columns: 1fr 1fr; }
+      .price-table { font-size: 13px; }
+      .price-table th, .price-table td { padding: 10px 12px; }
+      .article-cta { padding: 28px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="logo" style="text-decoration:none;color:#fff;">
+      <img src="/img/logo.png" alt="OB">
+      <span class="logo-text">Overboard Studio</span>
+    </a>
+    <div class="lang-switch">
+      <a href="/blog.html" class="lang-link active">RU</a>
+      <a href="/en/index.html" class="lang-link">EN</a>
+    </div>
+    <nav class="nav">
+      <a href="/#services">Услуги</a>
+      <a href="/#process">Процесс</a>
+      <a href="/#cases">Кейсы</a>
+      <a href="/portfolio.html">Портфолио</a>
+      <a href="/blog.html" style="color:#229ed9;opacity:1;">Блог</a>
+      <a href="/#reviews">Отзывы</a>
+      <a href="/#contacts">Контакты</a>
+    </nav>
+    <a href="/#contacts" class="header-btn">Оставить заявку</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="article-hero">
+  <div class="article-hero-top">
+    <a href="/blog.html" class="article-back">← Все статьи</a>
+    <div class="article-cat">🤖 Telegram-боты</div>
+  </div>
+  <h1 class="article-title">ИИ-бот для Telegram: что умеет, как работает и зачем бизнесу</h1>
+  <div class="article-meta">
+    <span>📅 Июль 2026</span>
+    <span>⏱ 8 минут</span>
+    <span>✍️ Overboard Studio</span>
+  </div>
+  <div class="article-divider"></div>
+</div>
+
+<!-- CONTENT -->
+<article class="article-body">
+
+  <p>Обычный Telegram-бот работает по скрипту: нажал кнопку — получил ответ. Если пользователь написал что-то неожиданное — бот молчит или выдаёт «не понимаю». ИИ-бот работает иначе: он понимает живой текст, отвечает как человек и не теряется когда разговор уходит в сторону.</p>
+
+  <p>В этой статье — без технического жаргона — разберём что такое ИИ-бот для Telegram, какие задачи он решает лучше обычного и для какого бизнеса это реально нужно.</p>
+
+  <div class="callout">
+    <p><strong>Коротко:</strong> ИИ-бот — это Telegram-бот, подключённый к языковой модели (ChatGPT, Claude). Он понимает свободный текст, ведёт живой диалог и отвечает на нестандартные вопросы. Стоит от 50 000 ₽, подходит не всем — но там где подходит, даёт ощутимый результат.</p>
+  </div>
+
+  <!-- ЧЕМ ОТЛИЧАЕТСЯ -->
+  <h2>Чем ИИ-бот отличается от обычного</h2>
+
+  <p>Ключевое различие — в том как бот понимает пользователя. Обычный бот работает с командами и кнопками. ИИ-бот работает с языком.</p>
+
+  <div class="diff-grid">
+    <div class="diff-card">
+      <div class="diff-card-icon">🔘</div>
+      <div class="diff-card-label">Обычный бот</div>
+      <div class="diff-card-title">Бот с кнопками и скриптом</div>
+      <ul class="diff-list">
+        <li><span class="ico-plus">✓</span> Работает строго по сценарию</li>
+        <li><span class="ico-plus">✓</span> Дешевле в разработке</li>
+        <li><span class="ico-plus">✓</span> Нет случайных ответов</li>
+        <li><span class="ico-plus">✓</span> Нет расходов на API</li>
+        <li><span class="ico-minus">✗</span> Не понимает свободный текст</li>
+        <li><span class="ico-minus">✗</span> Теряется при нестандартных вопросах</li>
+        <li><span class="ico-minus">✗</span> Диалог ощущается как автоответчик</li>
+        <li><span class="ico-minus">✗</span> Каждый сценарий — отдельная работа</li>
+      </ul>
+    </div>
+    <div class="diff-card highlighted">
+      <div class="diff-card-icon">🧠</div>
+      <div class="diff-card-label accent">ИИ-бот</div>
+      <div class="diff-card-title">Бот с языковой моделью</div>
+      <ul class="diff-list">
+        <li><span class="ico-plus">✓</span> Понимает любой текст пользователя</li>
+        <li><span class="ico-plus">✓</span> Отвечает как живой консультант</li>
+        <li><span class="ico-plus">✓</span> Обрабатывает возражения</li>
+        <li><span class="ico-plus">✓</span> Помнит контекст разговора</li>
+        <li><span class="ico-plus">✓</span> Адаптируется под тон пользователя</li>
+        <li><span class="ico-minus">✗</span> Дороже в разработке</li>
+        <li><span class="ico-minus">✗</span> Ежемесячные расходы на API</li>
+        <li><span class="ico-minus">✗</span> Требует настройки и обучения</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>Простой пример: клиент пишет «а скидка будет?». Обычный бот не знает такой команды и предложит выбрать пункт меню. ИИ-бот поймёт вопрос, ответит по существу и предложит то, что актуально — например, акцию для новых клиентов.</p>
+
+  <!-- КАК РАБОТАЕТ -->
+  <h2>Как это работает изнутри</h2>
+
+  <p>Технически ИИ-бот — это Telegram-бот на Python, который при каждом сообщении пользователя обращается к API языковой модели. Модель получает сообщение, контекст разговора и инструкции о том как отвечать, и возвращает ответ. Всё это происходит за 1–3 секунды.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-line">
+        <div class="step-dot">1</div>
+        <div class="step-bar"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Пользователь пишет в бот</div>
+        <div class="step-desc">Любое сообщение на любом языке — вопрос, возражение, жалоба, нестандартный запрос.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-line">
+        <div class="step-dot">2</div>
+        <div class="step-bar"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Бот передаёт запрос в языковую модель</div>
+        <div class="step-desc">Вместе с сообщением передаётся системный промпт — инструкции о роли бота, базе знаний о продукте, ограничениях и тоне общения.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-line">
+        <div class="step-dot">3</div>
+        <div class="step-bar"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Модель генерирует ответ</div>
+        <div class="step-desc">GPT-4o или Claude анализирует запрос в контексте всего разговора и формирует ответ согласно инструкциям. Занимает 1–3 секунды.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-line">
+        <div class="step-dot">4</div>
+        <div class="step-bar"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">Бот отправляет ответ и сохраняет контекст</div>
+        <div class="step-desc">Пользователь получает ответ в Telegram. История разговора сохраняется — бот помнит что обсуждалось раньше.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-line">
+        <div class="step-dot">5</div>
+        <div class="step-bar"></div>
+      </div>
+      <div class="step-content">
+        <div class="step-title">При нужном моменте — целевое действие</div>
+        <div class="step-desc">Когда клиент готов — бот предлагает оставить заявку, записаться или перейти к оплате. Это встроено в логику через структурированные инструкции.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ЧТО УМЕЕТ -->
+  <h2>Что умеет ИИ-бот: реальные сценарии</h2>
+
+  <p>ИИ — это не волшебство. Это инструмент который хорошо справляется с конкретными задачами. Вот где он даёт реальный результат.</p>
+
+  <div class="usecase-list">
+
+    <div class="usecase-item">
+      <div class="usecase-emoji">💬</div>
+      <div class="usecase-body">
+        <div class="usecase-title">Консультации по продукту или услуге</div>
+        <p class="usecase-desc">Бот знает всё о вашем продукте и отвечает на вопросы как опытный менеджер. «Какой курс мне подойдёт?», «Чем вы отличаетесь от конкурентов?», «Есть ли рассрочка?» — всё это без участия человека.</p>
+        <div class="usecase-result">→ Снижает нагрузку на менеджеров на 40–60%</div>
+      </div>
+    </div>
+
+    <div class="usecase-item">
+      <div class="usecase-emoji">🎯</div>
+      <div class="usecase-body">
+        <div class="usecase-title">Обработка возражений в продажах</div>
+        <p class="usecase-desc">«Дорого», «подумаю», «не сейчас» — ИИ-бот понимает контекст возражения и отвечает аргументами, а не шаблонной фразой. Это особенно ценно для онлайн-школ, услуг и инфопродуктов.</p>
+        <div class="usecase-result">→ Конверсия в заявку выше на 25–40% по сравнению с обычным ботом</div>
+      </div>
+    </div>
+
+    <div class="usecase-item">
+      <div class="usecase-emoji">🤝</div>
+      <div class="usecase-body">
+        <div class="usecase-title">Первичная квалификация клиентов</div>
+        <p class="usecase-desc">Бот в диалоге узнаёт что нужно клиенту, какой бюджет, какие задачи — и передаёт менеджеру уже готовый портрет. Менеджер не тратит время на базовые вопросы.</p>
+        <div class="usecase-result">→ Менеджер получает тёплого клиента с заполненным брифом</div>
+      </div>
+    </div>
+
+    <div class="usecase-item">
+      <div class="usecase-emoji">🆘</div>
+      <div class="usecase-body">
+        <div class="usecase-title">Поддержка и ответы на частые вопросы</div>
+        <p class="usecase-desc">Бот закрывает типичные вопросы клиентов: статус заказа, условия возврата, как пользоваться продуктом. Работает 24/7 без очередей и ожидания.</p>
+        <div class="usecase-result">→ Экономит 2–4 часа работы поддержки в день</div>
+      </div>
+    </div>
+
+    <div class="usecase-item">
+      <div class="usecase-emoji">🌍</div>
+      <div class="usecase-body">
+        <div class="usecase-title">Многоязычное общение</div>
+        <p class="usecase-desc">ИИ-бот автоматически определяет язык пользователя и отвечает на нём же. Русский, английский, казахский, узбекский — без дополнительной настройки.</p>
+        <div class="usecase-result">→ Идеально для бизнесов с международной аудиторией</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- КОМУ ПОДХОДИТ -->
+  <h2>Кому подходит ИИ-бот</h2>
+
+  <p>ИИ-бот даёт максимум там где диалог сложный, вопросы нестандартные и важно удержать клиента в разговоре. Вот ниши где он работает лучше всего:</p>
+
+  <div class="niche-grid">
+    <div class="niche-card">
+      <div class="niche-icon">📚</div>
+      <div class="niche-title">Онлайн-школы и курсы</div>
+      <div class="niche-desc">Консультации по программе, обработка возражений, запись на бесплатный урок</div>
+    </div>
+    <div class="niche-card">
+      <div class="niche-icon">🏥</div>
+      <div class="niche-title">Клиники и медцентры</div>
+      <div class="niche-desc">Ответы на вопросы об услугах, запись к врачу, первичная консультация</div>
+    </div>
+    <div class="niche-card">
+      <div class="niche-icon">🏠</div>
+      <div class="niche-title">Недвижимость</div>
+      <div class="niche-desc">Подбор объектов по параметрам, ответы на вопросы, запись на показ</div>
+    </div>
+    <div class="niche-card">
+      <div class="niche-icon">💼</div>
+      <div class="niche-title">B2B-услуги</div>
+      <div class="niche-desc">Квалификация клиентов, ответы на вопросы о продукте, сбор брифа</div>
+    </div>
+    <div class="niche-card">
+      <div class="niche-icon">🛍️</div>
+      <div class="niche-title">Интернет-магазины</div>
+      <div class="niche-desc">Помощь в выборе товара, ответы о доставке и возвратах, поддержка</div>
+    </div>
+    <div class="niche-card">
+      <div class="niche-icon">✈️</div>
+      <div class="niche-title">Туризм и travel</div>
+      <div class="niche-desc">Подбор туров, ответы на вопросы о визах и маршрутах, бронирование</div>
+    </div>
+  </div>
+
+  <div class="callout green">
+    <p><strong>Когда ИИ-бот не нужен:</strong> если у вас простой линейный процесс — записать клиента, принять заявку, показать прайс — достаточно обычного бота. Он дешевле, надёжнее и не требует расходов на API. ИИ оправдан там где диалог непредсказуем.</p>
+  </div>
+
+  <!-- СКОЛЬКО СТОИТ -->
+  <h2>Сколько стоит ИИ-бот для Telegram</h2>
+
+  <p>Стоимость складывается из двух частей: разработка (разовый платёж) и расходы на API языковой модели (ежемесячно).</p>
+
+  <div style="overflow-x:auto; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th>Тип ИИ-бота</th>
+          <th>Разработка</th>
+          <th>API в месяц</th>
+          <th>Срок</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Консультант по продукту</td>
+          <td class="price-highlight">от 50 000 ₽</td>
+          <td>2 000–5 000 ₽</td>
+          <td>10–14 дней</td>
+        </tr>
+        <tr>
+          <td>Продажник с обработкой возражений</td>
+          <td class="price-highlight">от 65 000 ₽</td>
+          <td>3 000–8 000 ₽</td>
+          <td>12–16 дней</td>
+        </tr>
+        <tr>
+          <td>ИИ + интеграция с CRM</td>
+          <td class="price-highlight">от 80 000 ₽</td>
+          <td>3 000–8 000 ₽</td>
+          <td>14–20 дней</td>
+        </tr>
+        <tr>
+          <td>Сложный мультисценарный бот</td>
+          <td class="price-highlight">от 120 000 ₽</td>
+          <td>5 000–15 000 ₽</td>
+          <td>от 3 недель</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Расходы на API зависят от количества диалогов и длины сообщений. Для малого бизнеса с 100–300 диалогами в месяц это обычно <strong>2 000–4 000 ₽/мес</strong>. Для активного бота с тысячами обращений — выше.</p>
+
+  <p>Подробнее о ценах на все типы ботов — в статье <a href="/blog/telegram-bot-cost.html">«Сколько стоит Telegram-бот для бизнеса»</a>.</p>
+
+  <!-- FAQ -->
+  <h2>Частые вопросы</h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question">
+        Что такое ИИ-бот для Telegram?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">ИИ-бот для Telegram — это чат-бот, подключённый к языковой модели (ChatGPT, Claude и другим). В отличие от обычного бота с кнопками, он понимает свободный текст, отвечает на нестандартные вопросы и ведёт естественный диалог.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Сколько стоит ИИ-бот для Telegram?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Стоимость разработки — от 50 000 до 150 000 ₽ в зависимости от сложности. Плюс ежемесячные расходы на API языковой модели — обычно 2 000–10 000 ₽/мес в зависимости от объёма диалогов.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Какую языковую модель лучше использовать для бота?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Для большинства бизнес-задач подходит GPT-4o или Claude. GPT-4o быстрее и дешевле в API, Claude лучше работает с длинными контекстами и точными инструкциями. Выбор зависит от конкретной задачи — обсуждаем под каждый проект отдельно.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Может ли ИИ-бот ошибаться?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Да. Языковые модели могут давать неточные ответы — это называется галлюцинациями. Чтобы минимизировать ошибки, бот обучается на конкретной базе знаний о вашем продукте и ограничивается заданной темой. Критические операции (оплата, запись) всегда проверяются через структурированную логику, а не через ИИ.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Чем ИИ-бот лучше обычного?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Обычный бот работает только по заранее заданным сценариям — если пользователь написал что-то неожиданное, бот не ответит. ИИ-бот понимает свободный текст, адаптируется к контексту разговора и обрабатывает нестандартные вопросы. Особенно важно для консультаций, поддержки и продаж где диалог непредсказуем.</div>
+    </div>
+  </div>
+
+  <div class="article-cta">
+    <h3>Хотите ИИ-бота для своего бизнеса?</h3>
+    <p>Расскажите задачу — разберём бесплатно, подберём модель и назовём точную стоимость. Запускаем за 10–20 дней.</p>
+    <a href="https://t.me/overboardbot" target="_blank" rel="noopener" class="article-cta-btn">Обсудить проект →</a>
+    <div class="article-cta-sub">Ответим в течение часа · Без обязательств</div>
+  </div>
+
+</article>
+
+<!-- FOOTER -->
+<footer class="footer" id="contacts">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="/img/logo.png" alt="Overboard Studio logo" class="footer-logo-img">
+        <span class="logo-text">Overboard Studio</span>
+      </div>
+      <p class="footer-description">Разработка Telegram-ботов и лендингов для бизнеса. Автоматизация, интеграции и поддержка.</p>
+    </div>
+    <div class="footer-nav">
+      <strong>Навигация</strong>
+      <a href="/#services">Услуги</a>
+      <a href="/#cases">Кейсы</a>
+      <a href="/portfolio.html">Портфолио</a>
+      <a href="/blog.html">Блог</a>
+      <a href="/#faq">FAQ</a>
+    </div>
+    <div class="footer-contacts">
+      <strong>Контакты</strong>
+      <a href="https://t.me/overboardbot" target="_blank" rel="noopener">Telegram</a>
+      <a href="mailto:nickpremium1@proton.me">nickpremium1@proton.me</a>
+      <a href="/privacy.html" target="_blank" class="footer-policy">Политика конфиденциальности</a>
+      <span class="footer-copy">© 2026 Overboard Studio</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/84357565416" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <img src="/img/whatsapp-logo.png" alt="WhatsApp">
+</a>
+<a href="https://t.me/overboardbot" class="telegram-float" target="_blank" rel="noopener" aria-label="Telegram">
+  <img src="/img/telegram.png" alt="Telegram">
+</a>
+<style>
+  .telegram-float { position:fixed; bottom:90px; right:24px; width:52px; height:52px; background:#2AABEE; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(0,0,0,0.3); z-index:999; transition:transform 0.2s; }
+  .telegram-float:hover { transform:translateY(-3px); }
+  .telegram-float img { width:28px; height:28px; object-fit:contain; }
+</style>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>
