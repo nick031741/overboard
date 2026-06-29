@@ -384,13 +384,18 @@
     }
     .faq-item.open .faq-icon { transform: rotate(45deg); }
     .faq-answer {
-      display: none;
-      padding: 0 20px 18px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s ease;
+      padding: 0 20px;
       font-size: 14px;
       line-height: 1.7;
       color: rgba(255,255,255,0.5);
     }
-    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+      padding: 0 20px 18px;
+    }
 
     /* Related links */
     .related-block {
@@ -774,20 +779,11 @@
     </div>
   </div>
 
-  <!-- Внутренние ссылки -->
-  <div class="related-block">
-    <div class="related-label">Читайте также</div>
-    <div class="related-links">
-      <a href="/blog.html" class="related-link">← Все статьи блога</a>
-      <a href="/#cases" class="related-link">Наши кейсы</a>
-      <a href="/portfolio.html" class="related-link">Портфолио</a>
-    </div>
-  </div>
 
   <div class="article-cta">
     <h3>Хотите узнать точную стоимость для вашего проекта?</h3>
     <p>Расскажите задачу — разберём бесплатно и назовём цену без «от». Запускаем за 3–10 дней.</p>
-    <a href="/#contacts" class="article-cta-btn">Обсудить проект →</a>
+    <a href="https://t.me/overboardbot" target="_blank" rel="noopener" class="article-cta-btn">Обсудить проект →</a>
     <div class="article-cta-sub">Ответим в течение часа · Без обязательств</div>
   </div>
 
