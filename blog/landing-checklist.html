@@ -109,6 +109,104 @@
       display: inline-block !important;
     }
     .header-btn:hover { background: #1d8cc7 !important; }
+    /* ===== BURGER MENU (mobile only) ===== */
+    .burger-btn {
+      display: none;
+      background: none;
+      border: none;
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      margin-left: 8px;
+      padding: 0;
+    }
+    .burger-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      position: relative;
+      transition: background 0.2s;
+    }
+    .burger-btn span::before,
+    .burger-btn span::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 22px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: transform 0.25s ease, top 0.25s ease;
+    }
+    .burger-btn span::before { top: -7px; }
+    .burger-btn span::after { top: 7px; }
+    .burger-btn.open span { background: transparent; }
+    .burger-btn.open span::before { top: 0; transform: rotate(45deg); }
+    .burger-btn.open span::after { top: 0; transform: rotate(-45deg); }
+
+    .mobile-menu-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 22, 30, 0.98);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 1300;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .mobile-menu-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+    .mobile-menu-overlay a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: 600;
+      padding: 14px 0;
+      opacity: 0.85;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    .mobile-menu-overlay a:hover,
+    .mobile-menu-overlay a:active { opacity: 1; color: #229ed9; }
+    .mobile-menu-overlay .mobile-menu-cta {
+      margin-top: 24px;
+      background: #229ed9;
+      color: #fff !important;
+      padding: 14px 36px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 600;
+      opacity: 1;
+    }
+    .mobile-menu-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 32px;
+      line-height: 1;
+      cursor: pointer;
+      opacity: 0.7;
+    }
+    .mobile-menu-close:hover { opacity: 1; }
+
+    @media (max-width: 900px) {
+      .burger-btn { display: flex; }
+    }
+
 
     .article-hero {
       padding: 130px 20px 0;
@@ -451,8 +549,21 @@
       <a href="/#contacts">Контакты</a>
     </nav>
     <a href="/#contacts" class="header-btn">Оставить заявку</a>
+    <button class="burger-btn" id="burgerBtn" aria-label="Меню"><span></span></button>
   </div>
 </header>
+<!-- ===== MOBILE MENU ===== -->
+<div class="mobile-menu-overlay" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileMenuClose">×</button>
+  <a href="/#services">Услуги</a>
+  <a href="/#process">Процесс</a>
+  <a href="/#cases">Кейсы</a>
+  <a href="/portfolio.html">Портфолио</a>
+  <a href="/blog.html">Блог</a>
+  <a href="/#reviews">Отзывы</a>
+  <a href="/#contacts">Контакты</a>
+  <a href="/#contacts" class="mobile-menu-cta">Оставить заявку</a>
+</div>
 
 <!-- HERO -->
 <div class="article-hero">
@@ -851,6 +962,33 @@
       document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
       if (!isOpen) item.classList.add('open');
     });
+  });
+</script>
+
+
+<script>
+  var burgerBtn = document.getElementById('burgerBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  var mobileMenuClose = document.getElementById('mobileMenuClose');
+  function openMobileMenu() {
+    mobileMenu.classList.add('active');
+    burgerBtn.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('active');
+    burgerBtn.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  burgerBtn.addEventListener('click', function() {
+    mobileMenu.classList.contains('active') ? closeMobileMenu() : openMobileMenu();
+  });
+  mobileMenuClose.addEventListener('click', closeMobileMenu);
+  mobileMenu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', closeMobileMenu);
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMobileMenu();
   });
 </script>
 
