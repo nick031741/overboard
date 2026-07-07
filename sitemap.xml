@@ -8,7 +8,7 @@
     <loc>https://overboardstudio.com/</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/"/>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -17,14 +17,14 @@
     <loc>https://overboardstudio.com/en/</loc>
     <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/"/>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://overboardstudio.com/portfolio.html</loc>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://overboardstudio.com/portfolio</loc>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -52,22 +52,29 @@
     <priority>0.5</priority>
   </url>
 
+  <url>
+    <loc>https://overboardstudio.com/bigman/</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
   <!-- ── BLOG INDEX ── -->
 
   <url>
-    <loc>https://overboardstudio.com/blog.html</loc>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog.html"/>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://overboardstudio.com/blog</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog"/>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://overboardstudio.com/en/blog.html</loc>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog.html"/>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://overboardstudio.com/en/blog</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog"/>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -75,37 +82,37 @@
   <!-- ── BLOG ARTICLES RU ── -->
 
   <url>
-    <loc>https://overboardstudio.com/blog/telegram-bot-cost.html</loc>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog/telegram-bot-cost.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog/telegram-bot-cost.html"/>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://overboardstudio.com/blog/telegram-bot-cost</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog/telegram-bot-cost"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog/telegram-bot-cost"/>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://overboardstudio.com/blog/landing-checklist.html</loc>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog/landing-checklist.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog/landing-checklist.html"/>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://overboardstudio.com/blog/landing-checklist</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog/landing-checklist"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog/landing-checklist"/>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://overboardstudio.com/blog/bot-or-landing.html</loc>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog/bot-or-landing.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog/bot-or-landing.html"/>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://overboardstudio.com/blog/bot-or-landing</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog/bot-or-landing"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog/bot-or-landing"/>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://overboardstudio.com/blog/ai-telegram-bot.html</loc>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog/ai-telegram-bot.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog/ai-telegram-bot.html"/>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://overboardstudio.com/blog/ai-telegram-bot</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog/ai-telegram-bot"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog/ai-telegram-bot"/>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -113,37 +120,37 @@
   <!-- ── BLOG ARTICLES EN ── -->
 
   <url>
-    <loc>https://overboardstudio.com/en/blog/telegram-bot-cost.html</loc>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog/telegram-bot-cost.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog/telegram-bot-cost.html"/>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://overboardstudio.com/en/blog/telegram-bot-cost</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog/telegram-bot-cost"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog/telegram-bot-cost"/>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://overboardstudio.com/en/blog/landing-checklist.html</loc>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog/landing-checklist.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog/landing-checklist.html"/>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://overboardstudio.com/en/blog/landing-checklist</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog/landing-checklist"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog/landing-checklist"/>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://overboardstudio.com/en/blog/bot-or-landing.html</loc>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog/bot-or-landing.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog/bot-or-landing.html"/>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://overboardstudio.com/en/blog/bot-or-landing</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog/bot-or-landing"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog/bot-or-landing"/>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://overboardstudio.com/en/blog/ai-telegram-bot.html</loc>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog/ai-telegram-bot.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog/ai-telegram-bot.html"/>
-    <lastmod>2026-07-01</lastmod>
+    <loc>https://overboardstudio.com/en/blog/ai-telegram-bot</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://overboardstudio.com/blog/ai-telegram-bot"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://overboardstudio.com/en/blog/ai-telegram-bot"/>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -151,14 +158,14 @@
   <!-- ── PRIVACY ── -->
 
   <url>
-    <loc>https://overboardstudio.com/privacy.html</loc>
+    <loc>https://overboardstudio.com/privacy</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://overboardstudio.com/en/privacy.html</loc>
+    <loc>https://overboardstudio.com/en/privacy</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
